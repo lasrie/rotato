@@ -6,7 +6,8 @@
  * dasselbe Ergebnis liefern. Der Python-Export bleibt als Offline-Fallback
  * (ADR-0007).
  */
-import { fetch, rdfEnv, N3Parser, authReady } from "./lib/solid-bundle.js";
+import { fetch, rdfEnv, N3Parser } from "./lib/solid-bundle.js";
+import { authReady } from "./solid-auth.js";
 
 const POD_BASE = "https://solid.lasrie.dev/garten/";
 

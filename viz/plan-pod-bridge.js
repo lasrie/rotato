@@ -8,7 +8,8 @@
  *
  * Lokal (mit Export-Datei) bleibt der bestehende Pfad unverändert.
  */
-import { fetch, rdfEnv, N3Parser, authReady } from "./lib/solid-bundle.js";
+import { fetch, rdfEnv, N3Parser } from "./lib/solid-bundle.js";
+import { authReady } from "./solid-auth.js";
 
 const POD_BASE = "https://solid.lasrie.dev/garten/";
 const GARTEN = "https://example.org/garten-planer/ontology#";
