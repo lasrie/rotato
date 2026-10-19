@@ -296,7 +296,7 @@
     <script type="module" src="solid-auth-bridge.js"></script>
     <script type="module" src="plan-pod-bridge.js"></script>
     <script>
-      const data = window.GARTEN91_PLAN;
+      let data = window.GARTEN91_PLAN;
       if (!data || !data.beds) {
         // Unter GitHub Pages (kein lokaler Export) lädt der Pod-Bridge die Daten
         // live aus dem Pod; die Fehlermeldung wird erst nach seinem Versuch gezeigt.
@@ -313,13 +313,17 @@
           window.location.reload();
         });
         // Dritten Versuch: sessionStorage aus dem letzten Pod-Laden
+        // Cache nur übernehmen, wenn er das erwartete Format hat (beds vorhanden):
+        // veraltete/leere Caches werden verworfen, damit der Pod-Bridge greift.
         const cached = sessionStorage.getItem('garten91-plan-pod');
-        if (cached) {
-          try {
-            window.GARTEN91_PLAN = JSON.parse(cached);
-            console.info('Pflanzplan aus sessionStorage (Pod-Daten vom letzten Laden).');
-          } catch { sessionStorage.removeItem('garten91-plan-pod'); }
+        let restored = null;
+        try { restored = cached ? JSON.parse(cached) : null; } catch { restored = null; }
+        if (restored && restored.beds && restored.beds.length) {
+          window.GARTEN91_PLAN = restored;
+          data = restored;
+          console.info('Pflanzplan aus sessionStorage (Pod-Daten vom letzten Laden).');
         } else {
+          sessionStorage.removeItem('garten91-plan-pod');
           throw new Error("Warten auf Pod-Daten…"); // Skript stoppt, Listener bleibt aktiv
         }
       }
