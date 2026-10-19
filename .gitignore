@@ -1,0 +1,14 @@
+# Secrets — niemals committen!
+.env
+token*.json
+pod-config.local.*
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Arbeitsverzeichnisse
+tmp/

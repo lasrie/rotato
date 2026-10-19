@@ -28,11 +28,30 @@ formal validieren. Grundlage für spätere Fruchtfolge-Planung, Apps oder Abfrag
 | `garten91-linkes-hohes-beet-2025.ttl` | Reihenmodell des Tomatenbeets 2025 (vorläufig, vor Satellitenbild-Abgleich) |
 | `server.py` | Lokaler Server (Phase B): liefert Viewer + RDF aus, nimmt neue Pflanzungen (Turtle) an und validiert sie |
 | `garten91-planungen-neu.ttl` | Planungspuffer: neue Pflanzungen aus dem Viewer landen hier |
+| `scripts/sync_to_pod.mjs` | **Solid-Migration (M1):** spiegelt die lokalen RDF-Dateien in den Pod (CSS Client-Credentials + DPoP) |
+| `.env.example` | Vorlage für die Pod-Konfiguration (Client-Credentials, niemals selbst committen) |
 | `render_beetplan_2025_slides.py` | Rendert die PPT-Folien als PNG für die exakte Ansicht |
 | `export_garten91_plan.py` | Exportiert die RDF-Daten in ein Browser-freundliches JSON/JS für die Visualisierung |
 | `export_fruchtfolge.py` | Erzeugt die Fruchtfolge-Matrix (Beet × Jahr) mit Konflikterkennung |
 | `viz/fruchtfolge.html` | Fruchtfolge-Viewer: Matrix + Rotation-Konflikte |
 | `viz/index.html` | SVG-Viewer für den Gartenplan 2025 von Garten 91 |
+
+## Solid-Pod (M1 abgeschlossen)
+
+Die Daten werden in einen Solid-Pod gespiegelt (ADRs in `adr/`):
+
+```bash
+cp .env.example .env      # Client-Credentials eintragen (einmalig im Browser erzeugen)
+node scripts/sync_to_pod.mjs --dry-run   # Upload-Plan anzeigen
+node scripts/sync_to_pod.mjs             # in den Pod spiegeln
+```
+
+Der Pod läuft auf **solidcommunity.net** (Community Solid Server). Die Objekt-URIs
+in den Daten bleiben unverändert (`example.org/garten-planer/...`), nur die
+Dokument-URIs liegen im Pod: `https://lasse.solidcommunity.net/garten/<name>.ttl`.
+
+Architektur-Entscheidungen: `adr/README.md`, Implementierungsplan:
+`adr/implementierungsplan.md`.
 
 ## Validieren
 
