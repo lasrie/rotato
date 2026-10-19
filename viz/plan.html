@@ -147,7 +147,8 @@
         cursor: pointer;
       }
       .bed rect.bed-shape {
-        rx: 10;
+        /* rx als CSS-Eigenschaft funktioniert nur in Chrome/Edge; für Safari/Firefox
+           setzen wir das rx-Attribut im JS (render()). Hier nur stroke/hover. */
         stroke: #6a8f57;
         stroke-width: 2;
         transition: filter 0.15s;
@@ -396,6 +397,7 @@
           rect.setAttribute('width', Math.max(w, 40));
           rect.setAttribute('height', Math.max(h, 34));
           rect.setAttribute('class', 'bed-shape');
+          rect.setAttribute('rx', 10); // als Attribut statt CSS (Browser-Kompatibilität)
           rect.setAttribute('fill', bedColor(bed));
           g.appendChild(rect);
 
@@ -535,13 +537,19 @@
 
           const plantUri = plantSel.value;
           const plantLabel = plantSel.options[plantSel.selectedIndex].text;
+          const safeLabel = plantLabel.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
           const idx = (window.__nextPlanId = (window.__nextPlanId || 100) + 1);
           const uri = `https://example.org/garten-planer/data/garten91/planungen-neu/#pneu-${activeYear}-${idx}`;
 
-          // Turtle erzeugen (Solid-kompatibel, gleiche Präfixe wie die Daten)
-          const turtle = `
+          // Turtle erzeugen — mit ALLEN Prefix-Deklarationen (der Pod parst den
+          // Block isoliert, ohne Merge-Kontext; Gateway verzieh das bisher still).
+          const turtle = `@prefix garten: <https://example.org/garten-planer/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
 <${uri}> a garten:Pflanzung ;
-    rdfs:label "${plantLabel} ${activeYear} (neu geplant)"@de ;
+    rdfs:label "${safeLabel} ${activeYear} (neu geplant)"@de ;
     garten:aufBeet <${bed.id}> ;
     garten:pflanzt <${plantUri}> ;
     garten:monatPflanzung "${activeYear}-${String(fromM).padStart(2,'0')}"^^xsd:gYearMonth ;

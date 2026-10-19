@@ -121,12 +121,20 @@ export async function savePflanzung(turtle) {
       return { ok: false, error: "SHACL-Validierung fehlgeschlagen", details: validation.details };
     }
     const planUrl = POD_BASE + "planungen/planungen.ttl";
-    const get = await fetch(planUrl, { headers: { Accept: "text/turtle" } });
-    if (!get.ok && get.status !== 404) {
+    // cache: "no-store" verhindert 304-Not-Modified (deren Body wäre leer — ein Blind-
+    // schreibender PUT würde dann bestehende Pflanzungen ÜBERSCHREIBEN/DATENVERLUST).
+    const get = await fetch(planUrl, { headers: { Accept: "text/turtle" }, cache: "no-store" });
+    let existing = "";
+    if (get.status === 200) {
+      existing = (await get.text()).trimEnd();
+      if (!existing.trim()) existing = "# Planungen\n";
+      else existing += "\n";
+    } else if (get.status === 404) {
+      existing = "# Planungen\n";
+    } else {
       throw new Error(`Pod-Lesefehler HTTP ${get.status}`);
     }
     const etag = get.headers.get("ETag");
-    const existing = get.ok ? (await get.text()).trimEnd() + "\n" : "";
     const put = await fetch(planUrl, {
       method: "PUT",
       headers: {
