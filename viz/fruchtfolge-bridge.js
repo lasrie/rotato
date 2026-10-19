@@ -11,12 +11,12 @@ async function load() {
   // Session-Init abwarten (session.fetch braucht die OIDC-Session)
   await authReady;
   if (!session.info.isLoggedIn) {
-    // Restore-Versuche landen bei der Ursprungs-redirect_uri (plan.html) — die
-    // Session würde also nie auf DIESER Seite ankommen. Selbst Login auslösen,
-    // mit redirect zurück auf die Fruchtfolge-Seite. Guard gegen Endlosschleife.
+    // Fix ADR-Stufe-2: Der dynamische Client kennt nur plan.html als Redirect-URI.
+    // Also: Login mit redirect auf plan.html, Rückweg über sessionStorage-Marker.
     if (!sessionStorage.getItem("ff-login-attempted")) {
       sessionStorage.setItem("ff-login-attempted", "1");
-      console.info("Keine Session — Login mit redirect auf fruchtfolge.html wird gestartet.");
+      sessionStorage.setItem("auth-return-to", window.location.href);
+      console.info("Keine Session — Login über plan.html (Redirect-Ziel des Clients), danach Rückleitung.");
       await doLogin();
       return;
     }

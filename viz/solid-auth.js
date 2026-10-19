@@ -93,7 +93,21 @@ export async function validateShacl(turtle) {
 let authInitPromise = null;
 export function initSolidAuth() {
   if (!authInitPromise) {
-    authInitPromise = handleIncomingRedirect({ restorePreviousSession: true }).then(() => session);
+    authInitPromise = handleIncomingRedirect({ restorePreviousSession: true })
+      .then(() => {
+        // Nach einem Login-Redirect (code-Parameter in der URL) prüfen, ob eine
+        // Rückleitung angefragt war (z. B. von fruchtfolge.html).
+        const returnTo = sessionStorage.getItem("auth-return-to");
+        if (returnTo && session.info.isLoggedIn) {
+          sessionStorage.removeItem("auth-return-to");
+          sessionStorage.removeItem("ff-login-attempted");
+          if (!window.location.pathname.includes("plan.html")) {
+            window.location.assign(returnTo); // zur Ursprungsseite
+            return session;
+          }
+        }
+        return session;
+      });
   }
   return authInitPromise;
 }
@@ -105,10 +119,13 @@ export function isLoggedIn() {
   return session.info.isLoggedIn;
 }
 
-export async function doLogin() {
+export async function doLogin(redirect = window.location.origin + "/plan.html") {
+  // Ein einziges Redirect-Ziel (plan.html): der dynamisch registrierte Client
+  // kennt nur diese URI (400 invalid_redirect_uri sonst). Nach dem Login leitet
+  // plan.html über sessionStorage 'auth-return-to' zurück zur Ursprungsseite.
   await login({
     oidcIssuer: OIDC_ISSUER,
-    redirect: window.location.href,
+    redirect,
     clientName: "Garten-Planer",
   });
 }
