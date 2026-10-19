@@ -42,7 +42,24 @@
         margin-bottom: 14px;
         display: flex;
         gap: 8px;
+        align-items: center;
       }
+      .solid-login-status { margin-left: auto; }
+      .solid-btn {
+        font: inherit;
+        font-size: 13px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--panel-border);
+        background: #fff;
+        cursor: pointer;
+      }
+      .solid-btn-primary {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+      .solid-user { font-size: 13px; color: var(--accent); margin-right: 6px; }
       .nav a {
         font: inherit;
         padding: 7px 14px;
@@ -244,6 +261,7 @@
         <div class="nav">
           <a href="/plan.html">Pflanzplan</a>
           <a href="/fruchtfolge.html">Fruchtfolge</a>
+          <span id="solid-login-status" class="solid-login-status"></span>
         </div>
 
 
@@ -274,6 +292,7 @@
     </div>
 
     <script src="/viz/garten91-plan.js"></script>
+    <script type="module" src="/viz/solid-auth-bridge.js"></script>
     <script>
       const data = window.GARTEN91_PLAN;
       if (!data || !data.beds) {
@@ -533,13 +552,24 @@
 `;
 
           try {
-            const res = await fetch('/api/pflanzung', {
-              method: 'POST',
-              headers: { 'Content-Type': 'text/turtle' },
-              body: turtle,
-            });
-            const json = await res.json();
+            // M3 Frontend-Direct: window.savePflanzung (aus solid-auth.js) entscheidet
+            // selbst: eingeloggt → direkt in den Pod (SHACL im Browser), sonst → Gateway.
+            const json = await window.savePflanzung(turtle);
             if (json.ok) {
+              msg.className = 'plan-msg ok';
+              const via = json.via === 'pod' ? 'Pod (Frontend-Direct)' : 'Gateway';
+              msg.textContent = '✓ Gespeichert und validiert (' + via + '). Daten neu geladen…';
+              // Nach kurzer Pause die Daten neu laden (Server hat export ausgeführt)
+              setTimeout(async () => {
+                const r = await fetch('/viz/garten91-plan.js', { cache: 'no-store' });
+                const text = await r.text();
+                window.GARTEN91_PLAN = null;
+                eval(text);
+                const fresh = window.GARTEN91_PLAN;
+                data.beds = fresh.beds;
+                render();
+                msg.textContent = '✓ Pflanzung angelegt und im Plan sichtbar.';
+              }, 600);
               msg.className = 'plan-msg ok';
               msg.textContent = '✓ Gespeichert und validiert. Daten neu geladen…';
               // Nach kurzer Pause die Daten neu laden (Server hat export ausgeführt)

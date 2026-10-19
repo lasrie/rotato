@@ -194,6 +194,26 @@ python3 -m pyshacl -s garten-shapes.ttl /tmp/data.ttl
 
 Danach wieder validieren (Befehl oben). Der Validator sagt dir genau, was fehlt.
 
+## M3: Frontend-Direct (Solid-OIDC im Browser)
+
+Der Haupt-Viewer kann sich jetzt direkt gegen den Pod authentifizieren:
+
+- **Anmelden** über `Mit Solid anmelden` (solidcommunity.net, OIDC-Flow im Browser)
+- Eingeloggt: Das Planungs-Formular **validiert im Browser** (SHACL, dieselben Shapes
+  aus dem Pod) und **schreibt direkt in den Pod** (If-Match-Schutz)
+- Nicht eingeloggt: Fallback auf das Gateway (Stufe 1) — der Viewer funktioniert
+  weiterhin ohne Solid-Login
+
+Technik: ESM-Bundle aus `@inrupt/solid-client` + `solid-client-authn-browser` +
+`rdf-validate-shacl` (via esbuild, `npm run build`), eingebunden als
+`viz/lib/solid-bundle.js`. Die Bridge (`viz/solid-auth-bridge.js`) stellt das
+Globale `window.savePflanzung` bereit, das der bestehende inline-Code nutzt.
+
+```bash
+npm run build     # Bundle erzeugen (nach Änderungen an den Dependencies)
+python3 server.py # oder: Viewer direkt öffnen (Pod-Daten kommen via Gateway-Export)
+```
+
 ## M2: Gateway als Pod-Adapter
 
 `server.py` liest und schreibt jetzt **direkt im Pod** (ADR-0002, Stufe 1):
