@@ -10,7 +10,7 @@
  */
 import { fetch, rdfEnv, N3Parser } from "./lib/solid-bundle.js";
 
-const POD_BASE = "https://lasse.solidcommunity.net/garten/";
+const POD_BASE = "https://solid.lasrie.dev/garten/";
 const GARTEN = "https://example.org/garten-planer/ontology#";
 const PLAN = "https://example.org/garten-planer/plan#";
 const TIME = "http://www.w3.org/2006/time#";

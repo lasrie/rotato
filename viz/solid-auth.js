@@ -1,7 +1,7 @@
 /**
  * Solid-Integration für den Garten-Planer (M3 Frontend-Direct, ADR-0002 Stufe 2).
  *
- * - Login via Solid-OIDC (solidcommunity.net)
+ * - Login via Solid-OIDC (solid.lasrie.dev)
  * - Direktes Lesen/Schreiben im Pod (kein Gateway nötig)
  * - SHACL-Validierung im Browser (dieselben Shapes wie der Server, ADR-0004)
  * - Fallback: Wenn nicht eingeloggt, läuft der Viewer weiter über das Gateway
@@ -12,8 +12,8 @@ import {
   SHACLValidator, rdfEnv, N3Parser,
 } from "./lib/solid-bundle.js";
 
-const POD_BASE = "https://lasse.solidcommunity.net/garten/";
-const OIDC_ISSUER = "https://solidcommunity.net";
+const POD_BASE = "https://solid.lasrie.dev/garten/";
+const OIDC_ISSUER = "https://solid.lasrie.dev";
 // Gateway-Fallback nur im lokalen Modus (server.py auf Port 8765); unter GitHub Pages
 // gibt es kein Gateway — dort läuft nur der Pod-Pfad (Frontend-Direct).
 const IS_LOCAL = ["localhost", "127.0.0.1"].includes(window.location.hostname);

@@ -8,7 +8,7 @@
  */
 import { fetch, rdfEnv, N3Parser } from "./lib/solid-bundle.js";
 
-const POD_BASE = "https://lasse.solidcommunity.net/garten/";
+const POD_BASE = "https://solid.lasrie.dev/garten/";
 
 // Muss mit datamodel.py konsistent sein (Beet-Stammliste, siehe datamodel.py)
 const BEDS = [
