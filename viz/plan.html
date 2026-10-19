@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garten 91 – Pflanzplan</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%224%22 fill=%22%234a7c3f%22/><text x=%228%22 y=%2212%22 font-size=%2210%22 text-anchor=%22middle%22 fill=%22white%22>G</text></svg>" />
+    <style>
+      :root {
+        --bg: #eef4e6;
+        --panel: #ffffff;
+        --panel-border: #dde5d2;
+        --text: #2c3a28;
+        --muted: #6b7a63;
+        --accent: #4a7c3f;
+        --grass: #d5e5bf;
+        --path: #e8dfc8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Avenir Next", "Segoe UI", Inter, system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) 380px;
+        min-height: 100vh;
+      }
+      .main { padding: 22px; }
+      .side {
+        border-left: 1px solid var(--panel-border);
+        background: #f7faf2;
+        padding: 22px;
+        overflow: auto;
+      }
+      h1 { margin: 0 0 4px; font-size: 26px; color: var(--accent); }
+      .subtitle { color: var(--muted); margin-bottom: 14px; font-size: 14px; }
+
+      .nav {
+        margin-bottom: 14px;
+        display: flex;
+        gap: 8px;
+      }
+      .nav a {
+        font: inherit;
+        padding: 7px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--panel-border);
+        background: white;
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .nav a.active {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+        padding: 14px;
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 14px;
+      }
+      .control-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .control-row label { font-size: 13px; color: var(--muted); min-width: 56px; }
+      .year-buttons { display: flex; gap: 6px; }
+      .year-btn {
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--panel-border);
+        background: white;
+        cursor: pointer;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .year-btn.active {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+      .month-slider {
+        flex: 1;
+        accent-color: var(--accent);
+      }
+      .month-label {
+        font-weight: 600;
+        color: var(--accent);
+        min-width: 90px;
+        text-align: center;
+      }
+      .month-scale {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 56px;
+        margin-top: -6px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .month-scale span {
+        cursor: pointer;
+        padding: 2px 4px;
+        border-radius: 4px;
+        user-select: none;
+      }
+      .month-scale span:hover { background: #e4eddc; color: var(--accent); }
+      .month-scale span.active { color: var(--accent); font-weight: 700; }
+
+      .canvas {
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 16px;
+        padding: 12px;
+        overflow: auto;
+        resize: both;
+      }
+      svg { width: 100%; height: auto; display: block; min-width: 560px; }
+
+      .bed {
+        cursor: pointer;
+      }
+      .bed rect.bed-shape {
+        rx: 10;
+        stroke: #6a8f57;
+        stroke-width: 2;
+        transition: filter 0.15s;
+      }
+      .bed:hover rect.bed-shape { filter: brightness(1.06); }
+      .bed.active rect.bed-shape {
+        stroke: var(--accent);
+        stroke-width: 3.5;
+      }
+      .bed text.bed-title {
+        font-size: 15px;
+        font-weight: 600;
+        fill: #2f4124;
+        pointer-events: none;
+      }
+      .bed text.bed-count {
+        font-size: 11px;
+        fill: #57684d;
+        pointer-events: none;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .card h2 { margin: 0 0 4px; font-size: 20px; color: var(--accent); }
+      .card .muted { color: var(--muted); font-size: 13px; }
+      .card h3 { margin: 14px 0 0; font-size: 15px; color: var(--accent); }
+      .planting-list { list-style: none; padding: 0; margin: 12px 0 0; }
+      .planting-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f2ea;
+      }
+      .planting-item:last-child { border-bottom: none; }
+      .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .pi-label { font-weight: 600; font-size: 14px; }
+      .badge {
+        display: inline-block;
+        padding: 1px 8px;
+        border-radius: 999px;
+        background: #edf3e8;
+        color: #385227;
+        font-size: 11px;
+        font-weight: 500;
+        vertical-align: 1px;
+      }
+      .pi-meta { color: var(--muted); font-size: 12px; }
+      .empty-hint { color: var(--muted); font-size: 13px; margin-top: 10px; }
+
+      /* ---------- Planungs-Formular ---------- */
+      .plan-form { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+      .plan-form .row { display: flex; gap: 10px; }
+      .plan-form label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 3px; }
+      .plan-form select, .plan-form input {
+        width: 100%;
+        font: inherit;
+        padding: 7px 8px;
+        border: 1px solid var(--panel-border);
+        border-radius: 8px;
+        background: white;
+      }
+      .plan-form button {
+        font: inherit;
+        padding: 9px 12px;
+        border: none;
+        border-radius: 8px;
+        background: var(--accent);
+        color: white;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .plan-form button:disabled { opacity: 0.5; cursor: wait; }
+      .plan-form .hint { font-size: 12px; color: var(--muted); }
+      .plan-msg { font-size: 13px; margin-top: 8px; }
+      .plan-msg.ok { color: #2e7d32; }
+      .plan-msg.err { color: #b3423a; }
+      .toggle-btn {
+        margin-top: 14px;
+        font: inherit;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--accent);
+        background: white;
+        color: var(--accent);
+        cursor: pointer;
+        font-weight: 600;
+        width: 100%;
+      }
+
+      @media (max-width: 1100px) {
+        .layout { grid-template-columns: 1fr; }
+        .side { border-left: 0; border-top: 1px solid var(--panel-border); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <main class="main">
+        <h1>Garten 91</h1>
+        <div class="subtitle">Pflanzplan aus Linked Data – Slider bewegt dich durchs Gartenjahr.</div>
+
+        <div class="nav">
+          <a href="/plan.html">Pflanzplan</a>
+          <a href="/fruchtfolge.html">Fruchtfolge</a>
+        </div>
+
+
+        <div class="controls">
+          <div class="control-row">
+            <label>Jahr</label>
+            <div class="year-buttons" id="yearButtons"></div>
+          </div>
+          <div class="control-row">
+            <label>Monat</label>
+            <input type="range" class="month-slider" id="monthSlider" min="1" max="12" value="5" step="1"
+                   list="monthTicks" aria-label="Monat auswählen" />
+            <div class="month-label" id="monthLabel">Mai</div>
+          </div>
+          <div class="month-scale">
+            ${Array.from({length: 12}, (_, i) => `<span data-m="${i+1}">${'JFMAMJJASOND'[i]}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="canvas">
+          <svg id="planSvg" viewBox="0 0 780 620" aria-label="Gartenplan"></svg>
+        </div>
+      </main>
+
+      <aside class="side">
+        <div class="card" id="details"></div>
+      </aside>
+    </div>
+
+    <script src="/viz/garten91-plan.js"></script>
+    <script>
+      const data = window.GARTEN91_PLAN;
+      if (!data || !data.beds) {
+        document.body.innerHTML = '<div style="padding:40px;font-family:sans-serif;color:#b3423a">' +
+          '<h2>Daten nicht geladen</h2><p>Die Datei <code>garten91-plan.js</code> konnte nicht ' +
+          'geladen werden. Bitte <code>python3 export_garten91_plan.py</code> ausführen und die Seite neu laden.</p></div>';
+        throw new Error('GARTEN91_PLAN nicht geladen');
+      }
+      const svg = document.getElementById('planSvg');
+      const monthSlider = document.getElementById('monthSlider');
+      const monthLabel = document.getElementById('monthLabel');
+      const yearButtons = document.getElementById('yearButtons');
+      const detailsEl = document.getElementById('details');
+
+      let activeYear = '2025';
+      let activeMonth = 5;
+      let activeBedId = null;
+
+      // Skalierung: Meter -> SVG-Pixel (dynamisch aus den Daten berechnet)
+      const SCALE = 34;
+      const PAD = 30;
+      const visibleBeds = data.beds.filter(b => b.width && b.height);
+      const MAX_X = Math.max(...visibleBeds.map(b => b.x + b.width));
+      const MAX_Y = Math.max(...visibleBeds.map(b => b.y + b.height));
+      const SVG_W = Math.ceil(MAX_X * SCALE + PAD * 2);
+      const SVG_H = Math.ceil(MAX_Y * SCALE + PAD * 2);
+      svg.setAttribute('viewBox', `0 0 ${SVG_W} ${SVG_H}`);
+
+      function monthName(i) { return data.months[i] || ''; }
+
+      function visiblePlantings(bed) {
+        return bed.plantings.filter(p =>
+          p.jahr === activeYear &&
+          (p.fromMonth == null || p.fromMonth <= activeMonth) &&
+          (p.toMonth == null || p.toMonth >= activeMonth)
+        );
+      }
+
+      function renderYearButtons() {
+        yearButtons.innerHTML = '';
+        data.years.forEach(y => {
+          const btn = document.createElement('button');
+          btn.className = 'year-btn' + (y === activeYear ? ' active' : '');
+          btn.textContent = y;
+          btn.addEventListener('click', () => { activeYear = y; render(); });
+          yearButtons.appendChild(btn);
+        });
+      }
+
+      function bedColor(bed) {
+        const plantings = visiblePlantings(bed);
+        if (!plantings.length) return '#f3efe4';
+        const colors = new Set(plantings.map(p => p.familyColor));
+        if (colors.size === 1) return [...colors][0];
+        return '#c9d9b4'; // Mischkultur / mehrere Familien
+      }
+
+      function render() {
+        svg.innerHTML = '';
+        renderYearButtons();
+        monthLabel.textContent = monthName(activeMonth);
+        document.querySelectorAll('.month-scale span').forEach(el => {
+          el.classList.toggle('active', Number(el.dataset.m) === activeMonth);
+          el.onclick = () => {
+            activeMonth = Number(el.dataset.m);
+            monthSlider.value = String(activeMonth);
+            render();
+          };
+        });
+
+        // Hintergrund Rasen
+        const grass = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        grass.setAttribute('x', 0); grass.setAttribute('y', 0);
+        grass.setAttribute('width', SVG_W); grass.setAttribute('height', SVG_H);
+        grass.setAttribute('fill', 'var(--grass)');
+        grass.setAttribute('rx', 18);
+        svg.appendChild(grass);
+
+        data.beds.forEach(bed => {
+          // Ohne Koordinaten (aus dem Plan entfernt): nicht zeichnen
+          if (!bed.width || !bed.height) return;
+          const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          g.setAttribute('class', 'bed' + (bed.id === activeBedId ? ' active' : ''));
+          g.addEventListener('click', () => { activeBedId = bed.id; render(); });
+
+          // Hover-Tooltip mit aktueller Kultur
+          const tip = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+          const tipPlantings = visiblePlantings(bed);
+          tip.textContent = bed.title + (tipPlantings.length
+            ? '\n' + tipPlantings.map(pl => pl.label + ' (' + (pl.fromMonth ?? '?') + '\u2013' + (pl.toMonth ?? '?') + ')').join('\n')
+            : (bed.isPath ? '' : '\nKeine aktiven Kulturen'));
+          g.appendChild(tip);
+
+          const x = PAD + bed.x * SCALE;
+          const y = PAD + bed.y * SCALE;
+          const w = bed.width * SCALE;
+          const h = bed.height * SCALE;
+
+          const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          rect.setAttribute('x', x); rect.setAttribute('y', y);
+          rect.setAttribute('width', Math.max(w, 40));
+          rect.setAttribute('height', Math.max(h, 34));
+          rect.setAttribute('class', 'bed-shape');
+          rect.setAttribute('fill', bedColor(bed));
+          g.appendChild(rect);
+
+          const visible = visiblePlantings(bed);
+          const summary = visible.length
+            ? visible.map(p => p.label).join(', ')
+            : (bed.isPath ? 'Hackschnitzelweg' : '—');
+
+          // Vertikale Beete: Titel + Kulturen gedreht (quer) ins Beet legen
+          if (h > w) {
+            const cx = x + Math.max(w, 40) / 2;
+            const cy = y + Math.max(h, 34) / 2;
+            const titleV = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            titleV.setAttribute('x', cx);
+            titleV.setAttribute('y', cy);
+            titleV.setAttribute('class', 'bed-title');
+            titleV.setAttribute('text-anchor', 'middle');
+            titleV.setAttribute('transform', `rotate(-90 ${cx} ${cy})`);
+            titleV.textContent = bed.title;
+            g.appendChild(titleV);
+
+            const countV = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            countV.setAttribute('x', cx + 14);
+            countV.setAttribute('y', cy);
+            countV.setAttribute('class', 'bed-count');
+            countV.setAttribute('text-anchor', 'middle');
+            countV.setAttribute('transform', `rotate(-90 ${cx + 14} ${cy})`);
+            countV.textContent = summary.length > 40 ? summary.slice(0, 38) + '…' : summary;
+            g.appendChild(countV);
+          } else {
+            const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            title.setAttribute('x', x + 8);
+            title.setAttribute('y', y + 18);
+            title.setAttribute('class', 'bed-title');
+            title.textContent = bed.title;
+            g.appendChild(title);
+
+            const count = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            count.setAttribute('x', x + 8);
+            count.setAttribute('y', y + 33);
+            count.setAttribute('class', 'bed-count');
+            count.textContent = summary.length > 50 ? summary.slice(0, 48) + '…' : summary;
+            g.appendChild(count);
+          }
+
+          svg.appendChild(g);
+        });
+
+        renderDetails();
+      }
+
+      function renderDetails() {
+        const bed = data.beds.find(b => b.id === activeBedId);
+        if (!bed) {
+          detailsEl.innerHTML = '<h2>Beet wählen</h2><p class="muted">Klicke auf ein Beet im Plan, um Details zu sehen.</p>';
+          return;
+        }
+        const plantings = visiblePlantings(bed);
+        const inPlan = bed.width > 0 && bed.height > 0;
+        detailsEl.innerHTML = `
+          <h2>${bed.title}</h2>
+          <div class="muted">${monthName(activeMonth)} ${activeYear}${inPlan ? '' : ' · aus dem Plan entfernt'}</div>
+          ${bed.comment ? `<p class="muted" style="margin-top:8px">${bed.comment}</p>` : ''}
+          <h3 style="margin:14px 0 0; font-size:15px; color:var(--accent)">Kulturen (${plantings.length})</h3>
+          ${plantings.length ? `
+            <ul class="planting-list">
+              ${plantings.map(p => `
+                <li class="planting-item">
+                  <span class="dot" style="background:${p.familyColor}"></span>
+                  <div>
+                    <div class="pi-label">${p.label} <span class="badge">${p.familyLabel || 'ohne Familie'}</span></div>
+                    <div class="pi-meta">${p.fromMonth ?? '?'}–${p.toMonth ?? '?'} · ${p.mehrjaehrig ? 'mehrjährig' : 'einjährig'}</div>
+                  </div>
+                </li>
+              `).join('')}
+            </ul>
+          ` : `<p class="empty-hint">Keine aktiven Kulturen im ${monthName(activeMonth)} ${activeYear}. ${inPlan ? 'Nutze „+ Neue Pflanzung planen", um etwas einzuplanen.' : ''}</p>`}
+          ${inPlan ? planFormHtml(bed) : ''}
+        `;
+        attachPlanFormHandler(bed);
+      }
+
+      // ---------- Phase B: Planungs-Eingabe ----------
+      function planFormHtml(bed) {
+        return `
+          <button class="toggle-btn" id="togglePlanBtn" type="button">+ Neue Pflanzung planen</button>
+          <div id="planFormWrap" style="display:none">
+            <div class="plan-form">
+              <div>
+                <label>Pflanze</label>
+                <select id="planPlant">
+                  ${data.plants.map(p => `<option value="${p.uri}" data-family="${p.familyUri || ''}">${p.label}</option>`).join('')}
+                </select>
+              </div>
+              <div class="row">
+                <div style="flex:1">
+                  <label>Monat Pflanzung</label>
+                  <select id="planFromMonth">
+                    ${data.months.map((m,i) => i ? `<option value="${i}" ${i===activeMonth?'selected':''}>${m}</option>` : '').join('')}
+                  </select>
+                </div>
+                <div style="flex:1">
+                  <label>Monat Ernte</label>
+                  <select id="planToMonth">
+                    ${data.months.map((m,i) => i ? `<option value="${i}" ${i===activeMonth?'selected':''}>${m}</option>` : '').join('')}
+                  </select>
+                </div>
+              </div>
+              <div class="hint">
+                Erzeugt einen Turtle-Block mit Beet <code>${bed.slug}</code> und Jahr <code>${activeYear}</code>.
+              </div>
+              <button id="savePlanBtn" type="button">Pflanzung speichern</button>
+              <div class="plan-msg" id="planMsg"></div>
+            </div>
+          </div>
+        `;
+      }
+
+      function attachPlanFormHandler(bed) {
+        const toggle = document.getElementById('togglePlanBtn');
+        if (!toggle) return;
+        toggle.addEventListener('click', () => {
+          const wrap = document.getElementById('planFormWrap');
+          wrap.style.display = wrap.style.display === 'none' ? 'block' : 'none';
+        });
+        const saveBtn = document.getElementById('savePlanBtn');
+        if (!saveBtn) return;
+        saveBtn.addEventListener('click', async () => {
+          const msg = document.getElementById('planMsg');
+          const plantSel = document.getElementById('planPlant');
+          const fromM = Number(document.getElementById('planFromMonth').value);
+          const toM = Number(document.getElementById('planToMonth').value);
+
+          msg.className = 'plan-msg';
+          msg.textContent = 'Speichere…';
+          saveBtn.disabled = true;
+
+          const plantUri = plantSel.value;
+          const plantLabel = plantSel.options[plantSel.selectedIndex].text;
+          const idx = (window.__nextPlanId = (window.__nextPlanId || 100) + 1);
+          const uri = `https://example.org/garten-planer/data/garten91/planungen-neu/#pneu-${activeYear}-${idx}`;
+
+          // Turtle erzeugen (Solid-kompatibel, gleiche Präfixe wie die Daten)
+          const turtle = `
+<${uri}> a garten:Pflanzung ;
+    rdfs:label "${plantLabel} ${activeYear} (neu geplant)"@de ;
+    garten:aufBeet <${bed.id}> ;
+    garten:pflanzt <${plantUri}> ;
+    garten:monatPflanzung "${activeYear}-${String(fromM).padStart(2,'0')}"^^xsd:gYearMonth ;
+    garten:monatErnte "${activeYear}-${String(toM).padStart(2,'0')}"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "${activeYear}-${String(fromM).padStart(2,'0')}"^^xsd:gYearMonth ] ] .
+`;
+
+          try {
+            const res = await fetch('/api/pflanzung', {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/turtle' },
+              body: turtle,
+            });
+            const json = await res.json();
+            if (json.ok) {
+              msg.className = 'plan-msg ok';
+              msg.textContent = '✓ Gespeichert und validiert. Daten neu geladen…';
+              // Nach kurzer Pause die Daten neu laden (Server hat export ausgeführt)
+              setTimeout(async () => {
+                const r = await fetch('/viz/garten91-plan.js', { cache: 'no-store' });
+                const text = await r.text();
+                window.GARTEN91_PLAN = null;
+                eval(text);
+                const fresh = window.GARTEN91_PLAN;
+                data.beds = fresh.beds;
+                render();
+                msg.textContent = '✓ Pflanzung angelegt und im Plan sichtbar.';
+              }, 600);
+            } else {
+              msg.className = 'plan-msg err';
+              msg.textContent = '✗ ' + (json.error || 'Fehler beim Speichern');
+              if (json.details) console.warn('SHACL:', json.details);
+            }
+          } catch (e) {
+            msg.className = 'plan-msg err';
+            msg.textContent = '✗ Server nicht erreichbar: ' + e.message;
+          } finally {
+            saveBtn.disabled = false;
+          }
+        });
+      }
+
+      monthSlider.addEventListener('input', () => {
+        activeMonth = Number(monthSlider.value);
+        render();
+      });
+
+      render();
+    </script>
+  </body>
+</html>

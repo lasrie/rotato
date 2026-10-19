@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garten 91 – Fruchtfolge-Matrix</title>
+    <style>
+      :root {
+        --bg: #eef4e6;
+        --panel: #ffffff;
+        --panel-border: #dde5d2;
+        --text: #2c3a28;
+        --muted: #6b7a63;
+        --accent: #4a7c3f;
+        --warn: #c6543f;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Avenir Next", "Segoe UI", Inter, system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
+      h1 { margin: 0 0 4px; font-size: 26px; color: var(--accent); }
+      .subtitle { color: var(--muted); margin-bottom: 18px; font-size: 14px; }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 16px;
+        padding: 18px;
+        margin-bottom: 20px;
+      }
+      .panel h2 { margin: 0 0 12px; font-size: 18px; color: var(--accent); }
+
+      table.matrix {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 6px;
+      }
+      table.matrix th {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 600;
+        text-align: left;
+        padding: 4px 8px;
+      }
+      table.matrix th.bed {
+        text-align: left;
+        font-size: 14px;
+        color: var(--text);
+        width: 220px;
+      }
+      td.cell {
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 13px;
+        vertical-align: top;
+        border: 1px solid rgba(0,0,0,0.08);
+        min-width: 130px;
+      }
+      td.cell .fam { font-weight: 700; margin-bottom: 3px; }
+      td.cell .kulturen { color: #3d4a36; font-size: 12px; }
+      td.cell.empty { background: #f4f4ee; color: #a0a89b; font-style: italic; }
+
+      .conflict {
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: #fdeeec;
+        border: 1px solid #eabfb8;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .conflict .beet { font-weight: 700; }
+      .conflict .fam { color: var(--warn); font-weight: 600; }
+
+      .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 14px; font-size: 12px; }
+      .legend-item { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+      .swatch { width: 13px; height: 13px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.12); }
+
+      .nav { margin-bottom: 16px; display: flex; gap: 10px; }
+      .nav a {
+        font: inherit;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--panel-border);
+        background: white;
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .nav a.active { background: var(--accent); color: white; border-color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Fruchtfolge-Matrix</h1>
+      <div class="subtitle">Beet × Jahr – Fruchtfamilien und Konflikte bei Rotation.</div>
+
+      <div class="nav">
+        <a href="/plan.html">Pflanzplan</a>
+        <a href="/fruchtfolge.html" class="active">Fruchtfolge</a>
+      </div>
+
+      <div class="panel" id="conflictPanel">
+        <h2>Rotation-Konflikte</h2>
+        <div id="conflicts"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Beet × Jahr</h2>
+        <div id="matrixWrap"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+
+    <script src="/viz/fruchtfolge-data.js"></script>
+    <script>
+      const data = window.FRUCHTFOLGE;
+      if (!data || !data.matrix) {
+        document.body.innerHTML = '<div style="padding:40px;color:#b3423a"><h2>Daten nicht geladen</h2>' +
+          '<p>Bitte <code>python3 export_fruchtfolge.py</code> ausführen und neu laden.</p></div>';
+        throw new Error('FRUCHTFOLGE nicht geladen');
+      }
+
+      function renderConflicts() {
+        const el = document.getElementById('conflicts');
+        if (!data.conflicts.length) {
+          el.innerHTML = '<p style="color:var(--muted)">Keine Konflikte erkannt – Rotation passt.</p>';
+          document.getElementById('conflictPanel').style.borderColor = 'var(--panel-border)';
+          return;
+        }
+        el.innerHTML = data.conflicts.map(c => `
+          <div class="conflict">
+            <span class="beet">${c.beet}</span>
+            <span style="margin:0 6px">${c.jahre}</span>
+            <span class="fam">${c.familien.join(', ')}</span>
+            <span style="color:var(--muted); font-size:12px; margin-left:8px">
+              gleichbleibende Fruchtfamilie über Jahre — Rotation nötig
+            </span>
+          </div>
+        `).join('');
+      }
+
+      function renderMatrix() {
+        const wrap = document.getElementById('matrixWrap');
+        let html = '<table class="matrix"><thead><tr><th class="bed">Beet</th>';
+        data.years.forEach(y => html += `<th>${y}</th>`);
+        html += '</tr></thead><tbody>';
+
+        data.matrix.forEach(row => {
+          html += `<tr><th class="bed">${row.title}</th>`;
+          row.cells.forEach(cell => {
+            if (!cell) {
+              html += '<td class="cell empty">— keine Einträge</td>';
+            } else {
+              const kulturen = cell.items.map(i => i.kultur).join('; ');
+              html += `
+                <td class="cell" style="background:${cell.color}">
+                  <div class="fam">${cell.family}</div>
+                  <div class="kulturen">${kulturen}</div>
+                </td>`;
+            }
+          });
+          html += '</tr>';
+        });
+        html += '</tbody></table>';
+        wrap.innerHTML = html;
+      }
+
+      function renderLegend() {
+        document.getElementById('legend').innerHTML = data.legend.map(l => `
+          <span class="legend-item">
+            <span class="swatch" style="background:${l.color}"></span>
+            ${l.family}
+          </span>
+        `).join('');
+      }
+
+      renderConflicts();
+      renderMatrix();
+      renderLegend();
+    </script>
+  </body>
+</html>

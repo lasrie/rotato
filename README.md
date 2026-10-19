@@ -26,8 +26,12 @@ formal validieren. Grundlage für spätere Fruchtfolge-Planung, Apps oder Abfrag
 | `garten-layout-ontology.ttl` | Ontologie-Erweiterung: `garten:Reihe` und `garten:ReihenAbschnitt` für echte Beetplanung |
 | `garten-layout.shacl.ttl` | SHACL-Regeln für Reihen und Reihenabschnitte |
 | `garten91-linkes-hohes-beet-2025.ttl` | Reihenmodell des Tomatenbeets 2025 (vorläufig, vor Satellitenbild-Abgleich) |
+| `server.py` | Lokaler Server (Phase B): liefert Viewer + RDF aus, nimmt neue Pflanzungen (Turtle) an und validiert sie |
+| `garten91-planungen-neu.ttl` | Planungspuffer: neue Pflanzungen aus dem Viewer landen hier |
 | `render_beetplan_2025_slides.py` | Rendert die PPT-Folien als PNG für die exakte Ansicht |
 | `export_garten91_plan.py` | Exportiert die RDF-Daten in ein Browser-freundliches JSON/JS für die Visualisierung |
+| `export_fruchtfolge.py` | Erzeugt die Fruchtfolge-Matrix (Beet × Jahr) mit Konflikterkennung |
+| `viz/fruchtfolge.html` | Fruchtfolge-Viewer: Matrix + Rotation-Konflikte |
 | `viz/index.html` | SVG-Viewer für den Gartenplan 2025 von Garten 91 |
 
 ## Validieren
@@ -171,7 +175,44 @@ python3 -m pyshacl -s garten-shapes.ttl /tmp/data.ttl
 
 Danach wieder validieren (Befehl oben). Der Validator sagt dir genau, was fehlt.
 
-## Visualisierung: Garten 91 als SVG-Plan
+## Phase B: Planungs-Eingabe
+
+Der Haupt-Viewer unterstützt jetzt das Anlegen neuer Pflanzungen:
+
+1. Server starten:
+   ```bash
+   python3 server.py
+   ```
+
+2. Viewer öffnen:
+   ```
+   http://localhost:8765/
+   ```
+
+3. Beet anklicken → „+ Neue Pflanzung planen“ → Pflanze + Monate wählen → speichern.
+
+Der Server hängt die neue Pflanzung in `garten91-planungen-neu.ttl` an,
+**validiert** sie gegen beide SHACL-Shape-Dateien und regeneriert den
+Viewer-Export automatisch. Bei Validierungsfehlern wird zurückgerollt.
+
+Architektur: LDP-artig (GET liefert Turtle, POST nimmt Turtle an) –
+dadurch später leicht gegen einen Solid-Pod austauschbar.
+
+## Phase C: Fruchtfolge-Matrix
+
+Beet × Jahr-Matrix (2024–2026) mit Fruchtfamilien-Farbcodierung und
+automatischer Konflikterkennung (gleiche Familie in aufeinanderfolgenden
+Jahren auf demselben Beet):
+
+```bash
+python3 export_fruchtfolge.py
+# Server läuft: http://localhost:8765/fruchtfolge.html
+```
+
+Der Server regeneriert bei jedem gespeicherten Pflanzplan beide Exporte
+(Pflanzplan + Fruchtfolge) automatisch.
+
+## Phase A: Visualisierung
 
 Für Garten 91 gibt es jetzt einen ersten Viewer auf Basis der Linked-Data-Dateien.
 
@@ -204,6 +245,14 @@ Reihen-/Abschnitts-Viewer für das linke hohe Beet erzeugen und öffnen:
 ```bash
 python3 export_linkes_hohes_beet_layout.py
 open viz/linkes-hohes-beet.html
+```
+
+**Haupt-Viewer (Phase A):** schematische Gartenkarte der realen Beete,
+fryd.app-inspiriert, mit Jahres-/Monats-Slider:
+
+```bash
+python3 export_garten91_plan.py
+open viz/plan.html
 ```
 
 Der Viewer zeigt:
