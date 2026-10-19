@@ -3,7 +3,7 @@
  * Solid-Auth-Logik (solid-auth.js, ESM). Stellt window.savePflanzung und
  * die Login-UI bereit — der inline-Code bleibt unverändert funktional.
  */
-import { initSolidAuth, isLoggedIn, doLogin, doLogout, savePflanzung, session } from "./solid-auth.js";
+import { authReady, isLoggedIn, doLogin, doLogout, savePflanzung, session } from "./solid-auth.js";
 
 window.savePflanzung = savePflanzung;
 window.solidSession = session;
@@ -27,4 +27,4 @@ function updateLoginUi() {
   }
 }
 
-initSolidAuth().then(() => updateLoginUi());
+authReady.then(() => updateLoginUi());

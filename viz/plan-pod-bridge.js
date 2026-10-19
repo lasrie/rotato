@@ -8,7 +8,7 @@
  *
  * Lokal (mit Export-Datei) bleibt der bestehende Pfad unverändert.
  */
-import { fetch, rdfEnv, N3Parser } from "./lib/solid-bundle.js";
+import { fetch, rdfEnv, N3Parser, authReady } from "./lib/solid-bundle.js";
 
 const POD_BASE = "https://solid.lasrie.dev/garten/";
 const GARTEN = "https://example.org/garten-planer/ontology#";
@@ -204,6 +204,9 @@ async function buildPlanData(ds) {
 }
 
 async function load() {
+  // Auf den Auth-Init warten: session.fetch braucht die OIDC-Session (restorePreviousSession),
+  // sonst antwortet der private CSS mit 401 und die Daten bleiben leer.
+  await authReady;
   // Wenn der lokale Export existiert (Entwickler-Modus mit server.py), überspringen:
   // das klassische Skript hat schon Daten und rendert mit ihnen.
   if (window.GARTEN91_PLAN && window.GARTEN91_PLAN.beds?.length) {

@@ -90,10 +90,16 @@ export async function validateShacl(turtle) {
 }
 
 /** Wird beim App-Start aufgerufen: bearbeitet OIDC-Redirect nach dem Login. */
-export async function initSolidAuth() {
-  await handleIncomingRedirect({ restorePreviousSession: true });
-  return session;
+let authInitPromise = null;
+export function initSolidAuth() {
+  if (!authInitPromise) {
+    authInitPromise = handleIncomingRedirect({ restorePreviousSession: true }).then(() => session);
+  }
+  return authInitPromise;
 }
+// Einmalig beim Modulstart angestoßen — Bridges und Login-UI warten darauf,
+// damit session.fetch schon mit Credentials arbeitet, bevor Pod-Daten laden.
+export const authReady = initSolidAuth();
 
 export function isLoggedIn() {
   return session.info.isLoggedIn;

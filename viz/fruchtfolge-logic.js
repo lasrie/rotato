@@ -6,7 +6,7 @@
  * dasselbe Ergebnis liefern. Der Python-Export bleibt als Offline-Fallback
  * (ADR-0007).
  */
-import { fetch, rdfEnv, N3Parser } from "./lib/solid-bundle.js";
+import { fetch, rdfEnv, N3Parser, authReady } from "./lib/solid-bundle.js";
 
 const POD_BASE = "https://solid.lasrie.dev/garten/";
 
@@ -67,6 +67,8 @@ let podDataset = null;
 let podDatasetAt = 0;
 
 export async function loadFruchtfolgeDataset({ refresh = false } = {}) {
+  // Auth-Init abwarten (session.fetch braucht die OIDC-Session gegen den privaten CSS)
+  await authReady;
   if (podDataset && !refresh && Date.now() - podDatasetAt < 60000) {
     return podDataset;
   }
