@@ -58,16 +58,7 @@ window.FRUCHTFOLGE = {
       }
      ]
     },
-    {
-     "family": "Lippenblütler",
-     "color": "#90d090",
-     "items": [
-      {
-       "kultur": "Basilikum",
-       "count": 1
-      }
-     ]
-    }
+    null
    ]
   },
   {
@@ -246,16 +237,16 @@ window.FRUCHTFOLGE = {
    "title": "Zwiebel-Kohlrabi-Hochbeet",
    "cells": [
     {
-     "family": "Zwiebelgewächse",
-     "color": "#c8a8e0",
+     "family": "Korbblütler",
+     "color": "#f0e080",
      "items": [
-      {
-       "kultur": "Porree, Schnittlauch, Zwiebeln",
-       "count": 4
-      },
       {
        "kultur": "Kopfsalat",
        "count": 2
+      },
+      {
+       "kultur": "Porree, Schnittlauch, Zwiebeln",
+       "count": 4
       },
       {
        "kultur": "Brokkoli, Radieschen",
@@ -343,14 +334,6 @@ window.FRUCHTFOLGE = {
    "familien": [
     "Lippenblütler",
     "Nachtschattengewächse"
-   ]
-  },
-  {
-   "beet": "Tomatenbeet",
-   "beetSlug": "tomatenbeet",
-   "jahre": "2025→2026",
-   "familien": [
-    "Lippenblütler"
    ]
   },
   {

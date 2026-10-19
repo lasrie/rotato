@@ -2,22 +2,12 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from rdflib import Graph, Namespace, URIRef
+from rdflib import Namespace, URIRef
 from rdflib.namespace import DCTERMS, RDF, RDFS, SKOS
 
+from rdf_source import get_graph
+
 ROOT = Path(__file__).parent
-FILES = [
-    ROOT / "garten-vokabular.ttl",
-    ROOT / "garten-layout-vokabular.ttl",
-    ROOT / "pflanzen.ttl",
-    ROOT / "garten91-linking.ttl",
-    ROOT / "garten-layout-ontology.ttl",
-    ROOT / "garten91-beete-real.ttl",
-    ROOT / "garten91-belegungen-real-2025.ttl",
-    ROOT / "garten91-beetplan-2024.ttl",
-    ROOT / "garten91-planungen-neu.ttl",
-    ROOT / "anbau-journal.ttl",
-]
 OUT = ROOT / "viz" / "fruchtfolge-data.js"
 
 GARTEN = Namespace("https://example.org/garten-planer/ontology#")
@@ -74,9 +64,7 @@ def label_de(g, res, fallback=None):
 
 
 def main():
-    g = Graph()
-    for f in FILES:
-        g.parse(f)
+    g = get_graph()
 
     # Pflanzungen → (jahr, beet, familie, kultur)
     rows = {}

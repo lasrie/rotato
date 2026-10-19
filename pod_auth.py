@@ -142,8 +142,12 @@ class PodAuth:
         return self.request("GET", url, **kw)
 
     def put(self, url: str, data: bytes, *, content_type: str = "text/turtle; charset=utf-8",
-            headers: dict[str, str] | None = None) -> requests.Response:
+            headers: dict[str, str] | None = None, if_match: str | None = None) -> requests.Response:
         h = {"Content-Type": content_type}
+        if if_match:
+            # Optimistische Concurrency: Schreiben nur, wenn der Server-Zustand
+            # dem entspricht, den wir gelesen haben (verhindert verlorene Updates).
+            h["If-Match"] = if_match
         if headers:
             h.update(headers)
         return self.request("PUT", url, data=data, headers=h)

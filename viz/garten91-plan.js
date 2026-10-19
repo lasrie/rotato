@@ -2,16 +2,7 @@ window.GARTEN91_PLAN = {
  "title": "Garten 91 – Pflanzplan",
  "garden": "https://example.org/garten-planer/data/garten91/garten91",
  "sourceFiles": [
-  "garten-vokabular.ttl",
-  "garten-layout-vokabular.ttl",
-  "pflanzen.ttl",
-  "garten91-linking.ttl",
-  "garten-layout-ontology.ttl",
-  "garten91-beete-real.ttl",
-  "garten91-belegungen-real-2025.ttl",
-  "garten91-beetplan-2024.ttl",
-  "garten91-planungen-neu.ttl",
-  "anbau-journal.ttl"
+  "pod"
  ],
  "months": [
   null,
@@ -300,23 +291,6 @@ window.GARTEN91_PLAN = {
      "sectionLabel": "Tomatenreihe – Gesamtlänge",
      "sectionStart": null,
      "sectionEnd": 10.0
-    },
-    {
-     "id": "https://example.org/garten-planer/data/garten91/planungen-neu/#pneu-2026-101",
-     "label": "Basilikum",
-     "plantingLabel": "Basilikum 2026 (neu geplant)",
-     "plant": "https://example.org/garten-planer/pflanzen/#Basilikum",
-     "family": "https://example.org/garten-planer/vokabular#ff_Lippenbluetler",
-     "familyLabel": "Lippenblütler",
-     "familyColor": "#90d090",
-     "mehrjaehrig": false,
-     "jahr": "2026",
-     "fromMonth": 2,
-     "toMonth": 10,
-     "section": null,
-     "sectionLabel": null,
-     "sectionStart": null,
-     "sectionEnd": null
     }
    ]
   },
@@ -1718,23 +1692,6 @@ window.GARTEN91_PLAN = {
      "sectionEnd": 0.96
     },
     {
-     "id": "https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-36",
-     "label": "Zwiebeln",
-     "plantingLabel": "Zwiebel-Kohlrabi-Hochbeet – Zwiebeln (A10–E08, überjährig)",
-     "plant": "https://example.org/garten-planer/pflanzen/#Zwiebeln",
-     "family": "https://example.org/garten-planer/vokabular#ff_Zwiebelgewaechse",
-     "familyLabel": "Zwiebelgewächse",
-     "familyColor": "#c8a8e0",
-     "mehrjaehrig": false,
-     "jahr": "2024",
-     "fromMonth": 10,
-     "toMonth": 8,
-     "section": null,
-     "sectionLabel": null,
-     "sectionStart": null,
-     "sectionEnd": null
-    },
-    {
      "id": "https://example.org/garten-planer/data/garten91/plan-2024/#p061",
      "label": "Zwiebeln",
      "plantingLabel": "Zwiebeln 10-7",
@@ -1750,6 +1707,23 @@ window.GARTEN91_PLAN = {
      "sectionLabel": "zwiebel-kohlrabi-hochbeet – Zwiebeln",
      "sectionStart": 1.28,
      "sectionEnd": 2.98
+    },
+    {
+     "id": "https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-36",
+     "label": "Zwiebeln",
+     "plantingLabel": "Zwiebel-Kohlrabi-Hochbeet – Zwiebeln (A10–E08, überjährig)",
+     "plant": "https://example.org/garten-planer/pflanzen/#Zwiebeln",
+     "family": "https://example.org/garten-planer/vokabular#ff_Zwiebelgewaechse",
+     "familyLabel": "Zwiebelgewächse",
+     "familyColor": "#c8a8e0",
+     "mehrjaehrig": false,
+     "jahr": "2024",
+     "fromMonth": 10,
+     "toMonth": 8,
+     "section": null,
+     "sectionLabel": null,
+     "sectionStart": null,
+     "sectionEnd": null
     },
     {
      "id": "https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-37",

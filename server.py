@@ -21,11 +21,12 @@ import sys
 import tempfile
 import threading
 import time
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 
 from pod_auth import PodAuth
+from rdf_source import get_graph, invalidate_cache
 
 ROOT = Path(__file__).parent
 PORT = 8765
@@ -172,37 +173,44 @@ class GartenHandler(BaseHTTPRequestHandler):
 
             planungen_url = f"{self.auth.pod_base}/planungen/planungen.ttl"
 
-            # Read-modify-write: bestehenden Inhalt holen (oder neue Datei)
-            existing = ""
+            # Read-modify-write mit ETag (optimistische Concurrency):
+            # Wenn zwischen GET und PUT ein anderer Schreiber interveniert,
+            # antwortet der Pod mit 412 und wir verlieren keine Daten.
             get = self.auth.get(planungen_url, headers={"Accept": "text/turtle"})
+            etag = get.headers.get("ETag")
             if get.status_code == 200:
                 existing = get.text.rstrip() + "\n"
-            elif get.status_code != 404:
+            elif get.status_code == 404:
+                existing = ""
+                etag = None
+            else:
                 return False, f'{{"ok": false, "error": "Pod-Lesefehler HTTP {get.status_code}"}}'
 
             # Validierung über das KOMPLETTE Dataset (Cache-Merge + neue Pflanzung),
             # damit Rules über Ressourcen hinweg (aufBeet → Beet) greifen.
             merged = self.cache.get_merged().decode("utf-8") + "\n" + body + "\n"
-            ok, msg = self._validate_and_export(merged)
+            ok, msg = self._validate(merged)
             if not ok:
                 return False, msg
 
             # Schreiben in den Pod — erst nach erfolgreicher Validierung.
             # Rollback ist hier implizit: Bei Validierungsfehler wird nichts geschrieben.
-            put = self.auth.put(planungen_url, (existing + body + "\n").encode("utf-8"))
-            if put.status_code not in (200, 201, 205):
-                return False, f'{{"ok": false, "error": "Pod-Schreibfehler HTTP {put.status_code}: {put.text[:150]}"}}'
-
-            # Cache invalidieren, damit der nächste GET die neue Pflanzung zeigt
-            self.cache.invalidate()
-
-            return True, '{"ok": true, "message": "Pflanzung gespeichert und validiert"}'
+            put = self.auth.put(planungen_url, (existing + body + "\n").encode("utf-8"),
+                                if_match=etag)
+            if put.status_code in (200, 201, 205):
+                self.cache.invalidate()
+                invalidate_cache()  # Export-Skripte sehen den neuen Stand
+                self._regenerate_exports_async()
+                return True, '{"ok": true, "message": "Pflanzung gespeichert und validiert"}'
+            if put.status_code == 412:
+                return False, '{"ok": false, "error": "Konflikt: Planungen wurden zwischenzeitlich von jemand anderem geändert — bitte erneut speichern."}'
+            return False, f'{{"ok": false, "error": "Pod-Schreibfehler HTTP {put.status_code}: {put.text[:150]}"}}'
 
         except Exception as e:  # pragma: no cover
             return False, '{"ok": false, "error": "' + str(e).replace('"', "'") + '"}'
 
-    def _validate_and_export(self, merged_ttl: str) -> tuple[bool, str]:
-        """pyshacl gegen beide Shape-Dateien, dann Exporte regenerieren."""
+    def _validate(self, merged_ttl: str) -> tuple[bool, str]:
+        """pyshacl über beide Shape-Dateien (gemerged)."""
         # ACHTUNG: pyshacl-CLI akzeptiert nur EINE -s-Datei (letzter gewinnt).
         # Deshalb mergen wir die Shape-Dateien in ein temporäres Shapes-Dokument.
         shapes_ttl = "\n".join(
@@ -226,21 +234,31 @@ class GartenHandler(BaseHTTPRequestHandler):
                                if "Focus Node" in l or "Message" in l]
             return False, '{"ok": false, "error": "SHACL-Validierung fehlgeschlagen", "details": ' + \
                    repr(violation_lines[:6]) + '}'
-
-        # Exporte neu erzeugen (leser lokal die Pod-Daten? Für M2 behalten wir die
-        # lokalen Exporte — sie werden aus der lokalen Kopie des Merges erzeugt.)
-        subprocess.run([sys.executable, str(ROOT / "export_garten91_plan.py")],
-                       capture_output=True, timeout=60)
-        subprocess.run([sys.executable, str(ROOT / "export_fruchtfolge.py")],
-                       capture_output=True, timeout=60)
         return True, '{"ok": true}'
+
+    def _regenerate_exports_async(self) -> None:
+        """Exporte in einem Hintergrund-Thread neu erzeugen (schnelle POST-Antwort)."""
+        def worker():
+            try:
+                subprocess.run([sys.executable, str(ROOT / "export_garten91_plan.py")],
+                               capture_output=True, timeout=120, check=True)
+                subprocess.run([sys.executable, str(ROOT / "export_fruchtfolge.py")],
+                               capture_output=True, timeout=120, check=True)
+                print("Exporte regeneriert.")
+            except subprocess.CalledProcessError as e:
+                print(f"Export-Fehler: {e.stderr.decode(errors='replace')[:500]}")
+            except Exception as e:
+                print(f"Export-Fehler: {e}")
+        threading.Thread(target=worker, daemon=True).start()
 
 
 def main():
     auth = PodAuth()
     GartenHandler.auth = auth
     GartenHandler.cache = PodMergeCache(auth)
-    server = HTTPServer(("127.0.0.1", PORT), GartenHandler)
+    # ThreadingHTTPServer: Requests laufen parallel (pyshacl blockiert sonst den ganzen Server)
+    server = ThreadingHTTPServer(("127.0.0.1", PORT), GartenHandler)
+    server.daemon_threads = True
     print(f"Garten-Planer läuft auf http://localhost:{PORT}/")
     print(f"Pod:        {auth.pod_base}")
     print(f"RDF-Daten:  http://localhost:{PORT}/rdf/data.ttl (aus dem Pod, Cache {CACHE_TTL}s)")
