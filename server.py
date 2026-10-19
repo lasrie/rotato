@@ -131,6 +131,10 @@ class GartenHandler(BaseHTTPRequestHandler):
             return self._serve_file("viz/fruchtfolge.html", MIME[".html"])
         if path.startswith("/viz/"):
             return self._serve_rel(path[1:])
+        # Pages-Kompatibilitaet: HTML-Dateien referenzieren Assets ohne viz/-Praefix
+        # (Site-Root ist unter Pages gleich viz/). Lokal auch bedienen:
+        if not path.startswith("/api/") and not path.startswith("/rdf/"):
+            return self._serve_rel("viz" + path)
         if path == "/rdf/data.ttl":
             return self._serve_merged()
         return self._not_found()

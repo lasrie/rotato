@@ -292,7 +292,7 @@
       </aside>
     </div>
 
-    <script src="viz/garten91-plan.js"></script>
+    <script src="garten91-plan.js"></script>
     <script type="module" src="viz/solid-auth-bridge.js"></script>
     <script type="module" src="viz/plan-pod-bridge.js"></script>
     <script>
@@ -590,7 +590,7 @@
               msg.textContent = '✓ Gespeichert und validiert (' + via + '). Daten neu geladen…';
               // Nach kurzer Pause die Daten neu laden (Server hat export ausgeführt)
               setTimeout(async () => {
-                const r = await fetch('viz/garten91-plan.js', { cache: 'no-store' });
+                const r = await fetch('garten91-plan.js', { cache: 'no-store' });
                 const text = await r.text();
                 window.GARTEN91_PLAN = null;
                 eval(text);
@@ -603,7 +603,7 @@
               msg.textContent = '✓ Gespeichert und validiert. Daten neu geladen…';
               // Nach kurzer Pause die Daten neu laden (Server hat export ausgeführt)
               setTimeout(async () => {
-                const r = await fetch('viz/garten91-plan.js', { cache: 'no-store' });
+                const r = await fetch('garten91-plan.js', { cache: 'no-store' });
                 const text = await r.text();
                 window.GARTEN91_PLAN = null;
                 eval(text);
