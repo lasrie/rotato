@@ -4,9 +4,17 @@
  * inline-Renderer. Fällt auf den Gateway-Export zurück, wenn der Pod nicht
  * erreichbar ist (z. B. offline).
  */
+import { authReady, session } from "./solid-auth.js";
 import { getFruchtfolge } from "./fruchtfolge-logic.js";
 
 async function load() {
+  // Session-Init abwarten (session.fetch braucht die OIDC-Session)
+  await authReady;
+  if (session.info.isLoggedIn) {
+    console.info('Solid-Session aktiv:', session.info.webId);
+  } else {
+    console.warn('Keine Solid-Session — Pod-Daten werden 401 liefern. Bitte oben anmelden.');
+  }
   // Lokaler Export vorhanden (Entwickler-Modus)? Dann überspringen — der
   // klassische Renderer nutzt die Export-Daten.
   if (window.FRUCHTFOLGE && window.FRUCHTFOLGE.matrix?.length) {
