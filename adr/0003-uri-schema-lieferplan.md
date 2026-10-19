@@ -75,3 +75,20 @@ statt aus dem Dateisystem.
 
 - [ADR-0004](0004-shacl-validierung-ort.md): Wo wird geprüft
 - [ADR-0005](0005-authentifizierung.md): Rechte (WAC) je Container
+
+## Erweiterungsoption: Echte Namespace-Basis (offen, bewusst zurückgestellt)
+
+Die Objekt-URIs nutzen `example.org` — laut RFC 2606 reserviert für Beispiele,
+nicht auflösbar. Für ein rein privates Dataset ist das vertretbar; sobald die
+Ontologie/Vokabulare geteilt werden sollen (größeres Ziel des Projekts), braucht
+es eine echte Basis. Kandidaten:
+
+| Option | URI-Form | Bewertung |
+|---|---|---|
+| Pod-URI | `https://lasse.solidcommunity.net/garten/ontology#…` | auflösbar, aber Provider-Lock-in |
+| GitHub Pages | `https://lasrie.github.io/garten-planer/ontology#…` | kostenlos, provider-unabhängig, statisch servierbar |
+| Eigene Domain | (wenn vorhanden) | die sauberste Lösung, 303-Redirects möglich |
+
+Migration-Aufwand sobald entschieden: Rewrite-Skript über alle .ttl/Generatoren/
+Shapes (~1–2 h inkl. Re-Sync und Validierung). **Status: bewusst offen** (Entscheid
+19.10.2026: erstmal bei example.org bleiben).

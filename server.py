@@ -16,6 +16,7 @@ der Wahrheit für Pflanzungen.
 """
 from __future__ import annotations
 
+import json as _json
 import subprocess
 import sys
 import tempfile
@@ -29,7 +30,8 @@ from pod_auth import PodAuth
 from rdf_source import get_graph, invalidate_cache
 
 ROOT = Path(__file__).parent
-PORT = 8765
+import os
+PORT = int(os.environ.get("GARTEN_PORT", "8765"))
 
 # Reihenfolge wie im pyshacl-Aufruf — Pod-Ressourcen (ADR-0003)
 POD_FILES = [
@@ -207,7 +209,7 @@ class GartenHandler(BaseHTTPRequestHandler):
             return False, f'{{"ok": false, "error": "Pod-Schreibfehler HTTP {put.status_code}: {put.text[:150]}"}}'
 
         except Exception as e:  # pragma: no cover
-            return False, '{"ok": false, "error": "' + str(e).replace('"', "'") + '"}'
+            return False, _json.dumps({"ok": False, "error": str(e)})
 
     def _validate(self, merged_ttl: str) -> tuple[bool, str]:
         """pyshacl über beide Shape-Dateien (gemerged)."""
@@ -233,7 +235,7 @@ class GartenHandler(BaseHTTPRequestHandler):
             violation_lines = [l for l in result.stdout.splitlines()
                                if "Focus Node" in l or "Message" in l]
             return False, '{"ok": false, "error": "SHACL-Validierung fehlgeschlagen", "details": ' + \
-                   repr(violation_lines[:6]) + '}'
+                   _json.dumps(violation_lines[:6]) + '}'
         return True, '{"ok": true}'
 
     def _regenerate_exports_async(self) -> None:
