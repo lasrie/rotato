@@ -196,9 +196,13 @@
         `).join('');
       }
 
-      renderConflicts();
-      renderMatrix();
-      renderLegend();
+      // Direktes Rendern nur mit vorhandenem lokalen Export (Entwickler-Modus);
+      // unter Pages wartet der Renderer auf 'fruchtfolge-ready' der Pod-Bridge.
+      if (data && data.matrix) {
+        renderConflicts();
+        renderMatrix();
+        renderLegend();
+      }
     </script>
   </body>
 </html>
