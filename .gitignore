@@ -12,4 +12,26 @@ __pycache__/
 
 # Arbeitsverzeichnisse
 tmp/
-node_modules/
+
+# ---------------------------------------------------------------------------
+# Persönliche Daten (seit M1 im Pod, nicht im Repo — ADR-0006)
+# Die Pod ist die Quelle der Wahrheit; diese Dateien sind lokale Kopien/Importe
+# und enthalten private Anbau-Daten. Sie bleiben nur lokal.
+# ---------------------------------------------------------------------------
+anbau-journal.ttl
+beetplan-2025-extrahiert.ttl
+garten91-beete-real.ttl
+garten91-beetplan-2024.ttl
+garten91-belegungen-real-2025.ttl
+garten91-linking.ttl
+garten91-planungen-neu.ttl
+garten91-linkes-hohes-beet-2025.ttl
+
+# Excel/PPT-Quellen (persönlich)
+input/
+
+# Generierte Viewer-Daten (enthalten die persönlichen Pflanz-Daten)
+viz/garten91-data.js
+viz/garten91-plan.js
+viz/fruchtfolge-data.js
+viz/linkes-hohes-beet-data.js

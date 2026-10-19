@@ -36,6 +36,41 @@ formal validieren. Grundlage für spätere Fruchtfolge-Planung, Apps oder Abfrag
 | `viz/fruchtfolge.html` | Fruchtfolge-Viewer: Matrix + Rotation-Konflikte |
 | `viz/index.html` | SVG-Viewer für den Gartenplan 2025 von Garten 91 |
 
+## Datenschutz & Repo-Struktur
+
+Das Repo enthält **keine persönlichen Anbau-Daten** mehr:
+
+- Die Garden-Daten (Pflanzplan, Journal, Beete) liegen **im Solid-Pod**
+  (`https://lasse.solidcommunity.net/garten/`, privat, WAC-geschützt).
+- Die lokalen `.ttl`-Dateien sind lokale Kopien/Importe (`.gitignore`) —
+  nötig für die Generatoren (Excel → RDF).
+- **Öffentlich im Repo:** Ontologie, SHACL-Shapes, Vokabular, Beispiel-Daten,
+  Generatoren, Export-Logik, Viewer. Das ist der wiederverwendbare Teil —
+  das Projekt ist als Vorlage für andere gedacht.
+- Die generierten Viewer-Dateien (`viz/garten91-plan.js`, `viz/fruchtfolge-data.js`)
+  enthalten die persönlichen Daten und sind **nicht** im Repo. Unter GitHub Pages
+  laden die Viewer die Daten **live aus dem Pod**; die Export-Dateien sind nur
+  für den lokalen Entwickler-Modus (mit `server.py`).
+
+## GitHub Pages (Hosting)
+
+Die App ist über GitHub Pages erreichbar:
+
+```
+https://lasrie.github.io/Rotato/plan.html
+https://lasrie.github.io/Rotato/fruchtfolge.html
+```
+
+- **Daten:** Live aus dem Solid-Pod (Frontend-Direct, M3/M4) — der Pod hält die
+  Daten, die App ist statisch.
+- **Speichern:** Mit Solid-Login (Frontend-Direct); ohne Login unter Pages ist
+  nur Lesen möglich (kein Gateway-Fallback unter Pages).
+- **OIDC:** Redirect-URI ist die Pages-URL — dynamic registration funktioniert
+  out-of-the-box mit solidcommunity.net.
+
+Deployment: Der Pages-Workflow (`.github/workflows/pages.yml`) deployt das
+`viz/`-Verzeichnis bei jedem Push auf `main`.
+
 ## Solid-Pod (M1 abgeschlossen)
 
 Die Daten werden in einen Solid-Pod gespiegelt (ADRs in `adr/`):

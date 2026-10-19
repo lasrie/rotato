@@ -7,6 +7,12 @@
 import { getFruchtfolge } from "./fruchtfolge-logic.js";
 
 async function load() {
+  // Lokaler Export vorhanden (Entwickler-Modus)? Dann überspringen — der
+  // klassische Renderer nutzt die Export-Daten.
+  if (window.FRUCHTFOLGE && window.FRUCHTFOLGE.matrix?.length) {
+    window.__fruchtfolgeSource = "export";
+    return;
+  }
   try {
     const data = await getFruchtfolge({ refresh: true });
     window.FRUCHTFOLGE = data;

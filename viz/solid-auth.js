@@ -14,7 +14,10 @@ import {
 
 const POD_BASE = "https://lasse.solidcommunity.net/garten/";
 const OIDC_ISSUER = "https://solidcommunity.net";
-const GATEWAY = window.location.origin; // server.py im lokalen Modus
+// Gateway-Fallback nur im lokalen Modus (server.py auf Port 8765); unter GitHub Pages
+// gibt es kein Gateway — dort läuft nur der Pod-Pfad (Frontend-Direct).
+const IS_LOCAL = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const GATEWAY = IS_LOCAL ? window.location.origin : null;
 
 export const session = getDefaultSession();
 
@@ -152,7 +155,11 @@ export async function savePflanzung(turtle) {
     return { ok: true, via: "pod" };
   }
 
-  // Fallback: Gateway (Stufe 1) — validiert serverseitig mit pyshacl
+  // Fallback: Gateway (Stufe 1) — validiert serverseitig mit pyshacl.
+  // Unter GitHub Pages gibt es kein Gateway: ohne Login kann man nur lesen, nicht schreiben.
+  if (!GATEWAY) {
+    return { ok: false, error: "Speichern erfordert Solid-Login (kein Gateway unter Pages)" };
+  }
   const res = await fetch(GATEWAY + "/api/pflanzung", {
     method: "POST",
     headers: { "Content-Type": "text/turtle" },

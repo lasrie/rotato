@@ -292,15 +292,36 @@
       </aside>
     </div>
 
-    <script src="/viz/garten91-plan.js"></script>
-    <script type="module" src="/viz/solid-auth-bridge.js"></script>
+    <script src="viz/garten91-plan.js"></script>
+    <script type="module" src="viz/solid-auth-bridge.js"></script>
+    <script type="module" src="viz/plan-pod-bridge.js"></script>
     <script>
       const data = window.GARTEN91_PLAN;
       if (!data || !data.beds) {
-        document.body.innerHTML = '<div style="padding:40px;font-family:sans-serif;color:#b3423a">' +
-          '<h2>Daten nicht geladen</h2><p>Die Datei <code>garten91-plan.js</code> konnte nicht ' +
-          'geladen werden. Bitte <code>python3 export_garten91_plan.py</code> ausführen und die Seite neu laden.</p></div>';
-        throw new Error('GARTEN91_PLAN nicht geladen');
+        // Unter GitHub Pages (kein lokaler Export) lädt der Pod-Bridge die Daten
+        // live aus dem Pod; die Fehlermeldung wird erst nach seinem Versuch gezeigt.
+        window.addEventListener('plan-data-ready', () => {
+          if (!window.GARTEN91_PLAN) {
+            document.body.innerHTML = '<div style="padding:40px;font-family:sans-serif;color:#b3423a">' +
+              '<h2>Daten nicht geladen</h2><p>Pod nicht erreichbar und kein lokaler Export vorhanden.' +
+              ' Bitte mit Solid anmelden oder <code>python3 export_garten91_plan.py</code> lokal ausführen.</p></div>';
+            throw new Error('GARTEN91_PLAN nicht geladen');
+          }
+          // Daten in sessionStorage legen und Seite neu laden — das klassische
+          // Skript liest beim Reload zuerst aus sessionStorage (siehe unten).
+          sessionStorage.setItem('garten91-plan-pod', JSON.stringify(window.GARTEN91_PLAN));
+          window.location.reload();
+        });
+        // Dritten Versuch: sessionStorage aus dem letzten Pod-Laden
+        const cached = sessionStorage.getItem('garten91-plan-pod');
+        if (cached) {
+          try {
+            window.GARTEN91_PLAN = JSON.parse(cached);
+            console.info('Pflanzplan aus sessionStorage (Pod-Daten vom letzten Laden).');
+          } catch { sessionStorage.removeItem('garten91-plan-pod'); }
+        } else {
+          throw new Error("Warten auf Pod-Daten…"); // Skript stoppt, Listener bleibt aktiv
+        }
       }
       const svg = document.getElementById('planSvg');
       const monthSlider = document.getElementById('monthSlider');
@@ -569,7 +590,7 @@
               msg.textContent = '✓ Gespeichert und validiert (' + via + '). Daten neu geladen…';
               // Nach kurzer Pause die Daten neu laden (Server hat export ausgeführt)
               setTimeout(async () => {
-                const r = await fetch('/viz/garten91-plan.js', { cache: 'no-store' });
+                const r = await fetch('viz/garten91-plan.js', { cache: 'no-store' });
                 const text = await r.text();
                 window.GARTEN91_PLAN = null;
                 eval(text);
@@ -582,7 +603,7 @@
               msg.textContent = '✓ Gespeichert und validiert. Daten neu geladen…';
               // Nach kurzer Pause die Daten neu laden (Server hat export ausgeführt)
               setTimeout(async () => {
-                const r = await fetch('/viz/garten91-plan.js', { cache: 'no-store' });
+                const r = await fetch('viz/garten91-plan.js', { cache: 'no-store' });
                 const text = await r.text();
                 window.GARTEN91_PLAN = null;
                 eval(text);
