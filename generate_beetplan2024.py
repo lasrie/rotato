@@ -235,17 +235,16 @@ def main():
             lines.append(f'    garten:monatErnte "{to_ym}"^^xsd:gYearMonth ;')
         if plant_slug in MEHRJAEHRIG:
             lines.append("    garten:mehrjaehrig true ;")
-        if beet_slug and plant_slug:
-            lines.append("    time:hasTemporalExtent [ a time:TemporalEntity ;")
-            lines.append("        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;")
-            if from_ym:
-                beg = '[ time:inXSDgYearMonth "%s"^^xsd:gYearMonth ]' % from_ym
-            else:
-                beg = '[ time:inXSDgYear "%d"^^xsd:gYear ]' % year
-            lines.append("        time:hasBeginning " + beg + " ] ;")
-        # Fall: kein Beet → time-Block endet mit einer Klammer weniger
-        if not (beet_slug and plant_slug):
-            pass
+        # time:hasTemporalExtent immer setzen — das Jahr (2024) ist für jede
+        # Pflanzung bekannt, auch wenn Beet- oder Pflanzen-Zuordnung offen bleibt.
+        # (SHACL: minCount 1 auf time:hasTemporalExtent für alle Pflanzungen.)
+        lines.append("    time:hasTemporalExtent [ a time:TemporalEntity ;")
+        lines.append("        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;")
+        if from_ym:
+            beg = '[ time:inXSDgYearMonth "%s"^^xsd:gYearMonth ]' % from_ym
+        else:
+            beg = '[ time:inXSDgYear "%d"^^xsd:gYear ]' % year
+        lines.append("        time:hasBeginning " + beg + " ] ;")
         if not plant_slug:
             lines.append(f'    plan:displayName "{escape(name)}"@de ;')
         if zone == "top-center-small":

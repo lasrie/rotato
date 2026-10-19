@@ -194,6 +194,26 @@ python3 -m pyshacl -s garten-shapes.ttl /tmp/data.ttl
 
 Danach wieder validieren (Befehl oben). Der Validator sagt dir genau, was fehlt.
 
+## M2: Gateway als Pod-Adapter
+
+`server.py` liest und schreibt jetzt **direkt im Pod** (ADR-0002, Stufe 1):
+
+- `GET /rdf/data.ttl` – Merge aller Pod-Ressourcen (In-Memory-Cache 60 s)
+- `POST /api/pflanzung` – validiert mit pyshacl über das **komplette** Dataset
+  (Cache-Merge + neue Pflanzung), schreibt erst bei Erfolg per PUT in den Pod
+  (read-modify-write auf `planungen/planungen.ttl`); bei Fehler wird nichts
+  geschrieben (impliziter Rollback)
+- Die Pod-Auth (client_credentials + DPoP) liefert `pod_auth.py`
+
+```bash
+python3 server.py   # http://localhost:8765/ – Daten kommen aus dem Pod
+```
+
+**Wichtig (Bug-Fix M2):** pyshacl-CLI akzeptiert nur EINE `-s`-Shape-Datei
+(letzter gewinnt). Frühere Validierungen prüften effektiv nur
+`garten-layout.shacl.ttl`. `server.py` merged jetzt beide Shape-Dateien in
+ein temporäres Shapes-Dokument.
+
 ## Phase B: Planungs-Eingabe
 
 Der Haupt-Viewer unterstützt jetzt das Anlegen neuer Pflanzungen:

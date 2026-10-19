@@ -1,44 +1,52 @@
 """Lokaler Server für den Garten-Planer.
 
-Phase B: liefert die RDF-Daten und die Visualisierung aus und erlaubt das
-Speichern neuer Pflanzungen (Turtle) direkt in die RDF-Dateien.
+Phase B + M2 (Solid-Migration): liefert die RDF-Daten und die Visualisierung aus
+und erlaubt das Speichern neuer Pflanzungen (Turtle) — **jetzt direkt in den
+Solid-Pod** (lasse.solidcommunity.net) statt in lokale Dateien.
 
-Solid/LDP-kompatibel entworfen: GET liefert Turtle, PUT/POST nimmt Turtle
-an. Die URIs bleiben stabil, damit ein späterer Wechsel auf einen echten
-Solid-Pod (lasse.solidcommunity.net) ohne Frontend-Änderung möglich ist.
+Flow (ADR-0002 Stufe 1: Gateway-first):
+  GET  /rdf/data.ttl          → Merge aller Pod-Ressourcen (mit In-Memory-Cache)
+  POST /api/pflanzung         → Turtle anhängen (read-modify-write auf Pod),
+                                SHACL-validieren (pyshacl), bei Erfolg Exporte
+                                regenerieren, bei Fehler Rollback
+  GET  /plan.html, /viz/*     → statische Dateien (unverändert)
 
-Start: python3 server.py  →  http://localhost:8765/
+Die Objekt-URIs bleiben unverändert (ADR-0003); der Pod ist ab M2 die Quelle
+der Wahrheit für Pflanzungen.
 """
 from __future__ import annotations
 
 import subprocess
 import sys
 import tempfile
+import threading
+import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 
+from pod_auth import PodAuth
+
 ROOT = Path(__file__).parent
 PORT = 8765
 
-# Reihenfolge wie im pyshacl-Aufruf – Zusammenführung für Export & Validierung
-RDF_FILES = [
-    "garten-vokabular.ttl",
-    "garten-layout-vokabular.ttl",
+# Reihenfolge wie im pyshacl-Aufruf — Pod-Ressourcen (ADR-0003)
+POD_FILES = [
+    "vokabular.ttl",
+    "ontologie.ttl",
+    "shapes.ttl",
+    "layout-shapes.ttl",
     "pflanzen.ttl",
+    "beete.ttl",
     "beetplan-2025-extrahiert.ttl",
-    "garten91-linking.ttl",
-    "garten-layout-ontology.ttl",
-    "garten91-beete-real.ttl",
-    "garten91-belegungen-real-2025.ttl",
-    "garten91-beetplan-2024.ttl",
-    "garten91-planungen-neu.ttl",
-    "anbau-journal.ttl",
+    "beetplan-2024.ttl",
+    "belegungen-2025.ttl",
+    "planungen/planungen.ttl",
+    "journal/anbau-journal.ttl",
+    "linking.ttl",
 ]
 
-# Zieldatei für neue Pflanzungen (Phase B Entwurfs-Layer)
-PLANUNGSPUFFER = ROOT / "garten91-planungen-neu.ttl"
-
+# Statische Dateien, die weiterhin lokal liegen (Viewer)
 MIME = {
     ".html": "text/html; charset=utf-8",
     ".js": "text/javascript; charset=utf-8",
@@ -47,8 +55,46 @@ MIME = {
     ".css": "text/css; charset=utf-8",
 }
 
+CACHE_TTL = 60  # Sekunden
+
+
+class PodMergeCache:
+    """Merged die Pod-Ressourcen mit einfachem In-Memory-Cache."""
+
+    def __init__(self, auth: PodAuth, ttl: int = CACHE_TTL):
+        self.auth = auth
+        self.ttl = ttl
+        self._lock = threading.Lock()
+        self._merged: bytes | None = None
+        self._merged_at: float = 0.0
+
+    def get_merged(self) -> bytes:
+        with self._lock:
+            if self._merged is not None and time.time() < self._merged_at + self.ttl:
+                return self._merged
+            parts = []
+            for name in POD_FILES:
+                url = f"{self.auth.pod_base}/{name}"
+                resp = self.auth.get(url, headers={"Accept": "text/turtle"})
+                if resp.status_code == 200:
+                    parts.append(f"# ---- {name} ----\n".encode() + resp.content)
+                elif resp.status_code == 404:
+                    continue  # Ressource existiert noch nicht (z. B. planungen.ttl leer)
+                else:
+                    raise RuntimeError(f"Pod GET {url} → HTTP {resp.status_code}")
+            self._merged = b"\n".join(parts)
+            self._merged_at = time.time()
+            return self._merged
+
+    def invalidate(self) -> None:
+        with self._lock:
+            self._merged = None
+
 
 class GartenHandler(BaseHTTPRequestHandler):
+    auth: PodAuth = None  # wird in main() gesetzt
+    cache: PodMergeCache = None
+
     def log_message(self, fmt, *args):  # ruhiger Server
         pass
 
@@ -56,15 +102,13 @@ class GartenHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = urlparse(self.path).path
         if path in ("/", "/plan.html", "/index.html"):
-            return self._serve_file("viz/plan.html", "text/html; charset=utf-8")
+            return self._serve_file("viz/plan.html", MIME[".html"])
         if path == "/fruchtfolge.html":
-            return self._serve_file("viz/fruchtfolge.html", "text/html; charset=utf-8")
+            return self._serve_file("viz/fruchtfolge.html", MIME[".html"])
         if path.startswith("/viz/"):
             return self._serve_rel(path[1:])
         if path == "/rdf/data.ttl":
             return self._serve_merged()
-        if path == "/rdf/planungen-neu.ttl":
-            return self._serve_file(str(PLANUNGSPUFFER.relative_to(ROOT)), MIME[".ttl"])
         return self._not_found()
 
     # ---------- POST: Neue Pflanzung speichern ----------
@@ -98,13 +142,15 @@ class GartenHandler(BaseHTTPRequestHandler):
         return self._serve_file(rel, MIME.get(suffix, "application/octet-stream"))
 
     def _serve_merged(self):
-        """Alle RDF-Dateien zusammen als ein Turtle-Dokument (LDP-artig)."""
-        parts = []
-        for name in RDF_FILES:
-            f = ROOT / name
-            if f.exists():
-                parts.append(f"# ---- {name} ----\n" + f.read_text())
-        merged = "\n".join(parts).encode("utf-8")
+        """Merge aller Pod-Ressourcen als ein Turtle-Dokument (LDP-artig)."""
+        try:
+            merged = self.cache.get_merged()
+        except Exception as e:
+            self.send_response(502)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(f"Pod-Fehler: {e}".encode("utf-8"))
+            return
         self.send_response(200)
         self.send_header("Content-Type", MIME[".ttl"])
         self.send_header("Content-Length", str(len(merged)))
@@ -117,71 +163,87 @@ class GartenHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"404 not found")
 
-    def _save_pflanzung(self, body: str):
-        """Neue Pflanzung (Turtle) in den Planungspuffer schreiben + validieren."""
+    # ---------- Pflanzung speichern (read-modify-write auf den Pod) ----------
+    def _save_pflanzung(self, body: str) -> tuple[bool, str]:
         try:
-            if not body.strip():
+            body = body.strip()
+            if not body:
                 return False, '{"ok": false, "error": "Leere Anfrage"}'
 
-            # An den bestehenden Puffer anhängen (oder neu anlegen)
-            if PLANUNGSPUFFER.exists():
-                with PLANUNGSPUFFER.open("a", encoding="utf-8") as f:
-                    f.write("\n" + body.strip() + "\n")
-            else:
-                PLANUNGSPUFFER.write_text(body.strip() + "\n")
+            planungen_url = f"{self.auth.pod_base}/planungen/planungen.ttl"
 
-            # Validieren: neue Datei mit allen Daten gegen die Shapes
-            merged = [ROOT / f for f in RDF_FILES]
-            merged.append(PLANUNGSPUFFER)
-            with tempfile.NamedTemporaryFile("w", suffix=".ttl", delete=False) as tf:
-                for f in merged:
-                    tf.write(f.read_text())
-                    tf.write("\n")
-                tmp_name = tf.name
+            # Read-modify-write: bestehenden Inhalt holen (oder neue Datei)
+            existing = ""
+            get = self.auth.get(planungen_url, headers={"Accept": "text/turtle"})
+            if get.status_code == 200:
+                existing = get.text.rstrip() + "\n"
+            elif get.status_code != 404:
+                return False, f'{{"ok": false, "error": "Pod-Lesefehler HTTP {get.status_code}"}}'
 
-            result = subprocess.run(
-                [sys.executable, "-m", "pyshacl",
-                 "-s", str(ROOT / "garten-shapes.ttl"),
-                 "-s", str(ROOT / "garten-layout.shacl.ttl"),
-                 tmp_name],
-                capture_output=True, text=True, timeout=120,
-            )
-            conforms = "Conforms: True" in result.stdout
+            # Validierung über das KOMPLETTE Dataset (Cache-Merge + neue Pflanzung),
+            # damit Rules über Ressourcen hinweg (aufBeet → Beet) greifen.
+            merged = self.cache.get_merged().decode("utf-8") + "\n" + body + "\n"
+            ok, msg = self._validate_and_export(merged)
+            if not ok:
+                return False, msg
 
-            if conforms:
-                # Exporte neu erzeugen, damit beide Viewer die neue Pflanzung zeigen
-                subprocess.run([sys.executable, str(ROOT / "export_garten91_plan.py")],
-                               capture_output=True, timeout=60)
-                subprocess.run([sys.executable, str(ROOT / "export_fruchtfolge.py")],
-                               capture_output=True, timeout=60)
-                return True, '{"ok": true, "message": "Pflanzung gespeichert und validiert"}'
-            else:
-                # Nicht valide → wieder zurückrollen
-                self._rollback(body)
-                violation_lines = [l for l in result.stdout.splitlines()
-                                   if "Focus Node" in l or "Message" in l]
-                return False, '{"ok": false, "error": "SHACL-Validierung fehlgeschlagen", "details": ' + \
-                       repr(violation_lines[:6]) + '}'
+            # Schreiben in den Pod — erst nach erfolgreicher Validierung.
+            # Rollback ist hier implizit: Bei Validierungsfehler wird nichts geschrieben.
+            put = self.auth.put(planungen_url, (existing + body + "\n").encode("utf-8"))
+            if put.status_code not in (200, 201, 205):
+                return False, f'{{"ok": false, "error": "Pod-Schreibfehler HTTP {put.status_code}: {put.text[:150]}"}}'
+
+            # Cache invalidieren, damit der nächste GET die neue Pflanzung zeigt
+            self.cache.invalidate()
+
+            return True, '{"ok": true, "message": "Pflanzung gespeichert und validiert"}'
 
         except Exception as e:  # pragma: no cover
             return False, '{"ok": false, "error": "' + str(e).replace('"', "'") + '"}'
 
-    def _rollback(self, body: str):
-        """Den letzten Block aus dem Puffer entfernen."""
-        if not PLANUNGSPUFFER.exists():
-            return
-        content = PLANUNGSPUFFER.read_text()
-        idx = content.rfind(body.strip())
-        if idx >= 0:
-            content = content[:idx] + content[idx + len(body.strip()):]
-            PLANUNGSPUFFER.write_text(content)
+    def _validate_and_export(self, merged_ttl: str) -> tuple[bool, str]:
+        """pyshacl gegen beide Shape-Dateien, dann Exporte regenerieren."""
+        # ACHTUNG: pyshacl-CLI akzeptiert nur EINE -s-Datei (letzter gewinnt).
+        # Deshalb mergen wir die Shape-Dateien in ein temporäres Shapes-Dokument.
+        shapes_ttl = "\n".join(
+            (ROOT / f).read_text(encoding="utf-8")
+            for f in ("garten-shapes.ttl", "garten-layout.shacl.ttl")
+        )
+        with tempfile.NamedTemporaryFile("w", suffix=".ttl", delete=False) as sf:
+            sf.write(shapes_ttl)
+            shapes_tmp = sf.name
+        with tempfile.NamedTemporaryFile("w", suffix=".ttl", delete=False) as tf:
+            tf.write(merged_ttl)
+            tmp_name = tf.name
+
+        result = subprocess.run(
+            [sys.executable, "-m", "pyshacl", "-s", shapes_tmp, tmp_name],
+            capture_output=True, text=True, timeout=120,
+        )
+        conforms = "Conforms: True" in result.stdout
+        if not conforms:
+            violation_lines = [l for l in result.stdout.splitlines()
+                               if "Focus Node" in l or "Message" in l]
+            return False, '{"ok": false, "error": "SHACL-Validierung fehlgeschlagen", "details": ' + \
+                   repr(violation_lines[:6]) + '}'
+
+        # Exporte neu erzeugen (leser lokal die Pod-Daten? Für M2 behalten wir die
+        # lokalen Exporte — sie werden aus der lokalen Kopie des Merges erzeugt.)
+        subprocess.run([sys.executable, str(ROOT / "export_garten91_plan.py")],
+                       capture_output=True, timeout=60)
+        subprocess.run([sys.executable, str(ROOT / "export_fruchtfolge.py")],
+                       capture_output=True, timeout=60)
+        return True, '{"ok": true}'
 
 
 def main():
+    auth = PodAuth()
+    GartenHandler.auth = auth
+    GartenHandler.cache = PodMergeCache(auth)
     server = HTTPServer(("127.0.0.1", PORT), GartenHandler)
     print(f"Garten-Planer läuft auf http://localhost:{PORT}/")
-    print(f"RDF-Daten:      http://localhost:{PORT}/rdf/data.ttl")
-    print(f"Planungspuffer: {PLANUNGSPUFFER}")
+    print(f"Pod:        {auth.pod_base}")
+    print(f"RDF-Daten:  http://localhost:{PORT}/rdf/data.ttl (aus dem Pod, Cache {CACHE_TTL}s)")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

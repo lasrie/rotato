@@ -496,6 +496,9 @@
     garten:inAbschnitt <#p051-abschnitt> ;
     garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
     garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] ;
     plan:displayName "Blumen-kohl"@de .
 <#p052> a garten:Pflanzung ;
     rdfs:label "Blumen-kohl 8-12"@de ;
@@ -503,6 +506,9 @@
     garten:inAbschnitt <#p052-abschnitt> ;
     garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
     garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] ;
     plan:displayName "Blumen-kohl"@de .
 <#p053> a garten:Pflanzung ;
     rdfs:label "Blumen-kohl 8-12"@de ;
@@ -510,6 +516,9 @@
     garten:inAbschnitt <#p053-abschnitt> ;
     garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
     garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] ;
     plan:displayName "Blumen-kohl"@de .
 <#p054> a garten:Pflanzung ;
     rdfs:label "Blumen-kohl 8-12"@de ;
@@ -517,6 +526,9 @@
     garten:inAbschnitt <#p054-abschnitt> ;
     garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
     garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] ;
     plan:displayName "Blumen-kohl"@de .
 <#p055> a garten:Pflanzung ;
     rdfs:label "Brokkoli 8-12"@de ;
@@ -593,12 +605,18 @@
     garten:pflanzt <https://example.org/garten-planer/pflanzen/#Dill> ;
     garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
     garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] ;
     rdfs:comment "PPT-Zone top-center-small 2024 (Gurke/Dill): reale Beet-Zuordnung offen."@de .
 <#p063> a garten:Pflanzung ;
     rdfs:label "Gurke 5-9"@de ;
     garten:pflanzt <https://example.org/garten-planer/pflanzen/#Gurke> ;
     garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
     garten:monatErnte "2024-09"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] ;
     rdfs:comment "PPT-Zone top-center-small 2024 (Gurke/Dill): reale Beet-Zuordnung offen."@de .
 
 # ---------------- Abschnitte (Position entlang Beet-Längsachse) ----------------

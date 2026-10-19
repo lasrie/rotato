@@ -31,6 +31,7 @@ const MERGE_FILES = {
   "vokabular.ttl": ["garten-vokabular.ttl", "garten-layout-vokabular.ttl"],
 };
 const SINGLE_FILES = {
+  "beetplan-2025-extrahiert.ttl": "beetplan-2025-extrahiert.ttl",
   "garten-layout-ontology.ttl": "ontologie.ttl",
   "garten-shapes.ttl": "shapes.ttl",
   "garten-layout.shacl.ttl": "layout-shapes.ttl",
