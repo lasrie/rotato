@@ -95,7 +95,7 @@
   <body>
     <div class="wrap">
       <h1>Fruchtfolge-Matrix</h1>
-      <div class="subtitle">Beet × Jahr – Fruchtfamilien und Konflikte bei Rotation.</div>
+      <div class="subtitle">Beet × Jahr – Fruchtfamilien und Konflikte bei Rotation. <span id="sourceNote" style="font-size:12px"></span></div>
 
       <div class="nav">
         <a href="/plan.html">Pflanzplan</a>
@@ -115,13 +115,31 @@
     </div>
 
     <script src="/viz/fruchtfolge-data.js"></script>
+    <script src="/viz/fruchtfolge-data.js"></script>
+    <script type="module" src="/viz/fruchtfolge-bridge.js"></script>
     <script>
-      const data = window.FRUCHTFOLGE;
-      if (!data || !data.matrix) {
-        document.body.innerHTML = '<div style="padding:40px;color:#b3423a"><h2>Daten nicht geladen</h2>' +
-          '<p>Bitte <code>python3 export_fruchtfolge.py</code> ausführen und neu laden.</p></div>';
-        throw new Error('FRUCHTFOLGE nicht geladen');
-      }
+      // M4: Der Renderer wartet auf fruchtfolge-ready — die Bridge befüllt
+      // window.FRUCHTFOLGE aus dem Pod (mit Fallback auf den Export).
+      let data = window.FRUCHTFOLGE;
+      const startRender = () => {
+        if (!data || !data.matrix) {
+          document.body.innerHTML = '<div style="padding:40px;color:#b3423a"><h2>Daten nicht geladen</h2>' +
+            '<p>Pod nicht erreichbar und kein Export vorhanden. Bitte <code>python3 export_fruchtfolge.py</code> ausführen oder Server starten.</p></div>';
+          throw new Error('FRUCHTFOLGE nicht geladen');
+        }
+        renderConflicts();
+        renderMatrix();
+        renderLegend();
+        // Quellen-Hinweis
+        const src = window.__fruchtfolgeSource;
+        const note = document.getElementById('sourceNote');
+        if (note) note.textContent = src === 'pod'
+          ? 'Daten direkt aus dem Solid-Pod (live)'
+          : 'Daten aus dem Gateway-Export (offline)';
+      };
+      window.addEventListener('fruchtfolge-ready', startRender);
+      // Falls die Bridge schneller war (Pod-Daten schon da), rendern wir sofort:
+      if (window.__fruchtfolgeSource === 'pod') startRender();
 
       function renderConflicts() {
         const el = document.getElementById('conflicts');

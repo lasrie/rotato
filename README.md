@@ -257,6 +257,14 @@ Viewer-Export automatisch. Bei Validierungsfehlern wird zurückgerollt.
 Architektur: LDP-artig (GET liefert Turtle, POST nimmt Turtle an) –
 dadurch später leicht gegen einen Solid-Pod austauschbar.
 
+## M4: Fruchtfolge direkt aus dem Pod
+
+Der Fruchtfolge-Viewer (`viz/fruchtfolge.html`) lädt seine Daten jetzt **live aus dem Pod**
+(`viz/fruchtfolge-logic.js`): Beet × Jahr-Matrix und Konflikterkennung berechnet im Browser,
+identische Logik zu `export_fruchtfolge.py` (das als Offline-Fallback bleibt, ADR-0007).
+
+Ein Quellen-Hinweis zeigt, ob die Daten live (Pod) oder aus dem Gateway-Export (offline) kommen.
+
 ## Phase C: Fruchtfolge-Matrix
 
 Beet × Jahr-Matrix (2024–2026) mit Fruchtfamilien-Farbcodierung und
