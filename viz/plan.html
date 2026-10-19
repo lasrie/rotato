@@ -313,12 +313,14 @@
           window.location.reload();
         });
         // Dritten Versuch: sessionStorage aus dem letzten Pod-Laden
-        // Cache nur übernehmen, wenn er das erwartete Format hat (beds vorhanden):
-        // veraltete/leere Caches werden verworfen, damit der Pod-Bridge greift.
+        // Cache nur übernehmen, wenn er das erwartete Format hat (Beete MIT Maßen):
+        // leere/401-geschrumpfte Caches werden verworfen, damit der Pod-Bridge neu lädt.
         const cached = sessionStorage.getItem('garten91-plan-pod');
         let restored = null;
         try { restored = cached ? JSON.parse(cached) : null; } catch { restored = null; }
-        if (restored && restored.beds && restored.beds.length) {
+        const cacheValid = restored && restored.beds && restored.beds.length &&
+          restored.beds.some(b => (b.width ?? 0) > 0 && (b.height ?? 0) > 0);
+        if (cacheValid) {
           window.GARTEN91_PLAN = restored;
           data = restored;
           console.info('Pflanzplan aus sessionStorage (Pod-Daten vom letzten Laden).');
@@ -340,12 +342,13 @@
       // Skalierung: Meter -> SVG-Pixel (dynamisch aus den Daten berechnet)
       const SCALE = 34;
       const PAD = 30;
-      const visibleBeds = data.beds.filter(b => b.width && b.height);
-      const MAX_X = Math.max(...visibleBeds.map(b => b.x + b.width));
-      const MAX_Y = Math.max(...visibleBeds.map(b => b.y + b.height));
-      const SVG_W = Math.ceil(MAX_X * SCALE + PAD * 2);
-      const SVG_H = Math.ceil(MAX_Y * SCALE + PAD * 2);
-      svg.setAttribute('viewBox', `0 0 ${SVG_W} ${SVG_H}`);
+      const visibleBeds = data.beds.filter(b => (b.width ?? 0) > 0 && (b.height ?? 0) > 0);
+      if (visibleBeds.length) {
+        const MAX_X = Math.max(...visibleBeds.map(b => b.x + b.width));
+        const MAX_Y = Math.max(...visibleBeds.map(b => b.y + b.height));
+        svg.setAttribute('viewBox', `0 0 ${Math.ceil(MAX_X * SCALE + PAD * 2)} ${Math.ceil(MAX_Y * SCALE + PAD * 2)}`);
+      }
+      // Bei leerem visibleBeds bleibt die Default-ViewBox stehen (HTML-Template)
 
       function monthName(i) { return data.months[i] || ''; }
 
@@ -389,10 +392,11 @@
           };
         });
 
-        // Hintergrund Rasen
+        // Hintergrund Rasen (Default-ViewBox-Werte, falls keine sichtbaren Beete)
         const grass = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
         grass.setAttribute('x', 0); grass.setAttribute('y', 0);
-        grass.setAttribute('width', SVG_W); grass.setAttribute('height', SVG_H);
+        const vb = (svg.getAttribute('viewBox') || '0 0 0 0').split(/\s+/);
+        grass.setAttribute('width', vb[2]); grass.setAttribute('height', vb[3]);
         grass.setAttribute('fill', 'var(--grass)');
         grass.setAttribute('rx', 18);
         svg.appendChild(grass);
