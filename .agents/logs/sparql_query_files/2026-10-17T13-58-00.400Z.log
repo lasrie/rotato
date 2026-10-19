@@ -1,0 +1,24 @@
+Tool:      sparql_query_files
+Status:    OK
+
+## Sources
+  file:///Users/lasse/dev/garten-planer/garten-vokabular.ttl
+  file:///Users/lasse/dev/garten-planer/pflanzen.ttl
+  file:///Users/lasse/dev/garten-planer/beispiel-garten.ttl
+  file:///Users/lasse/dev/garten-planer/anbau-journal.ttl
+
+## Query
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?class ?label WHERE {
+  ?class rdf:type rdfs:Class .
+  OPTIONAL { ?class rdfs:label ?label }
+}
+ORDER BY ?class ?label
+LIMIT 500
+
+## Result
+class                                              label                                             
+-----------------------------------------------------------------------------------------------------
+

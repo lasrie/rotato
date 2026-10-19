@@ -1,0 +1,496 @@
+@prefix garten: <https://example.org/garten-planer/ontology#>.
+@prefix real: <https://example.org/garten-planer/data/garten91/real/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-01> a garten:Pflanzung;
+    rdfs:label "Tomatenbeet – Tomate 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/real/#tomatenbeet-tomate-gesamt>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Tomate>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-312 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-313 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-312 time:hasBeginning _:n3-313.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-01> time:hasTemporalExtent _:n3-312;
+    rdfs:comment "Gemappt aus plan:Belegung b01. Zuordnung sicher (Tomatenbeet, durchgehende Reihe)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-02> a garten:Pflanzung;
+    rdfs:label "Tomatenbeet – Basilikum als Zwischenbepflanzung 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/real/#tomatenbeet-zwischen-gesamt>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Basilikum>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-314 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-315 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-314 time:hasBeginning _:n3-315.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-02> time:hasTemporalExtent _:n3-314;
+    rdfs:comment "Gemappt aus plan:Belegung b02. Zwischenbepflanzung zwischen den Tomaten ('halbe Reihe')."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-05> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Blumenkohl 4–7"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Blumenkohl>;
+    garten:monatPflanzung "2025-04"^^xsd:gYearMonth;
+    garten:monatErnte "2025-07"^^xsd:gYearMonth.
+_:n3-316 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-317 time:inXSDgYearMonth "2025-04"^^xsd:gYearMonth.
+_:n3-316 time:hasBeginning _:n3-317.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-05> time:hasTemporalExtent _:n3-316;
+    rdfs:comment "Gemappt aus plan:Belegung b05 (ursprünglich PPT-Zone linkes hohes Beet, confidence medium). Exakte Lage im Beet noch unbestätigt."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-06> a garten:Pflanzung;
+    rdfs:label "Tomatenbeet – Jungfer im Grünen als Zwischenbepflanzung 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/real/#tomatenbeet-zwischen-gesamt>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#JungferImGrunen>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-318 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-319 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-318 time:hasBeginning _:n3-319.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-06> time:hasTemporalExtent _:n3-318;
+    rdfs:comment "Gemappt aus plan:Belegung b06. Zwischenbepflanzung zwischen den Tomaten."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-07> a garten:Pflanzung;
+    rdfs:label "Tomatenbeet – Kapuzinerkresse als Zwischenbepflanzung 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/real/#tomatenbeet-zwischen-gesamt>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kapuzinerkresse>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-320 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-321 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-320 time:hasBeginning _:n3-321.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-07> time:hasTemporalExtent _:n3-320;
+    rdfs:comment "Gemappt aus plan:Belegung b07 (confidence medium). Begleitkultur beim Tomatenbeet."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-08> a garten:Pflanzung;
+    rdfs:label "Kartoffelbeet – Kartoffeln 4–9"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#kartoffelbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kartoffeln>;
+    garten:monatPflanzung "2025-04"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-322 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-323 time:inXSDgYearMonth "2025-04"^^xsd:gYearMonth.
+_:n3-322 time:hasBeginning _:n3-323.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-08> time:hasTemporalExtent _:n3-322;
+    rdfs:comment "Gemappt aus plan:Belegung b08 (PPT-Zone kleines oberes Beet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-09> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Kopfsalat 3–4"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat>;
+    garten:monatPflanzung "2025-03"^^xsd:gYearMonth;
+    garten:monatErnte "2025-04"^^xsd:gYearMonth.
+_:n3-324 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-325 time:inXSDgYearMonth "2025-03"^^xsd:gYearMonth.
+_:n3-324 time:hasBeginning _:n3-325.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-09> time:hasTemporalExtent _:n3-324;
+    rdfs:comment "Gemappt aus plan:Belegung b09 (PPT oberes Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-10> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Möhre 2–6"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    garten:monatPflanzung "2025-02"^^xsd:gYearMonth;
+    garten:monatErnte "2025-06"^^xsd:gYearMonth.
+_:n3-326 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-327 time:inXSDgYearMonth "2025-02"^^xsd:gYearMonth.
+_:n3-326 time:hasBeginning _:n3-327.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-10> time:hasTemporalExtent _:n3-326;
+    rdfs:comment "Gemappt aus plan:Belegung b10 (PPT oberes Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-11> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Möhre 3–11"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    garten:monatPflanzung "2025-03"^^xsd:gYearMonth;
+    garten:monatErnte "2025-11"^^xsd:gYearMonth.
+_:n3-328 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-329 time:inXSDgYearMonth "2025-03"^^xsd:gYearMonth.
+_:n3-328 time:hasBeginning _:n3-329.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-11> time:hasTemporalExtent _:n3-328;
+    rdfs:comment "Gemappt aus plan:Belegung b11 (PPT oberes Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-12> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Möhre 3–7"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    garten:monatPflanzung "2025-03"^^xsd:gYearMonth;
+    garten:monatErnte "2025-07"^^xsd:gYearMonth.
+_:n3-330 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-331 time:inXSDgYearMonth "2025-03"^^xsd:gYearMonth.
+_:n3-330 time:hasBeginning _:n3-331.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-12> time:hasTemporalExtent _:n3-330;
+    rdfs:comment "Gemappt aus plan:Belegung b12 (PPT oberes Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-13> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Einlegegurke 5–9"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Einlegegurke>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-332 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-333 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-332 time:hasBeginning _:n3-333.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-13> time:hasTemporalExtent _:n3-332;
+    rdfs:comment "Gemappt aus plan:Belegung b13 (PPT oberes Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-14> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Grünkohl 5–12"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Grunkohl>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-12"^^xsd:gYearMonth.
+_:n3-334 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-335 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-334 time:hasBeginning _:n3-335.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-14> time:hasTemporalExtent _:n3-334;
+    rdfs:comment "Gemappt aus plan:Belegung b14 (PPT oberes Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-15> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Chili 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Chilli>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-336 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-337 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-336 time:hasBeginning _:n3-337.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-15> time:hasTemporalExtent _:n3-336;
+    rdfs:comment "Gemappt aus plan:Belegung b15 (PPT oberes Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-16> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Honigmelone 5–9"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Honigmelone>;
+    garten:menge "2"@de;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-338 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-339 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-338 time:hasBeginning _:n3-339.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-16> time:hasTemporalExtent _:n3-338;
+    rdfs:comment "Gemappt aus plan:Belegung b16 (PPT zeigte 4 melonenrechtecke; hier als 2 Pflanzen geführt, confidence medium)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-17> a garten:Pflanzung;
+    rdfs:label "Beetkörper Nord – Zucchini 5–9"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zucchini>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-340 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-341 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-340 time:hasBeginning _:n3-341.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-17> time:hasTemporalExtent _:n3-340;
+    rdfs:comment "Gemappt aus plan:Belegung b17 (PPT oberes Mittelbeet, confidence medium)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-18> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Radieschen 3–5"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen>;
+    garten:monatPflanzung "2025-03"^^xsd:gYearMonth;
+    garten:monatErnte "2025-05"^^xsd:gYearMonth.
+_:n3-342 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-343 time:inXSDgYearMonth "2025-03"^^xsd:gYearMonth.
+_:n3-342 time:hasBeginning _:n3-343.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-18> time:hasTemporalExtent _:n3-342;
+    rdfs:comment "Gemappt aus plan:Belegung b18 (PPT unteres Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-19> a garten:Pflanzung;
+    rdfs:label "Erdbeer-Knoblauch-Beet – Knoblauch (A10–E09, überjährig)"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Knoblauch>;
+    garten:monatPflanzung "2024-10"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-344 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-345 time:inXSDgYearMonth "2024-10"^^xsd:gYearMonth.
+_:n3-344 time:hasBeginning _:n3-345.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-19> time:hasTemporalExtent _:n3-344;
+    rdfs:comment "Gemappt aus plan:Belegung b19 (PPT-Notation 'Knoblauch A10 - E09' = Anfang Oktober bis Ende September, überjährig)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-20> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Gurke 5–9"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Gurke>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-346 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-347 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-346 time:hasBeginning _:n3-347.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-20> time:hasTemporalExtent _:n3-346;
+    rdfs:comment "Gemappt aus plan:Belegung b20 (PPT unteres Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-21> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Chili 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Chilli>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-348 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-349 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-348 time:hasBeginning _:n3-349.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-21> time:hasTemporalExtent _:n3-348;
+    rdfs:comment "Gemappt aus plan:Belegung b21 (PPT unteres Mittelbeet, zweite Chiliposition)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-22> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Rote Bete 4–9"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#RoteBete>;
+    garten:monatPflanzung "2025-04"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-350 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-351 time:inXSDgYearMonth "2025-04"^^xsd:gYearMonth.
+_:n3-350 time:hasBeginning _:n3-351.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-22> time:hasTemporalExtent _:n3-350;
+    rdfs:comment "Gemappt aus plan:Belegung b22 (PPT unteres Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-23> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Rote Bete 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#RoteBete>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-352 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-353 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-352 time:hasBeginning _:n3-353.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-23> time:hasTemporalExtent _:n3-352;
+    rdfs:comment "Gemappt aus plan:Belegung b23 (PPT unteres Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-24> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Möhre 4–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    garten:monatPflanzung "2025-04"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-354 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-355 time:inXSDgYearMonth "2025-04"^^xsd:gYearMonth.
+_:n3-354 time:hasBeginning _:n3-355.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-24> time:hasTemporalExtent _:n3-354;
+    rdfs:comment "Gemappt aus plan:Belegung b24 (PPT unteres Mittelbeet)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-25> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Kopfsalat 5–6"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-06"^^xsd:gYearMonth.
+_:n3-356 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-357 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-356 time:hasBeginning _:n3-357.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-25> time:hasTemporalExtent _:n3-356;
+    rdfs:comment "Gemappt aus plan:Belegung b25 (PPT unteres Mittelbeet, confidence medium)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-26> a garten:Pflanzung;
+    rdfs:label "Beetkörper Süd – Dill 5–6"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Dill>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-06"^^xsd:gYearMonth.
+_:n3-358 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-359 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-358 time:hasBeginning _:n3-359.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-26> time:hasTemporalExtent _:n3-358;
+    rdfs:comment "Gemappt aus plan:Belegung b26 (PPT unteres Mittelbeet, confidence medium)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-27> a garten:Pflanzung;
+    rdfs:label "Beerenbeet – Erdbeeren"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beerenbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Erdbeeren>;
+    garten:mehrjaehrig true.
+_:n3-360 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-361 time:inXSDgYear "2025"^^xsd:gYear.
+_:n3-360 time:hasBeginning _:n3-361.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-27> time:hasTemporalExtent _:n3-360;
+    rdfs:comment "Gemappt aus plan:Belegung b27. Mehrjährige Kultur, Abschnitt im Beerenbeet folgt im nächsten Schritt."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-28> a garten:Pflanzung;
+    rdfs:label "Beerenbeet – Johannisbeere"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beerenbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Johannisbeere>;
+    garten:mehrjaehrig true.
+_:n3-362 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-363 time:inXSDgYear "2025"^^xsd:gYear.
+_:n3-362 time:hasBeginning _:n3-363.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-28> time:hasTemporalExtent _:n3-362;
+    rdfs:comment "Gemappt aus plan:Belegung b28. Abschnitt im Beerenbeet folgt im nächsten Schritt."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-29> a garten:Pflanzung;
+    rdfs:label "Beerenbeet – Stachelbeere"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beerenbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Stachelbeere>;
+    garten:mehrjaehrig true.
+_:n3-364 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-365 time:inXSDgYear "2025"^^xsd:gYear.
+_:n3-364 time:hasBeginning _:n3-365.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-29> time:hasTemporalExtent _:n3-364;
+    rdfs:comment "Gemappt aus plan:Belegung b29. Abschnitt im Beerenbeet folgt im nächsten Schritt."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-30> a garten:Pflanzung;
+    rdfs:label "Beerenbeet – Kapuzinerkresse 5–10"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beerenbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kapuzinerkresse>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-366 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-367 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-366 time:hasBeginning _:n3-367.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-30> time:hasTemporalExtent _:n3-366;
+    rdfs:comment "Gemappt aus plan:Belegung b30 (confidence medium). Begleitkultur im Beerenbeet."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-31> a garten:Pflanzung;
+    rdfs:label "Beerenbeet – Himbeeren (ab März)"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beerenbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Himbeeren>;
+    garten:mehrjaehrig true;
+    garten:monatPflanzung "2025-03"^^xsd:gYearMonth.
+_:n3-368 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-369 time:inXSDgYearMonth "2025-03"^^xsd:gYearMonth.
+_:n3-368 time:hasBeginning _:n3-369.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-31> time:hasTemporalExtent _:n3-368;
+    rdfs:comment "Gemappt aus plan:Belegung b31 (PPT 'Himbeeren 3 -'). Beerenbeet-Abschnitt folgt im nächsten Schritt."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-32> a garten:Pflanzung;
+    rdfs:label "Beerenbeet – Jostabeere"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beerenbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Jostabeere>;
+    garten:mehrjaehrig true.
+_:n3-370 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-371 time:inXSDgYear "2025"^^xsd:gYear.
+_:n3-370 time:hasBeginning _:n3-371.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-32> time:hasTemporalExtent _:n3-370;
+    rdfs:comment "Gemappt aus plan:Belegung b32. Beerenbeet-Abschnitt folgt im nächsten Schritt."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-33> a garten:Pflanzung;
+    rdfs:label "Zuckermais 5–10"@de;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zuckermais>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-372 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-373 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-372 time:hasBeginning _:n3-373.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-33> time:hasTemporalExtent _:n3-372;
+    rdfs:comment "Gemappt aus plan:Belegung b33. BEET-ZUORDNUNG OFFEN: PPT zeigte Zuckermais im Bereich des rechten langen Beets (Kartoffelbeet), Zuordnung unbestätigt."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-34> a garten:Pflanzung;
+    rdfs:label "Zucchini 5–9 (zweite Pflanzung)"@de;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zucchini>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-374 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-375 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-374 time:hasBeginning _:n3-375.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-34> time:hasTemporalExtent _:n3-374;
+    rdfs:comment "Gemappt aus plan:Belegung b34. BEET-ZUORDNUNG OFFEN: ggf. identisch mit b-real-17 am Beetkörper Nord."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-35> a garten:Pflanzung;
+    rdfs:label "Petersilie 5–10 (zweite Pflanzung)"@de;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Petersilie>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-376 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-377 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-376 time:hasBeginning _:n3-377.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-35> time:hasTemporalExtent _:n3-376;
+    rdfs:comment "Gemappt aus plan:Belegung b35. BEET-ZUORDNUNG OFFEN."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-36> a garten:Pflanzung;
+    rdfs:label "Zwiebel-Kohlrabi-Hochbeet – Zwiebeln (A10–E08, überjährig)"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zwiebeln>;
+    garten:monatPflanzung "2024-10"^^xsd:gYearMonth;
+    garten:monatErnte "2025-08"^^xsd:gYearMonth.
+_:n3-378 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-379 time:inXSDgYearMonth "2024-10"^^xsd:gYearMonth.
+_:n3-378 time:hasBeginning _:n3-379.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-36> time:hasTemporalExtent _:n3-378;
+    rdfs:comment "Gemappt aus plan:Belegung b36 (PPT-Notation 'Zwiebeln A10 - E08' = Anfang Oktober bis Ende August, überjährig)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-37> a garten:Pflanzung;
+    rdfs:label "Zwiebel-Kohlrabi-Hochbeet – Kohlrabi 4–5"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kohlrabi>;
+    garten:monatPflanzung "2025-04"^^xsd:gYearMonth;
+    garten:monatErnte "2025-05"^^xsd:gYearMonth.
+_:n3-380 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-381 time:inXSDgYearMonth "2025-04"^^xsd:gYearMonth.
+_:n3-380 time:hasBeginning _:n3-381.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-37> time:hasTemporalExtent _:n3-380;
+    rdfs:comment "Gemappt aus plan:Belegung b37 (PPT kleines Beet rechts unten)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-38> a garten:Pflanzung;
+    rdfs:label "Zwiebel-Kohlrabi-Hochbeet – Kohlrabi 5–6"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kohlrabi>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-06"^^xsd:gYearMonth.
+_:n3-382 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-383 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-382 time:hasBeginning _:n3-383.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-38> time:hasTemporalExtent _:n3-382;
+    rdfs:comment "Gemappt aus plan:Belegung b38 (PPT kleines Beet rechts unten)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-39> a garten:Pflanzung;
+    rdfs:label "Erdbeer-Knoblauch-Beet – Knoblauch 10–9 (überjährig)"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Knoblauch>;
+    garten:monatPflanzung "2024-10"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-384 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-385 time:inXSDgYearMonth "2024-10"^^xsd:gYearMonth.
+_:n3-384 time:hasBeginning _:n3-385.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-39> time:hasTemporalExtent _:n3-384;
+    rdfs:comment "Gemappt aus plan:Belegung b39 (PPT 'Knoblauch 10 - 9', überjährig)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-40> a garten:Pflanzung;
+    rdfs:label "Kopfsalat 10–11 (Herbstsaat)"@de;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat>;
+    garten:monatPflanzung "2025-10"^^xsd:gYearMonth;
+    garten:monatErnte "2025-11"^^xsd:gYearMonth.
+_:n3-386 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-387 time:inXSDgYearMonth "2025-10"^^xsd:gYearMonth.
+_:n3-386 time:hasBeginning _:n3-387.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-40> time:hasTemporalExtent _:n3-386;
+    rdfs:comment "Gemappt aus plan:Belegung b40. BEET-ZUORDNUNG OFFEN."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-41> a garten:Pflanzung;
+    rdfs:label "Erdbeer-Knoblauch-Beet – Erdbeeren"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Erdbeeren>;
+    garten:mehrjaehrig true.
+_:n3-388 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-389 time:inXSDgYear "2025"^^xsd:gYear.
+_:n3-388 time:hasBeginning _:n3-389.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-41> time:hasTemporalExtent _:n3-388;
+    rdfs:comment "Gemappt aus plan:Belegung b41. Mischnutzung: Erdbeeren + Knoblauch in einem Beet."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-42> a garten:Pflanzung;
+    rdfs:label "Erdbeer-Knoblauch-Beet – Knoblauch (A10–E09, überjährig)"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Knoblauch>;
+    garten:monatPflanzung "2024-10"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-390 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-391 time:inXSDgYearMonth "2024-10"^^xsd:gYearMonth.
+_:n3-390 time:hasBeginning _:n3-391.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-42> time:hasTemporalExtent _:n3-390;
+    rdfs:comment "Gemappt aus plan:Belegung b42 (PPT-Notation 'Knoblauch A10 - E09' = Anfang Oktober bis Ende September, überjährig)."@de.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-43> a garten:Pflanzung;
+    rdfs:label "Kartoffel-Pflanzsäcke – Kartoffeln 4–9"@de;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#kartoffelbeet>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kartoffeln>;
+    garten:menge "3"@de;
+    garten:monatPflanzung "2025-04"^^xsd:gYearMonth;
+    garten:monatErnte "2025-09"^^xsd:gYearMonth.
+_:n3-392 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-393 time:inXSDgYearMonth "2025-04"^^xsd:gYearMonth.
+_:n3-392 time:hasBeginning _:n3-393.
+<https://example.org/garten-planer/data/garten91/belegungen-real-2025/#b-real-43> time:hasTemporalExtent _:n3-392;
+    rdfs:comment "Gemappt aus plan:Belegung b43 (3 Pflanzsäcke). Säcke sind eigenständige Container; hier formal dem Kartoffelbeet zugeordnet."@de.

@@ -1,0 +1,103 @@
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix garten: <https://example.org/garten-planer/ontology#>.
+@prefix shape: <https://example.org/garten-planer/shapes/layout#>.
+
+shape:ReihenAbschnittShape sh:sparql _:b39_fe9c35bf691ea63afc8762ce30cf0fa5.
+_:b39_fe9c35bf691ea63afc8762ce30cf0fa5 sh:select "PREFIX garten: <https://example.org/garten-planer/ontology#> SELECT $this WHERE { $this garten:abschnittStart ?start ; garten:abschnittEnde ?ende . FILTER(?ende <= ?start) }";
+    sh:message "Abschnitts-Ende muss größer als Abschnitts-Start sein."@de.
+shape:PflanzungAbschnittShape sh:property _:b39_b38_n3-115.
+_:b39_b38_n3-115 sh:message "Wenn gesetzt, darf eine Pflanzung höchstens einem Reihenabschnitt zugeordnet sein."@de;
+    sh:class garten:ReihenAbschnitt;
+    sh:maxCount 1;
+    sh:path garten:inAbschnitt.
+shape:PflanzungAbschnittShape rdfs:label "Optionale Abschnitts-Zuordnung für Pflanzung"@de;
+    sh:targetClass garten:Pflanzung;
+    a sh:NodeShape.
+shape:ReihenAbschnittShape sh:property _:b39_b38_n3-113.
+_:b39_b38_n3-113 sh:message "Wenn ein Abschnitt belegt ist, muss er auf Pflanzungen verweisen."@de;
+    sh:class garten:Pflanzung;
+    sh:path garten:belegtMitPflanzung.
+shape:ReihenAbschnittShape sh:property _:b39_b38_n3-112.
+_:b39_b38_n3-112 sh:message "Jeder Abschnitt braucht einen Endwert in Metern."@de;
+    sh:minInclusive "0"^^xsd:decimal;
+    sh:datatype xsd:decimal;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path garten:abschnittEnde.
+shape:ReihenAbschnittShape sh:property _:b39_b38_n3-111.
+_:b39_b38_n3-111 sh:message "Jeder Abschnitt braucht einen Startwert in Metern."@de;
+    sh:minInclusive "0"^^xsd:decimal;
+    sh:datatype xsd:decimal;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path garten:abschnittStart.
+shape:ReihenAbschnittShape sh:property _:b39_b38_n3-110.
+_:b39_b38_n3-110 sh:message "Jeder Abschnitt gehört genau zu einer Reihe."@de;
+    sh:class garten:Reihe;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path garten:abschnittInReihe.
+shape:ReihenAbschnittShape sh:property _:b39_b38_n3-109.
+_:b39_b38_n3-109 sh:message "Jeder Reihenabschnitt braucht genau einen Titel."@de;
+    sh:datatype xsd:string;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path dcterms:title.
+shape:ReihenAbschnittShape rdfs:label "Shape für Reihenabschnitt"@de;
+    sh:targetClass garten:ReihenAbschnitt;
+    a sh:NodeShape.
+shape:ReiheShape sh:property _:b39_b38_n3-108.
+_:b39_b38_n3-108 sh:message "Jede Reihe braucht eine positive Nutzlänge in Metern."@de;
+    sh:minInclusive 0.1;
+    sh:datatype xsd:decimal;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path garten:nutzlaenge.
+shape:ReiheShape sh:property _:b39_b38_n3-107.
+_:b39_b38_n3-107 sh:message "Jede Reihe braucht genau eine gültige Ausrichtung."@de;
+    sh:node shape:AusrichtungNode;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path garten:reihenAusrichtung.
+shape:ReiheShape sh:property _:b39_b38_n3-106.
+_:b39_b38_n3-106 sh:message "Jede Reihe braucht eine positive Reihennummer."@de;
+    sh:minInclusive 1;
+    sh:datatype xsd:integer;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path garten:reihenNummer.
+shape:ReiheShape sh:property _:b39_b38_n3-105.
+_:b39_b38_n3-105 sh:message "Jede Reihe gehört genau zu einem Beet."@de;
+    sh:class garten:Beet;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path garten:reiheInBeet.
+shape:ReiheShape sh:property _:b39_b38_n3-104.
+_:b39_b38_n3-104 sh:message "Jede Reihe braucht genau einen Titel."@de;
+    sh:datatype xsd:string;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:path dcterms:title.
+shape:ReiheShape rdfs:label "Shape für Beetreihe"@de;
+    sh:targetClass garten:Reihe;
+    a sh:NodeShape.
+shape:BeetLayoutShape sh:property _:b39_b38_n3-103.
+_:b39_b38_n3-103 sh:message "Wenn gesetzt, muss die Beet-Ausrichtung aus der Layout-Liste stammen."@de;
+    sh:node shape:AusrichtungNode;
+    sh:maxCount 1;
+    sh:path garten:beetAusrichtung.
+shape:BeetLayoutShape rdfs:label "Optionale Layout-Angaben für Beet"@de;
+    sh:targetClass garten:Beet;
+    a sh:NodeShape.
+shape:AusrichtungNode sh:property _:b39_b38_n3-102.
+_:b39_b38_n3-102 sh:message "Ausrichtung muss aus der Layout-Ausrichtungsliste kommen."@de;
+    sh:hasValue <https://example.org/garten-planer/vokabular/layout>;
+    sh:path skos:inScheme.
+shape:AusrichtungNode sh:class skos:Concept;
+    rdfs:label "Erlaubte Ausrichtungen für Beet und Reihen"@de;
+    a sh:NodeShape.

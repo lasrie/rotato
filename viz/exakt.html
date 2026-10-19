@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garten 91 – exaktes Layout aus PPT</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, sans-serif;
+        background: #f4f5ef;
+        color: #243024;
+      }
+      .wrap {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 { margin: 0 0 8px; }
+      .muted { color: #5f695a; }
+      .toolbar {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 16px 0 20px;
+      }
+      select, button {
+        font: inherit;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid #d5d8cf;
+        background: white;
+      }
+      .panel {
+        background: white;
+        border: 1px solid #d5d8cf;
+        border-radius: 12px;
+        padding: 14px;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+      .note {
+        margin-top: 14px;
+        font-size: 14px;
+        color: #5f695a;
+      }
+      .thumbs {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+      }
+      .thumb {
+        border: 1px solid #d5d8cf;
+        border-radius: 10px;
+        background: white;
+        padding: 8px;
+        cursor: pointer;
+      }
+      .thumb.active {
+        outline: 3px solid #7ea36e;
+      }
+      .thumb img {
+        border-radius: 6px;
+      }
+      .thumb-title {
+        margin-top: 6px;
+        font-size: 13px;
+        color: #43503d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Garten 91 – exaktes Layout</h1>
+      <div class="muted">Direkt aus der PowerPoint gerenderte Folienbilder. Das ist die pixelgenaue Darstellung des Originalplans.</div>
+
+      <div class="toolbar">
+        <label>
+          Monat/Folie
+          <select id="slideSelect"></select>
+        </label>
+        <button id="openMonthlyView" type="button">Zur RDF-SVG-Ansicht</button>
+      </div>
+
+      <div class="panel">
+        <img id="mainImage" src="slides/slide-09.png" alt="Beetplan-Folie" />
+        <div class="note" id="caption"></div>
+      </div>
+
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+
+    <script>
+      const slides = [
+        { no: 4, label: 'Template', file: 'slides/slide-04.png' },
+        { no: 5, label: 'Januar', file: 'slides/slide-05.png' },
+        { no: 6, label: 'Februar', file: 'slides/slide-06.png' },
+        { no: 7, label: 'März', file: 'slides/slide-07.png' },
+        { no: 8, label: 'April', file: 'slides/slide-08.png' },
+        { no: 9, label: 'Mai', file: 'slides/slide-09.png' },
+        { no: 10, label: 'Juni', file: 'slides/slide-10.png' },
+        { no: 11, label: 'Juli', file: 'slides/slide-11.png' },
+        { no: 12, label: 'August', file: 'slides/slide-12.png' },
+        { no: 13, label: 'September', file: 'slides/slide-13.png' },
+        { no: 14, label: 'Oktober', file: 'slides/slide-14.png' },
+        { no: 15, label: 'November', file: 'slides/slide-15.png' },
+        { no: 16, label: 'Dezember', file: 'slides/slide-16.png' },
+      ];
+
+      const slideSelect = document.getElementById('slideSelect');
+      const mainImage = document.getElementById('mainImage');
+      const caption = document.getElementById('caption');
+      const thumbs = document.getElementById('thumbs');
+      const openMonthlyView = document.getElementById('openMonthlyView');
+
+      let activeNo = 9;
+
+      function render() {
+        const active = slides.find(s => s.no === activeNo) || slides[0];
+        mainImage.src = active.file;
+        mainImage.alt = `Beetplan ${active.label}`;
+        caption.textContent = `${active.label} – exakte Folienansicht aus input/Beetplan 2025.pptm`;
+        slideSelect.value = String(active.no);
+        thumbs.innerHTML = slides.map(slide => `
+          <div class="thumb ${slide.no === active.no ? 'active' : ''}" data-no="${slide.no}">
+            <img src="${slide.file}" alt="${slide.label}" />
+            <div class="thumb-title">${slide.label}</div>
+          </div>
+        `).join('');
+        thumbs.querySelectorAll('.thumb').forEach(el => {
+          el.addEventListener('click', () => {
+            activeNo = Number(el.dataset.no);
+            render();
+          });
+        });
+      }
+
+      slideSelect.innerHTML = slides.map(slide => `<option value="${slide.no}">${slide.label}</option>`).join('');
+      slideSelect.addEventListener('change', () => {
+        activeNo = Number(slideSelect.value);
+        render();
+      });
+      openMonthlyView.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+
+      render();
+    </script>
+  </body>
+</html>

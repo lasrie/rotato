@@ -1,0 +1,101 @@
+# Beispiel: kleiner naturnaher Kleingarten mit 4-Beet-Fruchtfolge
+# ---------------------------------------------------------------
+# Validieren mit:
+#   cat garten-vokabular.ttl beispiel-garten.ttl > /tmp/data.ttl
+#   python3 -m pyshacl -s garten-shapes.ttl /tmp/data.ttl
+
+@prefix garten: <https://example.org/garten-planer/ontology#> .
+@prefix gv:     <https://example.org/garten-planer/vokabular#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:   <http://www.w3.org/2006/time#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@base    <https://example.org/garten-planer/data/> .
+
+<#meinGarten> a garten:Kleingarten ;
+    dcterms:title "Kleingarten Lasse" ;
+    garten:hatFruchtfolge <#fruchtfolgeA> ;
+    garten:hatBeet <#beetNord>, <#beetMitte>, <#beetSued>, <#beetWild> .
+
+# ---------------- Beete ----------------
+<#beetNord> a garten:Beet ;
+    dcterms:title "Beet Nord (sonnig, humos)" ;
+    garten:flaeche "12.5"^^xsd:decimal ;      # m²
+    garten:sonnenlage gv:sonnig ;
+    garten:bodentyp gv:humos ;
+    garten:inFruchtfolge <#fruchtfolgeA> ;
+    garten:hatPflanzung <#p1> .
+
+<#beetMitte> a garten:Beet ;
+    dcterms:title "Beet Mitte" ;
+    garten:flaeche "10.0"^^xsd:decimal ;
+    garten:sonnenlage gv:sonnig ;
+    garten:bodentyp gv:tieflock ;
+    garten:inFruchtfolge <#fruchtfolgeA> ;
+    garten:hatPflanzung <#p2> .
+
+<#beetSued> a garten:Beet ;
+    dcterms:title "Beet Süd" ;
+    garten:flaeche "8.0"^^xsd:decimal ;
+    garten:sonnenlage gv:halbschattig ;
+    garten:bodentyp gv:lehmig ;
+    garten:inFruchtfolge <#fruchtfolgeA> ;
+    garten:hatPflanzung <#p3> .
+
+<#beetWild> a garten:Beet ;
+    dcterms:title "Beet Wildhecke (Nützlingsbeet)" ;
+    garten:flaeche "6.0"^^xsd:decimal ;
+    garten:sonnenlage gv:halbschattig ;
+    garten:bodentyp gv:humos ;
+    garten:inFruchtfolge <#fruchtfolgeA> ;
+    garten:hatPflanzung <#p4> .
+
+# ---------------- Fruchtfolge (4-jährig) ----------------
+<#fruchtfolgeA> a garten:Fruchtfolge ;
+    dcterms:title "4-jährige Fruchtfolge, Start Beet Nord" ;
+    garten:beginntAufBeet <#beetNord> ;
+    garten:rotateNachJahren 4 .
+
+# ---------------- Pflanzenkatalog ----------------
+<#kartoffel> a garten:Pflanze ;
+    skos:prefLabel "Kartoffel"@de ;
+    garten:fruchtFamilie gv:ff_Nachtschatten ;
+    garten:mehrjaehrig false .
+
+<#bohne> a garten:Pflanze ;
+    skos:prefLabel "Buschbohne"@de ;
+    garten:fruchtFamilie gv:ff_Huelsenfruechtler ;
+    garten:mehrjaehrig false .
+
+<#kohl> a garten:Pflanze ;
+    skos:prefLabel "Wirsing"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false .
+
+<#zwiebel> a garten:Pflanze ;
+    skos:prefLabel "Zwiebel"@de ;
+    garten:fruchtFamilie gv:ff_Zwiebelgewaechse ;
+    garten:mehrjaehrig false .
+
+# ---------------- Pflanzungen (Jahr 1 der Rotation, 2026) ----------------
+# Naturnahe Logik: Hülsenfrüchtler (Bohne) bereichert den Boden mit Stickstoff,
+# Starkzehrer Kohl und Kartoffel folgen in den Folgejahren auf vorbereitete Beete.
+<#p1> a garten:Pflanzung ;
+    garten:aufBeet <#beetNord> ; garten:pflanzt <#kartoffel> ;
+    time:hasTemporalExtent <#jahr2026> .
+
+<#p2> a garten:Pflanzung ;
+    garten:aufBeet <#beetMitte> ; garten:pflanzt <#bohne> ;
+    time:hasTemporalExtent <#jahr2026> .
+
+<#p3> a garten:Pflanzung ;
+    garten:aufBeet <#beetSued> ; garten:pflanzt <#kohl> ;
+    time:hasTemporalExtent <#jahr2026> .
+
+<#p4> a garten:Pflanzung ;
+    garten:aufBeet <#beetWild> ; garten:pflanzt <#zwiebel> ;
+    time:hasTemporalExtent <#jahr2026> .
+
+<#jahr2026> a time:TemporalEntity ;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+    time:hasBeginning [ time:inXSDgYear "2026"^^xsd:gYear ] .

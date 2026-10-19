@@ -1,0 +1,1277 @@
+# Pflanzenkatalog aus der Anzuchtdatenbank
+# Generiert von generate_pflanzen.py – Quelle: input/Pflanzenanzucht_mit_Makro.xlsm, Sheet 'Anzuchtdatenbank'
+# NICHT manuell editieren: Änderungen in Excel machen und Skript neu laufen lassen.
+
+@prefix garten: <https://example.org/garten-planer/ontology#> .
+@prefix gv:     <https://example.org/garten-planer/vokabular#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@base    <https://example.org/garten-planer/pflanzen/> .
+
+<#Basilikum> a garten:Pflanze ;
+    skos:prefLabel "Basilikum"@de ;
+    garten:fruchtFamilie gv:ff_Lippenbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Mai"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "18-24°C"@de
+    ; garten:aussaattiefe "0,5 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "Mai-Juni"@de
+    ; garten:abstand "20x20 cm"@de
+    ; garten:erdeAuspflanzung "locker, mäßig nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Mai-Oktober"@de
+ .
+
+<#Bechermalve> a garten:Pflanze ;
+    skos:prefLabel "Bechermalve"@de ;
+    garten:fruchtFamilie gv:ff_Malvengewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Juni"@de
+    ; garten:anzuchtOrt "März-April drinnen ab Mai draußen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Glas mit Wasser/Kamillentee"@de
+    ; garten:vorkeimDauer "12-48h"@de
+    ; garten:keimtemperatur "15-20°C"@de
+    ; garten:aussaattiefe "0 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "ab April"@de
+    ; garten:abstand "40 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, lehmhaltig, nicht zu nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juni-September"@de
+ .
+
+<#Blattkoriander> a garten:Pflanze ;
+    skos:prefLabel "Blattkoriander"@de ;
+    garten:fruchtFamilie gv:ff_Doldenbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Juni"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:keimtemperatur "10-25°C"@de
+    ; garten:aussaattiefe "1-2 cm"@de
+    ; garten:abstand "5x20 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, locker"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juni-Oktober"@de
+ .
+
+<#Blumenkohl> a garten:Pflanze ;
+    skos:prefLabel "Blumenkohl"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Januar-Juli"@de
+    ; garten:anzuchtOrt "Januar-März drinnen oder Frühbeet ab April draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "25°C (Keimung) 15-22°C (Anzucht)"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:abstand "50x50 cm"@de
+    ; garten:erdeAuspflanzung "locker, nährstoffreich, lehmiger, kalkhaltiger"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:pflege "gut wässern 1-2 x mit Hornmehl oder wöchentlich mit Brennesseljauche düngen paar Wochen noch Auspflanzung anhäufeln"@de
+    ; garten:dauerAussaatBisErnte "90 Tage"@de
+    ; garten:erntezeit "Juli-Oktober"@de
+    ; garten:kommentar "Kalkhaltiger Boden schützt bisschen vor Kohlhernje Wenig Wasser führt zu kleinen Köpfen und schnellerem Schossen Mit eigenen Blättern Frucht schattieren, um Vergiblung zu vermeiden"@de
+    ; garten:pflanzzeit "März-Mai"@de
+ .
+
+<#BokChoy> a garten:Pflanze ;
+    skos:prefLabel "Bok Choy"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Februar-Oktober"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "2 cm"@de
+    ; garten:abstand "30x30 cm"@de
+    ; garten:erdeAuspflanzung "locker, nährstoffreich"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:erntezeit "April-November"@de
+ .
+
+<#Borretsch> a garten:Pflanze ;
+    skos:prefLabel "Borretsch"@de ;
+    garten:fruchtFamilie gv:ff_Borretschgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-August"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "20°C"@de
+    ; garten:aussaattiefe "3-5 cm"@de
+    ; garten:abstand "30 cm"@de
+    ; garten:erdeAuspflanzung "nährstoffreich, durchlässig"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:erntezeit "Mai-Oktober"@de
+ .
+
+<#Brokkoli> a garten:Pflanze ;
+    skos:prefLabel "Brokkoli"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Mai-Juni"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:keimtemperatur "15-20°C"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "50x50 cm"@de
+    ; garten:erdeAuspflanzung "tiefgründig, nährstoffreich, kalkhaltig"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "Pflanzloch mit Kompost oder Langzeitdünger vorbereiten 6 Wochen nach Pflanzung Flüssigdünger oder Brennesseljauche"@de
+    ; garten:erntezeit "August-September"@de
+ .
+
+<#Buschbohne> a garten:Pflanze ;
+    skos:prefLabel "Buschbohne"@de ;
+    garten:fruchtFamilie gv:ff_Huelsenfruechtler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Mai-Juli"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "2 cm"@de
+    ; garten:abstand "10x40 cm"@de
+    ; garten:erdeAuspflanzung "tiefgründig, kalkhaltig"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:pflege "anhäufeln"@de
+    ; garten:erntezeit "Juli-Oktober"@de
+ .
+
+<#Chilli> a garten:Pflanze ;
+    skos:prefLabel "Chilli"@de ;
+    garten:fruchtFamilie gv:ff_Nachtschatten ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Februar"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Ziploc und Küchenpapier"@de
+    ; garten:vorkeimDauer "bis Keimung"@de
+    ; garten:keimtemperatur "25-28°C (Keimung)"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "beim Pikieren etwas tiefer einsetzen"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "50x50 cm"@de
+    ; garten:erdeAuspflanzung "tiefgründig, humos, nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juli-September"@de
+    ; garten:kommentar "sehr scharf, Früchte werden rot wenn reif"@de
+ .
+
+<#Cosmea> a garten:Pflanze ;
+    skos:prefLabel "Cosmea"@de ;
+    garten:fruchtFamilie gv:ff_Korbbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Mai"@de
+    ; garten:anzuchtOrt "März-April drinnen Mai draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "20°C (Keimung) 16-18°C (Anzucht)"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "5-8 cm"@de
+    ; garten:erdeAuspflanzung "locker, durchlässig, nicht zu nährstoffreich"@de
+    ; garten:standort "halbschattig - sonnig"@de
+ .
+
+<#Dill> a garten:Pflanze ;
+    skos:prefLabel "Dill"@de ;
+    garten:fruchtFamilie gv:ff_Doldenbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-August"@de
+    ; garten:anzuchtOrt "März - April drinnen Ab Mai auch draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "15-20°C"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "15 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, nährstoffreich, humos"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:dauerAussaatBisErnte "6-8 Wochen"@de
+    ; garten:erntezeit "Mai-Oktober"@de
+ .
+
+<#Einlegegurke> a garten:Pflanze ;
+    skos:prefLabel "Einlegegurke"@de ;
+    garten:fruchtFamilie gv:ff_Kuerbisgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Juni"@de
+    ; garten:anzuchtOrt "April-Mai drinnen Mai-Juni draußen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Glas mit Wasser/Kamillentee"@de
+    ; garten:vorkeimDauer "12-48h"@de
+    ; garten:keimtemperatur "20-25°C"@de
+    ; garten:aussaattiefe "1-2 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "nicht pikieren"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "30x120 cm"@de
+    ; garten:erdeAuspflanzung "lockere, humose, nährstoffrei Böden"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "hoher, regelmäßiger Wasserbedarf Rankgerüst"@de
+    ; garten:erntezeit "Juli-September"@de
+    ; garten:kommentar "Wassermangen macht Gurken bitter"@de
+ .
+
+<#Endivien> a garten:Pflanze ;
+    skos:prefLabel "Endivien"@de ;
+    garten:fruchtFamilie gv:ff_Korbbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Juni-August"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "18-25°C"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:abstand "4x30 cm"@de
+    ; garten:erdeAuspflanzung "locker, humos"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "September-Oktober"@de
+ .
+
+<#Erdbeeren> a garten:Pflanze ;
+    skos:prefLabel "Erdbeeren"@de ;
+    garten:fruchtFamilie gv:ff_Rosengewaechse ;
+    garten:mehrjaehrig true
+ .
+
+<#Gartenkresse> a garten:Pflanze ;
+    skos:prefLabel "Gartenkresse"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "immer"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "15-20°C"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:abstand "3 mm"@de
+    ; garten:erdeAuspflanzung "locker, nährstoffreich, humos"@de
+    ; garten:standort "halbschattig - sonnig"@de
+ .
+
+<#Grunkohl> a garten:Pflanze ;
+    skos:prefLabel "Grünkohl"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Juli"@de
+    ; garten:anzuchtOrt "Drinnen Draußen ab Mai"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "15-20°C"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "50 cm"@de
+    ; garten:erdeAuspflanzung "nährstoffreich, humos"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "Ab September Brennesseljauche"@de
+    ; garten:erntezeit "Oktober-März"@de
+ .
+
+<#Gurke> a garten:Pflanze ;
+    skos:prefLabel "Gurke"@de ;
+    garten:fruchtFamilie gv:ff_Kuerbisgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Mai"@de
+    ; garten:anzuchtOrt "April drinnen Mai draußen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Glas mit Wasser/Kamillentee"@de
+    ; garten:vorkeimDauer "12-24h"@de
+    ; garten:keimtemperatur "20-25°C"@de
+    ; garten:aussaattiefe "2 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "nicht pikieren"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "50x60 cm"@de
+    ; garten:erdeAuspflanzung "feucht, nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "Rankgerüst"@de
+    ; garten:erntezeit "August-September"@de
+    ; garten:kommentar "Früchte jung dunkegrün, später orangebraun; kann in allen Stadien gegessen werden"@de
+ .
+
+<#Himbeeren> a garten:Pflanze ;
+    skos:prefLabel "Himbeeren"@de ;
+    garten:fruchtFamilie gv:ff_Rosengewaechse ;
+    garten:mehrjaehrig true
+ .
+
+<#Honigmelone> a garten:Pflanze ;
+    skos:prefLabel "Honigmelone"@de ;
+    garten:fruchtFamilie gv:ff_Kuerbisgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Glas mit Wasser/Kamillentee"@de
+    ; garten:vorkeimDauer "12-48h"@de
+    ; garten:keimtemperatur "20-25°C"@de
+    ; garten:aussaattiefe "1,5 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "nicht pikieren"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "80x80 cm"@de
+    ; garten:erdeAuspflanzung "locker, humosreich, durchlässig"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "regelmäßig gießen, alle zwei Wochen düngen"@de
+    ; garten:erntezeit "August-September"@de
+ .
+
+<#Johannisbeere> a garten:Pflanze ;
+    skos:prefLabel "Johannisbeere"@de ;
+    garten:fruchtFamilie gv:ff_Rosengewaechse ;
+    garten:mehrjaehrig true
+ .
+
+<#Jostabeere> a garten:Pflanze ;
+    skos:prefLabel "Jostabeere"@de ;
+    garten:fruchtFamilie gv:ff_Rosengewaechse ;
+    garten:mehrjaehrig true
+ .
+
+<#JungferImGrunen> a garten:Pflanze ;
+    skos:prefLabel "Jungfer im Grünen"@de ;
+    garten:fruchtFamilie gv:ff_Hahnenfussgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Mai"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "10-20°C"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:abstand "20 cm"@de
+    ; garten:erdeAuspflanzung "locker, mäßig nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+ .
+
+<#Kamille> a garten:Pflanze ;
+    skos:prefLabel "Kamille"@de ;
+    garten:fruchtFamilie gv:ff_Korbbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Juni"@de
+    ; garten:anzuchtOrt "egal"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "15-20°C"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "15x25 cm"@de
+    ; garten:erdeAuspflanzung "egal"@de
+    ; garten:standort "sonnig"@de
+ .
+
+<#Kapuzinerkresse> a garten:Pflanze ;
+    skos:prefLabel "Kapuzinerkresse"@de ;
+    garten:fruchtFamilie gv:ff_Kapuzinerkressengewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Mai"@de
+    ; garten:anzuchtOrt "März-April drinnen Mai draußen"@de
+    ; garten:keimtemperatur "18-21°C (Keimen) 15-18°C (Anzucht)"@de
+    ; garten:aussaattiefe "1-2 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "10 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, ggf. mit Sand mischen, mäßig nährstoffreich"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:erntezeit "Juni-Oktober"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "feuchte Samen vorkühlen (5°C)"@de
+    ; garten:vorkeimDauer "5 Tage"@de
+ .
+
+<#Kartoffeln> a garten:Pflanze ;
+    skos:prefLabel "Kartoffeln"@de ;
+    garten:fruchtFamilie gv:ff_Nachtschatten ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Ende April"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Am Fenster"@de
+    ; garten:vorkeimDauer "1 Monat"@de
+    ; garten:keimtemperatur "48h bei 20°C aufwecken, dann bei 10-15°C"@de
+    ; garten:aussaattiefe "Knollendicke = Pflanztiefe"@de
+    ; garten:abstand "30x75 cm"@de
+    ; garten:pflege "anhäufeln, mit Kompost und/oder Hornspäne düngen"@de
+    ; garten:erntezeit "Juli-September"@de
+ .
+
+<#Knoblauch> a garten:Pflanze ;
+    skos:prefLabel "Knoblauch"@de ;
+    garten:fruchtFamilie gv:ff_Zwiebelgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Oktober"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "3-5 cm"@de
+    ; garten:pflegeAnzucht "Mit Spitze nach oben"@de
+    ; garten:abstand "10x30 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, ggf. mit Sand mischen"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "eine Woche vor Pflanzung Kompost einarbeiten April-Mai 1-2 Mal mit verdünnter Brennesseljauche düngen"@de
+    ; garten:erntezeit "Juli-Septmeber"@de
+    ; garten:kommentar "wenn Teile der Blätter gelb werden ist er reif"@de
+ .
+
+<#Kohlrabi> a garten:Pflanze ;
+    skos:prefLabel "Kohlrabi"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Januar-Juli"@de
+    ; garten:anzuchtOrt "Januar-April drinnen ab Mai draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "18-20°C (Keimung) 12-16°C (Anzucht)"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "ab März"@de
+    ; garten:abstand "25 cm"@de
+    ; garten:erdeAuspflanzung "mäßig nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "Boden feucht halten und gut mulchen um Aufplatzen zu verhindern; bei Pflanzung und 6 Wochen danach Jauche"@de
+    ; garten:erntezeit "April-Oktober"@de
+    ; garten:kommentar "Aufplatzen entsteht hauptsächlicht durch Temperaturschwankungen"@de
+ .
+
+<#Kopfsalat> a garten:Pflanze ;
+    skos:prefLabel "Kopfsalat"@de ;
+    garten:fruchtFamilie gv:ff_Korbbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Januar-April Juli"@de
+    ; garten:anzuchtOrt "drinnen oder Frühbeet"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "10-15°C (Keinung) 12-16°C (Anzucht)"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:erdeAnzucht "Kokoserde"@de
+    ; garten:pflanzzeit "ab März"@de
+    ; garten:abstand "30x30 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "beim Pflanzen Langzeitdünger ins Pflanzloch geben oder Kompost untermischen; danach nicht mehr düngen"@de
+    ; garten:erntezeit "ab April"@de
+ .
+
+<#Kurbis> a garten:Pflanze ;
+    skos:prefLabel "Kürbis"@de ;
+    garten:fruchtFamilie gv:ff_Kuerbisgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Mai"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Glas mit Wasser/Kamillentee"@de
+    ; garten:vorkeimDauer "12h"@de
+    ; garten:keimtemperatur "20-24°C (Keimung) 16-20°C (Anzucht)"@de
+    ; garten:aussaattiefe "3 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "150 cm"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "September-Oktober"@de
+ .
+
+<#Lavendel> a garten:Pflanze ;
+    skos:prefLabel "Lavendel"@de ;
+    garten:fruchtFamilie gv:ff_Lippenbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März - April"@de
+    ; garten:anzuchtOrt "Freiland möglich, aber Vorkultur empfohlen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "16-25°C"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:erdeAnzucht "Sand + Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "50 cm"@de
+    ; garten:erdeAuspflanzung "sandig, durchlässig, nährstoffarm"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juni - August"@de
+ .
+
+<#Lein> a garten:Pflanze ;
+    skos:prefLabel "Lein"@de ;
+    garten:fruchtFamilie gv:ff_Leingewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Juni"@de
+    ; garten:abstand "30 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, sandig-lehmig, nicht zu nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "ggf. Sand untermischen"@de
+    ; garten:erntezeit "Juni-Juli"@de
+ .
+
+<#Mohre> a garten:Pflanze ;
+    skos:prefLabel "Möhre"@de ;
+    garten:fruchtFamilie gv:ff_Doldenbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Februar-Juni"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Sand"@de
+    ; garten:vorkeimDauer "bis Keimung"@de
+    ; garten:keimtemperatur "16-18°C"@de
+    ; garten:aussaattiefe "2 cm"@de
+    ; garten:abstand "3x35 cm"@de
+    ; garten:erdeAuspflanzung "humos, locker, sandig"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juni-Oktober"@de
+ .
+
+<#Paprika> a garten:Pflanze ;
+    skos:prefLabel "Paprika"@de ;
+    garten:fruchtFamilie gv:ff_Nachtschatten ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Februa-April"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Ziploc und Küchenpapier"@de
+    ; garten:vorkeimDauer "bis Keimung"@de
+    ; garten:keimtemperatur "25°C (Keimung) 20-25°C (Anzucht)"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "sobald erste richtige Blätter kommen düngen"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "40 cm"@de
+    ; garten:erdeAuspflanzung "locker, nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:pflege "eine Woche vor Aussaat Langzeitdünger in Boden einarbeiten Sobald Früchte kommen regelmäßig düngen"@de
+    ; garten:erntezeit "Juli-September"@de
+ .
+
+<#Petersilie> a garten:Pflanze ;
+    skos:prefLabel "Petersilie"@de ;
+    garten:fruchtFamilie gv:ff_Doldenbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Juni"@de
+    ; garten:anzuchtOrt "egal"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "10-25°C"@de
+    ; garten:aussaattiefe "0,5-1,5 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "Keimung dauert sehr lang; muss immer feucht gehalten werden"@de
+    ; garten:pflanzzeit "ab März"@de
+    ; garten:abstand "15 cm"@de
+    ; garten:standort "halbschatten"@de
+    ; garten:erntezeit "Mai-September"@de
+    ; garten:erdeAuspflanzung "nahrhaft, tiefgründig"@de
+ .
+
+<#Pflucksalat> a garten:Pflanze ;
+    skos:prefLabel "Pflücksalat"@de ;
+    garten:fruchtFamilie gv:ff_Korbbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-August"@de
+    ; garten:anzuchtOrt "März-April drinnen ab Mai draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "ab Mai"@de
+    ; garten:abstand "4x25 cm"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Mai-Oktober"@de
+ .
+
+<#Physalis> a garten:Pflanze ;
+    skos:prefLabel "Physalis"@de ;
+    garten:fruchtFamilie gv:ff_Nachtschatten ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:keimtemperatur "25°C (Keimung)"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:pflanzzeit "ab Mai"@de
+    ; garten:abstand "50x50 cm"@de
+    ; garten:erntezeit "Juli-November"@de
+ .
+
+<#Porree> a garten:Pflanze ;
+    skos:prefLabel "Porree"@de ;
+    garten:fruchtFamilie gv:ff_Zwiebelgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Januar-Februar"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:keimtemperatur "17-22°C"@de
+    ; garten:aussaattiefe "2 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "März-April"@de
+    ; garten:abstand "15x40 cm"@de
+    ; garten:erdeAuspflanzung "nährstoffreich"@de
+    ; garten:pflege "alle zwei bis vier Wochen Brennesseljauche"@de
+    ; garten:erntezeit "Juli-September"@de
+ .
+
+<#Radieschen> a garten:Pflanze ;
+    skos:prefLabel "Radieschen"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-August"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:abstand "2x15 cm"@de
+    ; garten:erdeAuspflanzung "locker, humos"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:pflege "nicht zu trocken, sonst zu scharf"@de
+    ; garten:erntezeit "Mai-Oktober"@de
+ .
+
+<#Rauke> a garten:Pflanze ;
+    skos:prefLabel "Rauke"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Juli"@de
+    ; garten:anzuchtOrt "März drinnen ab April draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "14-20°C"@de
+    ; garten:aussaattiefe "0,5-1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "April"@de
+    ; garten:abstand "10x20 cm"@de
+    ; garten:erdeAuspflanzung "nährstoffreich, durchlässig"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juni-September"@de
+ .
+
+<#Rhabarber> a garten:Pflanze ;
+    skos:prefLabel "Rhabarber"@de ;
+    garten:fruchtFamilie gv:ff_Knoeterichgewaechse ;
+    garten:mehrjaehrig true
+ .
+
+<#Ringelblumen> a garten:Pflanze ;
+    skos:prefLabel "Ringelblumen"@de ;
+    garten:fruchtFamilie gv:ff_Korbbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Juni"@de
+    ; garten:anzuchtOrt "März drinnen ab April draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "10-25°C"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "ab April"@de
+    ; garten:abstand "20 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, sandig-lehmig, nicht zu nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juni-Oktober"@de
+ .
+
+<#Rosmarin> a garten:Pflanze ;
+    skos:prefLabel "Rosmarin"@de ;
+    garten:fruchtFamilie gv:ff_Lippenbluetler ;
+    garten:mehrjaehrig true
+ .
+
+<#RoteBete> a garten:Pflanze ;
+    skos:prefLabel "Rote Bete"@de ;
+    garten:fruchtFamilie gv:ff_Fuchsschwanzgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Mai"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "3 cm"@de
+    ; garten:abstand "30x15 cm"@de
+    ; garten:erdeAuspflanzung "locker, mäßig nährstoffreich"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:pflege "leicht mulchen"@de
+    ; garten:erntezeit "Juni-Oktober"@de
+    ; garten:kommentar "gut lagerfähig"@de
+ .
+
+<#Rotkohl> a garten:Pflanze ;
+    skos:prefLabel "Rotkohl"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-April"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "50x50 cm"@de
+    ; garten:erntezeit "September-Oktober"@de
+ .
+
+<#Schnittlauch> a garten:Pflanze ;
+    skos:prefLabel "Schnittlauch"@de ;
+    garten:fruchtFamilie gv:ff_Zwiebelgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Februar-August"@de
+    ; garten:anzuchtOrt "Februar-April drinnen ab Mai draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "15-20°C"@de
+    ; garten:aussaattiefe "0,5 cm"@de
+    ; garten:pflanzzeit "Mai-August"@de
+    ; garten:abstand "1,5x25 cm"@de
+    ; garten:erdeAuspflanzung "humos, nährstoffreich"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:erntezeit "Juni-Oktober"@de
+ .
+
+<#Soja> a garten:Pflanze ;
+    skos:prefLabel "Soja"@de ;
+    garten:fruchtFamilie gv:ff_Huelsenfruechtler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Juni"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "min. 12°C"@de
+    ; garten:aussaattiefe "4 cm"@de
+    ; garten:abstand "30x50 cm"@de
+    ; garten:erntezeit "August-Oktober"@de
+    ; garten:kommentar "Edamame"@de
+ .
+
+<#Spinat> a garten:Pflanze ;
+    skos:prefLabel "Spinat"@de ;
+    garten:fruchtFamilie gv:ff_Fuchsschwanzgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Mai"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:keimtemperatur "10-20°C"@de
+    ; garten:aussaattiefe "2-3 cm"@de
+    ; garten:abstand "8-12 cm"@de
+    ; garten:erdeAuspflanzung "nährstoffreich, humos, durchlässig"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:erntezeit "Juni-September"@de
+ .
+
+<#Stachelbeere> a garten:Pflanze ;
+    skos:prefLabel "Stachelbeere"@de ;
+    garten:fruchtFamilie gv:ff_Rosengewaechse ;
+    garten:mehrjaehrig true
+ .
+
+<#Stangensellerie> a garten:Pflanze ;
+    skos:prefLabel "Stangensellerie"@de ;
+    garten:fruchtFamilie gv:ff_Doldenbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Februar-April"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Glas mit Wasser/Kamillentee"@de
+    ; garten:vorkeimDauer "12-24h"@de
+    ; garten:keimtemperatur "20-22°C (Keimung) 15-18°C (Anzucht)"@de
+    ; garten:aussaattiefe "leicht mit Erde/ Sand bedecken"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "nicht mit Erde, sondern mit Sand bedecken nach 2-4 Wochen mit Flüssigdünger düngen Abhärten vor der Auspflanzung"@de
+    ; garten:pflanzzeit "April-Mai"@de
+    ; garten:abstand "30x30 cm"@de
+    ; garten:erdeAuspflanzung "durchlässig, locker, nährstoffreich"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:pflege "regelmäßig düngen"@de
+    ; garten:erntezeit "Juli-September"@de
+ .
+
+<#Stielmus> a garten:Pflanze ;
+    skos:prefLabel "Stielmus"@de ;
+    garten:fruchtFamilie gv:ff_Kreuzbluetler ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März-Mai"@de
+    ; garten:abstand "25 cm"@de
+    ; garten:erdeAuspflanzung "nährstoffreich"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Mai-September"@de
+ .
+
+<#Tomate> a garten:Pflanze ;
+    skos:prefLabel "Tomate"@de ;
+    garten:fruchtFamilie gv:ff_Nachtschatten ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "März"@de
+    ; garten:anzuchtOrt "Drinnen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Ziploc und Küchenpapier"@de
+    ; garten:vorkeimDauer "min. 2 Tage"@de
+    ; garten:keimtemperatur "20-25°C (Keimen) 17-18°C (Anzucht)"@de
+    ; garten:aussaattiefe "1 cm"@de
+    ; garten:erdeAnzucht "gesiebten, reifen Kompost"@de
+    ; garten:pflegeAnzucht "nach 3-4 Wochen mit stark verdünntem Flüssigdünger düngen; Abhärten vor Auspflanzung"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "70 cm"@de
+    ; garten:erdeAuspflanzung "Hornspäne und Gesteinsmehl ins Pflanzloch; nährstoffreich, mittelschwer, humusreich, tiefgründig"@de
+    ; garten:standort "sonnig, geschützt"@de
+    ; garten:pflege "regelmäßig Wässern; 1x pro Woche ausgeizen"@de
+    ; garten:erntezeit "Juli - Oktober"@de
+    ; garten:kommentar "Salattomate; grün-gelb gestreift"@de
+ .
+
+<#Wintersteckzwiebel> a garten:Pflanze ;
+    skos:prefLabel "Wintersteckzwiebel"@de ;
+    garten:fruchtFamilie gv:ff_Zwiebelgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "September-Oktober"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:abstand "10x20 cm"@de
+    ; garten:erdeAuspflanzung "falls Frost ohne Schnee kommt, etwas anhäufeln und mit Reisig abdecken"@de
+    ; garten:erntezeit "Mai-August"@de
+ .
+
+<#Zucchini> a garten:Pflanze ;
+    skos:prefLabel "Zucchini"@de ;
+    garten:fruchtFamilie gv:ff_Kuerbisgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Mai"@de
+    ; garten:anzuchtOrt "April drinnen Mai draußen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Glas mit Wasser/Kamillentee"@de
+    ; garten:vorkeimDauer "12h"@de
+    ; garten:keimtemperatur "20-22°C (Keimung) 15-18°C (Anzucht)"@de
+    ; garten:aussaattiefe "3 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "nicht pikieren"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "100x100 cm"@de
+    ; garten:erdeAuspflanzung "humos, nährstoffreich"@de
+    ; garten:standort "halbschattig - sonnig"@de
+    ; garten:pflege "regelmäßig gießen; ab und zu Brennesseljauche"@de
+    ; garten:erntezeit "Juni-September"@de
+    ; garten:kommentar "runde, hellgrüne Früchte, Jung ernten"@de
+ .
+
+<#Zuckermais> a garten:Pflanze ;
+    skos:prefLabel "Zuckermais"@de ;
+    garten:fruchtFamilie gv:ff_Suessgraeser ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "April-Mai"@de
+    ; garten:anzuchtOrt "drinnen"@de
+    ; garten:vorkeimen "ja"@de
+    ; garten:vorkeimArt "Wasser"@de
+    ; garten:vorkeimDauer "6-8 h"@de
+    ; garten:keimtemperatur "14-20°C"@de
+    ; garten:aussaattiefe "3-4 cm"@de
+    ; garten:erdeAnzucht "Anzuchterde"@de
+    ; garten:pflegeAnzucht "Mit der Spitze nach unten"@de
+    ; garten:pflanzzeit "sobald frostfrei"@de
+    ; garten:abstand "20x60 cm"@de
+    ; garten:erdeAuspflanzung "tiefgründig, nährstoffreich, kalkhaltig"@de
+    ; garten:standort "sonnig"@de
+    ; garten:erntezeit "Juli-Oktober"@de
+ .
+
+<#Zwiebeln> a garten:Pflanze ;
+    skos:prefLabel "Zwiebeln"@de ;
+    garten:fruchtFamilie gv:ff_Zwiebelgewaechse ;
+    garten:mehrjaehrig false
+    ; garten:anzuchtZeit "Ende März - Anfang April"@de
+    ; garten:anzuchtOrt "draußen"@de
+    ; garten:vorkeimen "nein"@de
+    ; garten:aussaattiefe "so, dass oberes Drittel noch rauschaut"@de
+    ; garten:abstand "10x20 cm"@de
+ .
+
+<#SorteBasilikumGroesGrunes> a garten:Sorte ;
+    skos:prefLabel "Großes Grünes"@de ;
+    garten:sorteVon <#Basilikum>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteBlattkorianderSperlisMarino> a garten:Sorte ;
+    skos:prefLabel "Sperlis Marino"@de ;
+    garten:sorteVon <#Blattkoriander>
+ .
+
+<#SorteBlumenkohlDiSiciliaVioletto> a garten:Sorte ;
+    skos:prefLabel "Di Sicilia violetto"@de ;
+    garten:sorteVon <#Blumenkohl>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteBlumenkohlNeckarperle> a garten:Sorte ;
+    skos:prefLabel "Neckarperle"@de ;
+    garten:sorteVon <#Blumenkohl>
+ .
+
+<#SorteBokChoyBrassicaRappaVarChinesis> a garten:Sorte ;
+    skos:prefLabel "Brassica Rappa var. Chinesis"@de ;
+    garten:sorteVon <#BokChoy>
+ .
+
+<#SorteBrokkoliCalinaeo> a garten:Sorte ;
+    skos:prefLabel "Calinaeo"@de ;
+    garten:sorteVon <#Brokkoli>
+ .
+
+<#SorteBuschbohneSanguigno2> a garten:Sorte ;
+    skos:prefLabel "Sanguigno 2"@de ;
+    garten:sorteVon <#Buschbohne>
+ .
+
+<#SorteChilliElefonatenrussel> a garten:Sorte ;
+    skos:prefLabel "Elefonatenrüssel"@de ;
+    garten:sorteVon <#Chilli>
+ .
+
+<#SorteChilliGochugaruNorthKorean> a garten:Sorte ;
+    skos:prefLabel "Gochugaru (North Korean)"@de ;
+    garten:sorteVon <#Chilli>
+ .
+
+<#SorteChilliHausPaprika> a garten:Sorte ;
+    skos:prefLabel "Haus Paprika"@de ;
+    garten:sorteVon <#Chilli>
+ .
+
+<#SorteChilliLilaLuzi> a garten:Sorte ;
+    skos:prefLabel "Lila Luzi"@de ;
+    garten:sorteVon <#Chilli>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteChilliPepperoniPagels> a garten:Sorte ;
+    skos:prefLabel "Pepperoni Pagels"@de ;
+    garten:sorteVon <#Chilli>
+ .
+
+<#SorteDillSperlisElefant> a garten:Sorte ;
+    skos:prefLabel "Sperlis Elefant"@de ;
+    garten:sorteVon <#Dill>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteDillTetra> a garten:Sorte ;
+    skos:prefLabel "Tetra"@de ;
+    garten:sorteVon <#Dill>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteEinlegegurkeLibelle> a garten:Sorte ;
+    skos:prefLabel "Libelle"@de ;
+    garten:sorteVon <#Einlegegurke>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteEinlegegurkeVorgebirgstrauben> a garten:Sorte ;
+    skos:prefLabel "Vorgebirgstrauben"@de ;
+    garten:sorteVon <#Einlegegurke>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteEndivienEscariol> a garten:Sorte ;
+    skos:prefLabel "Escariol"@de ;
+    garten:sorteVon <#Endivien>
+ .
+
+<#SorteGrunkohlHalbhoherGrunerKrauser> a garten:Sorte ;
+    skos:prefLabel "Halbhoher grüner Krauser"@de ;
+    garten:sorteVon <#Grunkohl>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteGrunkohlOstfriesischePalme> a garten:Sorte ;
+    skos:prefLabel "Ostfriesische Palme"@de ;
+    garten:sorteVon <#Grunkohl>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteGurkeMarketmore> a garten:Sorte ;
+    skos:prefLabel "Marketmore"@de ;
+    garten:sorteVon <#Gurke>
+ .
+
+<#SorteGurkeRuskaja> a garten:Sorte ;
+    skos:prefLabel "Ruskaja"@de ;
+    garten:sorteVon <#Gurke>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteHonigmeloneAnanas> a garten:Sorte ;
+    skos:prefLabel "Ananas"@de ;
+    garten:sorteVon <#Honigmelone>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKamilleEchteKamille> a garten:Sorte ;
+    skos:prefLabel "Echte Kamille"@de ;
+    garten:sorteVon <#Kamille>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKapuzinerkresseBunteJuwelen> a garten:Sorte ;
+    skos:prefLabel "Bunte Juwelen"@de ;
+    garten:sorteVon <#Kapuzinerkresse>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKartoffelnPflanzkartoffelsortiment4UnsereBeliebtesten> a garten:Sorte ;
+    skos:prefLabel "Pflanzkartoffelsortiment 4 Unsere Beliebtesten"@de ;
+    garten:sorteVon <#Kartoffeln>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKnoblauchLjubascha> a garten:Sorte ;
+    skos:prefLabel "Ljubascha"@de ;
+    garten:sorteVon <#Knoblauch>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKnoblauchMorado> a garten:Sorte ;
+    skos:prefLabel "Morado"@de ;
+    garten:sorteVon <#Knoblauch>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKohlrabiAzurStar> a garten:Sorte ;
+    skos:prefLabel "Azur Star"@de ;
+    garten:sorteVon <#Kohlrabi>
+ .
+
+<#SorteKohlrabiDelikatessBlau> a garten:Sorte ;
+    skos:prefLabel "Delikatess blau"@de ;
+    garten:sorteVon <#Kohlrabi>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKohlrabiSuperschmelz> a garten:Sorte ;
+    skos:prefLabel "Superschmelz"@de ;
+    garten:sorteVon <#Kohlrabi>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKopfsalatBaquieu> a garten:Sorte ;
+    skos:prefLabel "Baquieu"@de ;
+    garten:sorteVon <#Kopfsalat>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKopfsalatMaikonig> a garten:Sorte ;
+    skos:prefLabel "Maikönig"@de ;
+    garten:sorteVon <#Kopfsalat>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKopfsalatPirat> a garten:Sorte ;
+    skos:prefLabel "Pirat"@de ;
+    garten:sorteVon <#Kopfsalat>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteKurbisGelberZentner> a garten:Sorte ;
+    skos:prefLabel "Gelber Zentner"@de ;
+    garten:sorteVon <#Kurbis>
+ .
+
+<#SorteLeinBlauer> a garten:Sorte ;
+    skos:prefLabel "Blauer"@de ;
+    garten:sorteVon <#Lein>
+ .
+
+<#SorteMohreGosenheimerTreib> a garten:Sorte ;
+    skos:prefLabel "Gosenheimer Treib"@de ;
+    garten:sorteVon <#Mohre>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteMohreMilan> a garten:Sorte ;
+    skos:prefLabel "Milan"@de ;
+    garten:sorteVon <#Mohre>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteMohreMischung> a garten:Sorte ;
+    skos:prefLabel "Mischung"@de ;
+    garten:sorteVon <#Mohre>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteMohreLangeRoteStumpfe> a garten:Sorte ;
+    skos:prefLabel "lange rote stumpfe"@de ;
+    garten:sorteVon <#Mohre>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SortePaprikaRoterAugsburger> a garten:Sorte ;
+    skos:prefLabel "Roter Augsburger"@de ;
+    garten:sorteVon <#Paprika>
+ .
+
+<#SortePetersilieEinfacheSchnitt> a garten:Sorte ;
+    skos:prefLabel "Einfache Schnitt"@de ;
+    garten:sorteVon <#Petersilie>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SortePetersilieMoskrul2Mooskrause> a garten:Sorte ;
+    skos:prefLabel "Moskrul 2/Mooskrause"@de ;
+    garten:sorteVon <#Petersilie>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SortePflucksalatAmerikanischerBraunerPflucksalat> a garten:Sorte ;
+    skos:prefLabel "Amerikanischer brauner Pflücksalat"@de ;
+    garten:sorteVon <#Pflucksalat>
+ .
+
+<#SortePhysalisDulceria> a garten:Sorte ;
+    skos:prefLabel "Dulceria"@de ;
+    garten:sorteVon <#Physalis>
+ .
+
+<#SortePorreeHilari> a garten:Sorte ;
+    skos:prefLabel "Hilari"@de ;
+    garten:sorteVon <#Porree>
+ .
+
+<#SorteRadieschenEiszapfen> a garten:Sorte ;
+    skos:prefLabel "Eiszapfen"@de ;
+    garten:sorteVon <#Radieschen>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteRadieschenSora> a garten:Sorte ;
+    skos:prefLabel "Sora"@de ;
+    garten:sorteVon <#Radieschen>
+ .
+
+<#SorteRaukeWildeRauke> a garten:Sorte ;
+    skos:prefLabel "Wilde Rauke"@de ;
+    garten:sorteVon <#Rauke>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteRingelblumenPacificBeauty> a garten:Sorte ;
+    skos:prefLabel "Pacific Beauty"@de ;
+    garten:sorteVon <#Ringelblumen>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteRoteBeteGolden> a garten:Sorte ;
+    skos:prefLabel "Golden"@de ;
+    garten:sorteVon <#RoteBete>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteRoteBeteRobuschka> a garten:Sorte ;
+    skos:prefLabel "Robuschka"@de ;
+    garten:sorteVon <#RoteBete>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteRotkohlRodyna> a garten:Sorte ;
+    skos:prefLabel "Rodyna"@de ;
+    garten:sorteVon <#Rotkohl>
+ .
+
+<#SorteSchnittlauchMiddleman> a garten:Sorte ;
+    skos:prefLabel "Middleman"@de ;
+    garten:sorteVon <#Schnittlauch>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteSojaChibaGreen> a garten:Sorte ;
+    skos:prefLabel "Chiba Green"@de ;
+    garten:sorteVon <#Soja>
+ .
+
+<#SorteSpinatMatador> a garten:Sorte ;
+    skos:prefLabel "Matador"@de ;
+    garten:sorteVon <#Spinat>
+ .
+
+<#SorteStangensellerieTallUtah> a garten:Sorte ;
+    skos:prefLabel "Tall Utah"@de ;
+    garten:sorteVon <#Stangensellerie>
+ .
+
+<#SorteStielmusNamenia> a garten:Sorte ;
+    skos:prefLabel "Namenia"@de ;
+    garten:sorteVon <#Stielmus>
+ .
+
+<#SorteTomateBlackRoma> a garten:Sorte ;
+    skos:prefLabel "Black Roma"@de ;
+    garten:sorteVon <#Tomate>
+ .
+
+<#SorteTomateGreenZabra> a garten:Sorte ;
+    skos:prefLabel "Green Zabra"@de ;
+    garten:sorteVon <#Tomate>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteTomateLiguria> a garten:Sorte ;
+    skos:prefLabel "Liguria"@de ;
+    garten:sorteVon <#Tomate>
+ .
+
+<#SorteTomateMarmande> a garten:Sorte ;
+    skos:prefLabel "Marmande"@de ;
+    garten:sorteVon <#Tomate>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteTomateMarchengranat> a garten:Sorte ;
+    skos:prefLabel "Märchengranat"@de ;
+    garten:sorteVon <#Tomate>
+ .
+
+<#SorteTomateOchsenherz> a garten:Sorte ;
+    skos:prefLabel "Ochsenherz"@de ;
+    garten:sorteVon <#Tomate>
+ .
+
+<#SorteTomatePrimabella> a garten:Sorte ;
+    skos:prefLabel "Primabella"@de ;
+    garten:sorteVon <#Tomate>
+ .
+
+<#SorteTomateSanMarzano> a garten:Sorte ;
+    skos:prefLabel "San Marzano"@de ;
+    garten:sorteVon <#Tomate>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteTomateTigerella> a garten:Sorte ;
+    skos:prefLabel "Tigerella"@de ;
+    garten:sorteVon <#Tomate>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteTomateYellowClementine> a garten:Sorte ;
+    skos:prefLabel "Yellow Clementine"@de ;
+    garten:sorteVon <#Tomate>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteTomateZuckertraube> a garten:Sorte ;
+    skos:prefLabel "Zuckertraube"@de ;
+    garten:sorteVon <#Tomate>
+ .
+
+<#SorteWintersteckzwiebelRadar> a garten:Sorte ;
+    skos:prefLabel "Radar"@de ;
+    garten:sorteVon <#Wintersteckzwiebel>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteWintersteckzwiebelShakespear> a garten:Sorte ;
+    skos:prefLabel "Shakespear"@de ;
+    garten:sorteVon <#Wintersteckzwiebel>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteZucchiniBlackBeauty> a garten:Sorte ;
+    skos:prefLabel "Black Beauty"@de ;
+    garten:sorteVon <#Zucchini>
+ .
+
+<#SorteZucchiniCocozelleVonTripolis> a garten:Sorte ;
+    skos:prefLabel "Cocozelle von Tripolis"@de ;
+    garten:sorteVon <#Zucchini>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteZucchiniTondoChiaroDiNizza> a garten:Sorte ;
+    skos:prefLabel "Tondo chiaro di Nizza"@de ;
+    garten:sorteVon <#Zucchini>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteZuckermaisTrueSweetGold> a garten:Sorte ;
+    skos:prefLabel "True Sweet Gold"@de ;
+    garten:sorteVon <#Zuckermais>
+    ; garten:angebautImJahr 2025
+ .
+
+<#SorteZwiebelnStuttgarterRiesen> a garten:Sorte ;
+    skos:prefLabel "Stuttgarter Riesen"@de ;
+    garten:sorteVon <#Zwiebeln>
+ .
+

@@ -1,0 +1,360 @@
+# Ontologie + SHACL Shapes für einen naturnahen Kleingarten mit Fruchtfolge
+# ---------------------------------------------------------------
+# Diese Datei enthält NUR Begriffe (Ontologie) und Regeln (Shapes).
+# Die erlaubten Werte (SKOS-Listen) liegen in garten-vokabular.ttl,
+# die konkreten Garten-Daten in beispiel-garten.ttl.
+#
+# Bestehende Vokabulare, mit denen wir verknüpfen ("linked" in Linked Data):
+#   rdfs  : Klassen-/Hierarchie-Grundlagen
+#   skos  : kontrollierte Listen (Fruchtfamilien, Boden, Sonnenlage)
+#   time  : Zeitintervalle für Fruchtfolge-Jahre
+#   dcterms, schema.org: Grundbegriffe wie Titel, Beschreibung
+
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Eigener Namensraum des Gartens
+@prefix garten: <https://example.org/garten-planer/ontology#> .
+@prefix shape: <https://example.org/garten-planer/shapes#> .
+
+# ---------------------------------------------------------------
+# 1. Kleine Ontologie (Begriffe des Gartens)
+# ---------------------------------------------------------------
+
+garten:Kleingarten a rdfs:Class ;
+    rdfs:label "Kleingarten"@de, "Allotment garden"@en ;
+    rdfs:comment "Der Gesamtraum: Parzelle mit Beeten, die in einer Fruchtfolge bewirtschaftet werden."@de .
+
+garten:Beet a rdfs:Class ;
+    rdfs:label "Beet"@de, "Garden bed"@en ;
+    rdfs:comment "Ein definierter Anbau-Streifen mit Standorteigenschaften, der Teil einer Fruchtfolge ist."@de .
+
+garten:Fruchtfolge a rdfs:Class ;
+    rdfs:label "Fruchtfolge"@de, "Crop rotation"@en ;
+    rdfs:comment "Ein Rotationsplan über Beete/Jahre, der Fruchtfamilien wechseln lässt (naturnah: kein Fraß- und Krankheitsaufbau)."@de .
+
+garten:Pflanzung a rdfs:Class ;
+    rdfs:label "Pflanzung"@de, "Planting"@en ;
+    rdfs:comment "Eine konkrete Aussaat/Pflanzung auf einem Beet in einem Folge-Jahr."@de .
+
+garten:Pflanze a rdfs:Class ;
+    rdfs:label "Pflanze"@de, "Crop"@en ;
+    rdfs:comment "Eine Kulturart (z.B. Kartoffel, Spinat) mit Fruchtfamilie und Mehrjährigkeit."@de .
+
+garten:Sorte a rdfs:Class ;
+    rdfs:label "Sorte"@de, "Cultivar"@en ;
+    rdfs:comment "Eine konkrete Sorte einer Kulturart, wie sie in der Anzuchtdatenbank geführt wird (z.B. Tomate 'San Marzano')."@de .
+
+garten:hatBeet a rdf:Property ;
+    rdfs:label "hat Beet"@de ;
+    rdfs:domain garten:Kleingarten ; rdfs:range garten:Beet .
+
+garten:hatFruchtfolge a rdf:Property ;
+    rdfs:label "hat Fruchtfolge"@de ;
+    rdfs:domain garten:Kleingarten ; rdfs:range garten:Fruchtfolge .
+
+garten:inFruchtfolge a rdf:Property ;
+    rdfs:label "in Fruchtfolge"@de ;
+    rdfs:domain garten:Beet ; rdfs:range garten:Fruchtfolge .
+
+garten:beginntAufBeet a rdf:Property ;
+    rdfs:label "beginnt auf Beet"@de ;
+    rdfs:comment "In welchem Beet die Fruchtfolge startet."@de ;
+    rdfs:domain garten:Fruchtfolge ; rdfs:range garten:Beet .
+
+garten:rotateNachJahren a rdf:Property ;
+    rdfs:label "Rotation in Jahren"@de ;
+    rdfs:comment "Länge des Fruchtfolge-Zyklus in Jahren (typisch 3–6)."@de ;
+    rdfs:domain garten:Fruchtfolge ; rdfs:range xsd:integer .
+
+garten:hatPflanzung a rdf:Property ;
+    rdfs:label "hat Pflanzung"@de ;
+    rdfs:domain garten:Beet ; rdfs:range garten:Pflanzung .
+
+garten:aufBeet a rdf:Property ;
+    rdfs:label "auf Beet"@de ;
+    rdfs:domain garten:Pflanzung ; rdfs:range garten:Beet .
+
+garten:pflanzt a rdf:Property ;
+    rdfs:label "pflanzt"@de ;
+    rdfs:domain garten:Pflanzung ; rdfs:range garten:Pflanze .
+
+garten:sorte a rdf:Property ;
+    rdfs:label "Sorte"@de ;
+    rdfs:comment "Verlinkt die konkrete Sorte einer Pflanzung (alternative zu garten:pflanzt, wenn die Art über die Sorte bekannt ist)."@de ;
+    rdfs:domain garten:Pflanzung ; rdfs:range garten:Sorte .
+
+garten:fruchtFamilie a rdf:Property ;
+    rdfs:label "Fruchtfamilie"@de, "botanical family"@en ;
+    rdfs:comment "Botanische Familie – Grundlage der Fruchtfolge (Verwandte nicht nacheinander auf dasselbe Beet)."@de .
+
+garten:flaeche a rdf:Property ;
+    rdfs:label "Fläche"@de ;
+    rdfs:comment "Beetfläche in m² (dezimal)."@de .
+
+garten:sonnenlage a rdf:Property ;
+    rdfs:label "Sonnenlage"@de .
+
+garten:bodentyp a rdf:Property ;
+    rdfs:label "Bodentyp"@de .
+
+garten:mehrjaehrig a rdf:Property ;
+    rdfs:label "mehrjährig"@de ;
+    rdfs:comment "Mehrjährige Kulturen (Rhabarber, Beeren) nehmen nicht an der Fruchtfolge teil."@de .
+
+garten:sorteVon a rdf:Property ;
+    rdfs:label "Sorte von"@de ;
+    rdfs:domain garten:Sorte ; rdfs:range garten:Pflanze .
+
+# Anzucht-/Kultur-Eigenschaften (aus der Anzuchtdatenbank, Freitext-Literale)
+garten:anzuchtZeit a rdf:Property ;        rdfs:label "Anzucht-Zeit"@de .
+garten:anzuchtOrt a rdf:Property ;         rdfs:label "Anzucht-Ort"@de .
+garten:vorkeimen a rdf:Property ;          rdfs:label "Vorkeimen?"@de .
+garten:vorkeimArt a rdf:Property ;         rdfs:label "Vorkeim-Art"@de .
+garten:vorkeimDauer a rdf:Property ;       rdfs:label "Vorkeim-Dauer"@de .
+garten:keimtemperatur a rdf:Property ;     rdfs:label "Keimtemperatur"@de .
+garten:aussaattiefe a rdf:Property ;       rdfs:label "Aussaattiefe"@de .
+garten:erdeAnzucht a rdf:Property ;        rdfs:label "Erde (Anzucht)"@de .
+garten:pflegeAnzucht a rdf:Property ;      rdfs:label "Pflege (Anzucht)"@de .
+garten:pflanzzeit a rdf:Property ;         rdfs:label "Pflanzzeit"@de .
+garten:abstand a rdf:Property ;            rdfs:label "Abstand"@de .
+garten:erdeAuspflanzung a rdf:Property ;   rdfs:label "Erde (Auspflanzung)"@de .
+garten:standort a rdf:Property ;           rdfs:label "Standort"@de .
+garten:pflege a rdf:Property ;             rdfs:label "Pflege"@de .
+garten:dauerAussaatBisErnte a rdf:Property ; rdfs:label "Dauer Aussaat bis Ernte"@de .
+garten:erntezeit a rdf:Property ;          rdfs:label "Erntezeit"@de .
+garten:kommentar a rdf:Property ;          rdfs:label "Kommentar"@de .
+garten:angebautImJahr a rdf:Property ;
+    rdfs:label "angebaut im Jahr"@de ;
+    rdfs:comment "Jahr, in dem die Sorte tatsächlich angebaut wurde (aus der Kalender-Spalte der Anzuchtdatenbank)."@de ;
+    rdfs:range xsd:gYear .
+
+# Kultur-Ereignisse (aus den Kalender-Blättern 2025/2026)
+garten:menge a rdf:Property ;
+    rdfs:label "Menge"@de ;
+    rdfs:comment "Angebaute Menge, z.B. Anzahl Pflanzen oder Reihen (Freitext wie in der Quelle)."@de .
+
+garten:gekauft a rdf:Property ;
+    rdfs:label "gekauft"@de ;
+    rdfs:comment "Saatgut/Pflanzmaterial wurde gekauft (true) statt selbst geerntet/geschenkt."@de ;
+    rdfs:range xsd:boolean .
+
+garten:monatAnzucht a rdf:Property ;
+    rdfs:label "Monat der Anzucht"@de ;
+    rdfs:range xsd:gYearMonth .
+
+garten:monatPflanzung a rdf:Property ;
+    rdfs:label "Monat der (Aus-)Pflanzung"@de ;
+    rdfs:range xsd:gYearMonth .
+
+garten:monatErnte a rdf:Property ;
+    rdfs:label "Monat der (letzten) Ernte"@de ;
+    rdfs:range xsd:gYearMonth .
+
+garten:monatsHaelfte a rdf:Property ;
+    rdfs:label "Monats-Hälfte"@de ;
+    rdfs:comment "Präzisierung des Monats: Anfang, Mitte oder Ende."@de .
+
+garten:anzuchtZeitpunkt a rdf:Property ;
+    rdfs:label "Anzucht-Zeitpunkt im Monat"@de ;
+    rdfs:comment "Anfang, Mitte oder Ende – bezieht sich auf garten:monatAnzucht."@de .
+
+garten:pflanzZeitpunkt a rdf:Property ;
+    rdfs:label "Pflanz-Zeitpunkt im Monat"@de ;
+    rdfs:comment "Anfang, Mitte oder Ende – bezieht sich auf garten:monatPflanzung."@de .
+
+# ---------------------------------------------------------------
+# 2. SHACL Shapes – die Validierungsregeln
+# ---------------------------------------------------------------
+
+shape:KleingartenShape a sh:NodeShape ;
+    sh:targetClass garten:Kleingarten ;
+    rdfs:label "Shape für Kleingarten"@de ;
+    sh:property [
+        sh:path dcterms:title ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:minLength 2 ;
+        sh:datatype xsd:string ;
+        sh:message "Ein Kleingarten braucht genau einen Titel."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:hatBeet ;
+        sh:minCount 4 ;
+        sh:class garten:Beet ;
+        sh:message "Für eine Fruchtfolge braucht der Garten mindestens 4 Beete (mind. 4 Jahre Rotation)."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:hatFruchtfolge ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:class garten:Fruchtfolge ;
+        sh:message "Der Kleingarten braucht genau eine Fruchtfolge-Definition."@de ;
+    ] .
+
+shape:BeetShape a sh:NodeShape ;
+    sh:targetClass garten:Beet ;
+    rdfs:label "Shape für Beet"@de ;
+    sh:property [
+        sh:path dcterms:title ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "Jedes Beet braucht genau einen Namen, z.B. 'Beet Nord'."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:flaeche ;
+        sh:datatype xsd:decimal ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:minInclusive 0.1 ;
+        sh:message "Die Fläche muss in m² angegeben werden und größer als 0 sein."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:sonnenlage ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node shape:SonnenlageNode ;
+        sh:message "Sonnenlage muss genau einmal und als Wert aus der Sonnenlagen-Liste (sonnig/halbschattig/schattig) gesetzt sein."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:bodentyp ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node shape:BodentypNode ;
+        sh:message "Bodentyp muss genau einmal und aus der Bodentypen-Liste gesetzt sein."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:inFruchtfolge ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:class garten:Fruchtfolge ;
+        sh:message "Jedes Beet gehört in genau eine Fruchtfolge."@de ;
+    ] .
+
+shape:SonnenlageNode a sh:NodeShape ;
+    rdfs:label "Erlaubte Sonnenlagen (SKOS-Konzepte aus der Vokabular-Datei)"@de ;
+    sh:class skos:Concept ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue <https://example.org/garten-planer/vokabular#Sonnenlagenliste> ] .
+
+shape:BodentypNode a sh:NodeShape ;
+    rdfs:label "Erlaubte Bodentypen (SKOS-Konzepte aus der Vokabular-Datei)"@de ;
+    sh:class skos:Concept ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue <https://example.org/garten-planer/vokabular#Bodentypenliste> ] .
+
+shape:FruchtfamilieNode a sh:NodeShape ;
+    rdfs:label "Erlaubte Fruchtfamilien (SKOS-Konzepte aus der Vokabular-Datei)"@de ;
+    sh:class skos:Concept ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue <https://example.org/garten-planer/vokabular#Fruchtfamilienliste> ] .
+
+shape:FruchtfolgeShape a sh:NodeShape ;
+    sh:targetClass garten:Fruchtfolge ;
+    rdfs:label "Shape für Fruchtfolge"@de ;
+    sh:property [
+        sh:path dcterms:title ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "Die Fruchtfolge braucht einen Namen."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:beginntAufBeet ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:class garten:Beet ;
+        sh:message "Die Fruchtfolge braucht ein Start-Beet."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:rotateNachJahren ;
+        sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:minInclusive 3 ; sh:maxInclusive 6 ;
+        sh:message "Fruchtfolgen dauern typisch 3–6 Jahre; im naturnahen Kleingarten sind 4 Jahre der Standard."@de ;
+    ] .
+
+shape:PflanzeShape a sh:NodeShape ;
+    sh:targetClass garten:Pflanze ;
+    rdfs:label "Shape für Pflanze/Kultur"@de ;
+    sh:property [
+        sh:path skos:prefLabel ;
+        sh:minCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "de" ) ;
+        sh:message "Die Pflanze braucht genau einen deutschen Namen (skos:prefLabel mit @de)."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:fruchtFamilie ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node shape:FruchtfamilieNode ;
+        sh:message "Jede Pflanze braucht genau eine Fruchtfamilie aus der definierten Liste."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:mehrjaehrig ;
+        sh:datatype xsd:boolean ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "Pflicht: Angabe, ob die Pflanze mehrjährig ist (mehrjährige Kulturen wie Rhabarber nehmen nicht an der Fruchtfolge teil)."@de ;
+    ] .
+
+shape:PflanzungShape a sh:NodeShape ;
+    sh:targetClass garten:Pflanzung ;
+    rdfs:label "Shape für konkrete Pflanzung"@de ;
+    sh:property [
+        sh:path garten:aufBeet ;
+        sh:maxCount 1 ;
+        sh:class garten:Beet ;
+        sh:message "Eine Pflanzung gehört auf höchstens ein Beet (historische Einträge ohne Beet-Zuordnung sind erlaubt)."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:pflanzt ;
+        sh:maxCount 1 ;
+        sh:class garten:Pflanze ;
+        sh:message "Jede Pflanzung verlinkt höchstens eine Pflanze (entweder direkt oder über die Sorte)."@de ;
+    ] ;
+    sh:property [
+        sh:path time:hasTemporalExtent ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node shape:JahrNode ;
+        sh:message "Für jede Pflanzung muss das Jahr (z.B. 2025) als time:TemporalEntity angegeben sein."@de ;
+    ] .
+
+# Die Pflanzung braucht mindestens eine der Verlinkungen
+# (garten:pflanzt ODER garten:sorte) – geprüft mit sh:or über zwei Property-Shapes:
+shape:PflanzungLinkShape a sh:NodeShape ;
+    sh:targetClass garten:Pflanzung ;
+    sh:or (
+        [ sh:path garten:pflanzt ]
+        [ sh:path garten:sorte ]
+    ) ;
+    rdfs:label "Pflanzung braucht Pflanze oder Sorte"@de .
+
+shape:JahrNode a sh:NodeShape ;
+    rdfs:label "Fruchtfolge-Jahr als Zeitintervall (time:)"@de ;
+    sh:property [
+        sh:path time:hasTRS ;
+        sh:minCount 1 ;
+        sh:hasValue <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+    ] ;
+    sh:property [
+        sh:path time:hasBeginning ;
+        sh:minCount 1 ;
+        sh:node shape:JahrStartNode ;
+    ] .
+
+shape:SorteShape a sh:NodeShape ;
+    sh:targetClass garten:Sorte ;
+    rdfs:label "Shape für Sorte"@de ;
+    sh:property [
+        sh:path skos:prefLabel ;
+        sh:minCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "de" ) ;
+        sh:message "Die Sorte braucht einen deutschen Namen (skos:prefLabel mit @de)."@de ;
+    ] ;
+    sh:property [
+        sh:path garten:sorteVon ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:class garten:Pflanze ;
+        sh:message "Jede Sorte muss genau einer Kulturart zugeordnet sein."@de ;
+    ] .
+
+shape:JahrStartNode a sh:NodeShape ;
+    # Das Jahr kann als gYear (2026) oder als gYearMonth (2025-02) angegeben sein.
+    sh:or (
+        [ sh:path time:inXSDgYear ; sh:datatype xsd:gYear ; sh:minCount 1 ;
+          sh:pattern "^2[0-9]{3}$" ;
+          sh:message "Bitte nur Jahreszahlen dieses Jahrhunderts (z.B. 2026) eintragen."@de ]
+        [ sh:path time:inXSDgYearMonth ; sh:datatype xsd:gYearMonth ; sh:minCount 1 ;
+          sh:pattern "^2[0-9]{3}-[01][0-9]$" ;
+          sh:message "Bitte als Jahr-Monat dieses Jahrhunderts angeben (z.B. 2025-02)."@de ]
+    ) .

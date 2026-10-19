@@ -1,0 +1,357 @@
+@prefix garten: <https://example.org/garten-planer/ontology#>.
+@prefix plan: <https://example.org/garten-planer/plan#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://example.org/garten-planer/extract/beetplan-2025/#dataset> dcterms:title "Beetplan 2025 – Garten 91 (aus PPTM extrahiert)"@de.
+<https://example.org/garten-planer/extract/beetplan-2025/#b43> plan:confidence "high";
+    plan:toMonth 9;
+    plan:fromMonth 4;
+    plan:countHint 3;
+    plan:sourceText "Kartoffeln 4 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kartoffeln>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-potato-bags>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b42> rdfs:comment "Quellnotation aus der PPT; vermutlich überjähriger Anbau."@de;
+    plan:confidence "high";
+    plan:sourceText "Knoblauch A10 - E09";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Knoblauch>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-center-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b41> plan:confidence "high";
+    plan:sourceText "Erdbeeren";
+    plan:displayName "Erdbeeren"@de;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-center-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b40> plan:confidence "medium";
+    plan:toMonth 11;
+    plan:fromMonth 10;
+    plan:sourceText "Kopfsalat 10 - 11";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b39> rdfs:comment "Im Oktober neu erscheinender Eintrag; wahrscheinlich Winterknoblauch über den Jahreswechsel."@de;
+    plan:confidence "medium";
+    plan:sourceText "Knoblauch 10 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Knoblauch>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b38> plan:confidence "high";
+    plan:toMonth 6;
+    plan:fromMonth 5;
+    plan:sourceText "Kohlrabi 5 - 6";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kohlrabi>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b37> plan:confidence "high";
+    plan:toMonth 5;
+    plan:fromMonth 4;
+    plan:sourceText "Kohlrabi 4 - 5";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kohlrabi>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b36> rdfs:comment "Quellnotation aus der PPT; vermutlich überjähriger Anbau."@de;
+    plan:confidence "high";
+    plan:sourceText "Zwiebeln A10 - E08";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zwiebeln>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b35> plan:confidence "medium";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Petersilie 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Petersilie>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b34> plan:confidence "high";
+    plan:toMonth 9;
+    plan:fromMonth 5;
+    plan:sourceText "Zucchini 5 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zucchini>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b33> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Zuckermais 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zuckermais>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b32> plan:confidence "high";
+    plan:sourceText "Jostabeere";
+    plan:displayName "Jostabeere"@de;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b31> plan:confidence "high";
+    plan:sourceText "Himbeeren 3 -";
+    plan:displayName "Himbeeren"@de;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b30> plan:confidence "medium";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Kapuzinerkresse 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kapuzinerkresse>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b29> plan:confidence "high";
+    plan:sourceText "Stachelbeere";
+    plan:displayName "Stachelbeere"@de;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b28> plan:confidence "high";
+    plan:sourceText "Johannisbeere";
+    plan:displayName "Johannisbeere"@de;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b27> plan:confidence "high";
+    plan:sourceText "Erdbeeren";
+    plan:displayName "Erdbeeren"@de;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b26> plan:confidence "medium";
+    plan:toMonth 6;
+    plan:fromMonth 5;
+    plan:sourceText "Dill 5 - 6";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Dill>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b25> plan:confidence "medium";
+    plan:toMonth 6;
+    plan:fromMonth 5;
+    plan:sourceText "Kopfsalat 5 - 6";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b24> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 4;
+    plan:sourceText "Möhre 4 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b23> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Rote Bete 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#RoteBete>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b22> plan:confidence "high";
+    plan:toMonth 9;
+    plan:fromMonth 4;
+    plan:sourceText "Rote Bete 4 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#RoteBete>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b21> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Chili 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Chilli>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b20> plan:confidence "high";
+    plan:toMonth 9;
+    plan:fromMonth 5;
+    plan:sourceText "Gurke 5 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Gurke>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b19> rdfs:comment "Quellnotation aus der PPT; vermutlich überjähriger Anbau."@de;
+    plan:confidence "high";
+    plan:sourceText "Knoblauch A10 - E09";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Knoblauch>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b18> plan:confidence "high";
+    plan:toMonth 5;
+    plan:fromMonth 3;
+    plan:sourceText "Radieschen 3 - 5";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b17> plan:confidence "medium";
+    plan:toMonth 9;
+    plan:fromMonth 5;
+    plan:sourceText "Zucchini 5 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zucchini>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b16> plan:confidence "medium";
+    plan:toMonth 9;
+    plan:fromMonth 5;
+    plan:countHint 2;
+    plan:sourceText "Honigmelone 5 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Honigmelone>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b15> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Chili 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Chilli>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b14> plan:confidence "high";
+    plan:toMonth 12;
+    plan:fromMonth 5;
+    plan:sourceText "Grünkohl 5 - 12";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Grunkohl>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b13> plan:confidence "high";
+    plan:toMonth 9;
+    plan:fromMonth 5;
+    plan:sourceText "Einlegegurke 5 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Einlegegurke>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b12> plan:confidence "high";
+    plan:toMonth 7;
+    plan:fromMonth 3;
+    plan:sourceText "Möhre 3 - 7";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b11> plan:confidence "high";
+    plan:toMonth 11;
+    plan:fromMonth 3;
+    plan:sourceText "Möhre 3 - 11";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b10> plan:confidence "high";
+    plan:toMonth 6;
+    plan:fromMonth 2;
+    plan:sourceText "Möhre 2 - 6";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b09> plan:confidence "high";
+    plan:toMonth 4;
+    plan:fromMonth 3;
+    plan:sourceText "Kopfsalat 3 - 4";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b08> plan:confidence "high";
+    plan:toMonth 9;
+    plan:fromMonth 4;
+    plan:sourceText "Kartoffeln 4 - 9";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kartoffeln>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-top-center-small>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b07> plan:confidence "medium";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Kapuzinerkresse 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kapuzinerkresse>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b06> plan:confidence "medium";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Jungfer im Grünen 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#JungferImGrunen>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b05> plan:confidence "medium";
+    plan:toMonth 7;
+    plan:fromMonth 4;
+    plan:sourceText "Blumenkohl 4 - 7";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Blumenkohl>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b04> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Schnittlauch 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Schnittlauch>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b03> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Petersilie 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Petersilie>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b02> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:countHint 2;
+    plan:sourceText "Basilikum 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Basilikum>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#b01> plan:confidence "high";
+    plan:toMonth 10;
+    plan:fromMonth 5;
+    plan:sourceText "Tomate 5 - 10";
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Tomate>;
+    plan:inZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    a plan:Belegung.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-potato-bags> rdfs:comment "Runde Pflanzsäcke unterhalb der Mittelbeete."@de;
+    dcterms:title "Kartoffel-Pflanzsäcke"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-center-small> plan:height 828000;
+    plan:width 864000;
+    plan:y 5408957;
+    plan:x 4695434;
+    dcterms:title "Kleines Beet unten mittig"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small> plan:height 504000;
+    plan:width 1080000;
+    plan:y 5482680;
+    plan:x 9702567;
+    dcterms:title "Kleines Beet rechts unten"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-lower> plan:height 1440000;
+    plan:width 576000;
+    plan:y 4882681;
+    plan:x 11241027;
+    dcterms:title "Rechtes hohes Beet unten"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper> plan:height 3168000;
+    plan:width 576000;
+    plan:y 1690688;
+    plan:x 11241027;
+    dcterms:title "Rechtes hohes Beet oben"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed> plan:height 1080000;
+    plan:width 864000;
+    plan:y 1680314;
+    plan:x 7849384;
+    dcterms:title "Beerenbeet rechts oben"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower> plan:height 864000;
+    plan:width 2880000;
+    plan:y 3792992;
+    plan:x 4150585;
+    dcterms:title "Unteres Mittelbeet"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper> plan:height 864000;
+    plan:width 2880000;
+    plan:y 2631249;
+    plan:x 4150585;
+    dcterms:title "Oberes Mittelbeet"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-top-center-small> plan:height 576000;
+    plan:width 1116000;
+    plan:y 764101;
+    plan:x 5032585;
+    dcterms:title "Kleines oberes Beet"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical> plan:height 5760000;
+    plan:width 540000;
+    plan:y 764101;
+    plan:x 3204223;
+    rdfs:comment "Links mittig stehendes Hochformat-Beet."@de;
+    dcterms:title "Linkes hohes Beet"@de;
+    a plan:BeetZone.
+<https://example.org/garten-planer/extract/beetplan-2025/#dataset> plan:hasZone <https://example.org/garten-planer/extract/beetplan-2025/#zone-potato-bags>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-center-small>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-lower>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-top-center-small>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    dcterms:description "Vorläufige, visuell aus den Folien rekonstruierte Beetbelegung. Modelliert als Zonen + Belegungseinträge mit hoher bzw. mittlerer Sicherheit. Nicht alle grafischen Elemente der PowerPoint sind bereits vollständig erfasst."@de;
+    dcterms:source "input/Beetplan 2025.pptm";
+    a plan:GartenPlan.

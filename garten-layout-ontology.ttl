@@ -1,0 +1,84 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix garten: <https://example.org/garten-planer/ontology#>.
+@prefix gv: <https://example.org/garten-planer/vokabular#>.
+
+<https://example.org/garten-planer/ontology/layout> a owl:Ontology;
+    dcterms:title "Layout-Erweiterung für Beetplanung"@de;
+    dcterms:description "Erweitert die Garten-Ontologie um Reihen und Reihenabschnitte für echte Beetplanung statt rein visueller Bildkoordinaten."@de.
+garten:Reihe a owl:Class;
+    rdfs:label "Reihe"@de;
+    rdfs:comment "Eine planbare Beetreihe innerhalb eines Beets. Reihen sind das primäre Planungsraster für Gemüsekulturen."@de.
+garten:ReihenAbschnitt a owl:Class;
+    rdfs:label "Reihenabschnitt"@de;
+    rdfs:comment "Ein zusammenhängender Teil einer Reihe mit Start- und Endposition. In einem Abschnitt kann eine Einzelkultur oder Mischkultur liegen."@de.
+garten:beetAusrichtung a owl:ObjectProperty;
+    rdfs:label "Beet-Ausrichtung"@de;
+    rdfs:comment "Absolute Ausrichtung des Beets, z. B. Nord-Süd oder Ost-West."@de;
+    rdfs:domain garten:Beet;
+    rdfs:range skos:Concept.
+garten:hatReihe a owl:ObjectProperty;
+    rdfs:label "hat Reihe"@de;
+    rdfs:comment "Verknüpft ein Beet mit seinen planbaren Reihen."@de;
+    rdfs:domain garten:Beet;
+    rdfs:range garten:Reihe;
+    owl:inverseOf garten:reiheInBeet.
+garten:reiheInBeet a owl:ObjectProperty;
+    rdfs:label "Reihe in Beet"@de;
+    rdfs:comment "Ordnet eine Reihe genau einem Beet zu."@de;
+    rdfs:domain garten:Reihe;
+    rdfs:range garten:Beet;
+    owl:inverseOf garten:hatReihe.
+garten:reihenNummer a owl:DatatypeProperty;
+    rdfs:label "Reihen-Nummer"@de;
+    rdfs:comment "Die fachliche Nummer der Reihe innerhalb des Beets, typischerweise 1, 2, 3, ..."@de;
+    rdfs:domain garten:Reihe;
+    rdfs:range xsd:integer.
+garten:reihenAusrichtung a owl:ObjectProperty;
+    rdfs:label "Reihen-Ausrichtung"@de;
+    rdfs:comment "Absolute Ausrichtung der Reihe, z. B. Nord-Süd oder Ost-West."@de;
+    rdfs:domain garten:Reihe;
+    rdfs:range skos:Concept.
+garten:nutzlaenge a owl:DatatypeProperty;
+    rdfs:label "Nutzlänge"@de;
+    rdfs:comment "Nutzbare Länge der Reihe in Metern."@de;
+    rdfs:domain garten:Reihe;
+    rdfs:range xsd:decimal.
+garten:hatAbschnitt a owl:ObjectProperty;
+    rdfs:label "hat Abschnitt"@de;
+    rdfs:comment "Verknüpft eine Reihe mit ihren Reihenabschnitten."@de;
+    rdfs:domain garten:Reihe;
+    rdfs:range garten:ReihenAbschnitt;
+    owl:inverseOf garten:abschnittInReihe.
+garten:abschnittInReihe a owl:ObjectProperty;
+    rdfs:label "Abschnitt in Reihe"@de;
+    rdfs:comment "Ordnet einen Reihenabschnitt genau einer Reihe zu."@de;
+    rdfs:domain garten:ReihenAbschnitt;
+    rdfs:range garten:Reihe;
+    owl:inverseOf garten:hatAbschnitt.
+garten:abschnittStart a owl:DatatypeProperty;
+    rdfs:label "Abschnitts-Start"@de;
+    rdfs:comment "Startposition des Abschnitts entlang der Reihe in Metern, gemessen vom definierten Reihenanfang."@de;
+    rdfs:domain garten:ReihenAbschnitt;
+    rdfs:range xsd:decimal.
+garten:abschnittEnde a owl:DatatypeProperty;
+    rdfs:label "Abschnitts-Ende"@de;
+    rdfs:comment "Endposition des Abschnitts entlang der Reihe in Metern, gemessen vom definierten Reihenanfang."@de;
+    rdfs:domain garten:ReihenAbschnitt;
+    rdfs:range xsd:decimal.
+garten:inAbschnitt a owl:ObjectProperty;
+    rdfs:label "in Abschnitt"@de;
+    rdfs:comment "Verknüpft eine Pflanzung mit einem Reihenabschnitt. Mehrere Pflanzungen im selben Abschnitt bilden Mischkultur."@de;
+    rdfs:domain garten:Pflanzung;
+    rdfs:range garten:ReihenAbschnitt;
+    owl:inverseOf garten:belegtMitPflanzung.
+garten:belegtMitPflanzung a owl:ObjectProperty;
+    rdfs:label "belegt mit Pflanzung"@de;
+    rdfs:comment "Verknüpft einen Reihenabschnitt mit einer oder mehreren Pflanzungen. Mehrfachbelegung ist erlaubt, um Mischkultur abzubilden."@de;
+    rdfs:domain garten:ReihenAbschnitt;
+    rdfs:range garten:Pflanzung;
+    owl:inverseOf garten:inAbschnitt.

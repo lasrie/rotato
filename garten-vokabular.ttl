@@ -1,0 +1,75 @@
+# Vokabular: kontrollierte Listen für den Kleingarten
+# ---------------------------------------------------------------
+# Bewusst von den Shapes getrennt: Shapes beschreiben Regeln,
+# das Vokabular ist Referenzdaten, gegen die validiert wird.
+
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gv:    <https://example.org/garten-planer/vokabular#> .
+
+### ---------------- Fruchtfamilien ----------------
+gv:Fruchtfamilienliste a skos:ConceptScheme ;
+    rdfs:label "Liste der Fruchtfamilien"@de ;
+    skos:definition "Botanische Familien als Grundlage der Fruchtfolge: Verwandte Kulturen nicht nacheinander auf dasselbe Beet."@de .
+
+gv:ff_Kreuzbluetler a skos:Concept ;          # Brassicaceae: Kohl, Radieschen, Rucola, Kresse
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Kreuzblütler"@de .
+
+gv:ff_Nachtschatten a skos:Concept ;          # Solanaceae: Tomate, Kartoffel, Paprika
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Nachtschattengewächse"@de .
+
+gv:ff_Korbbluetler a skos:Concept ;           # Asteraceae: Salat, Sonnenblume, Topinambur
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Korbblütler"@de .
+
+gv:ff_Doldenbluetler a skos:Concept ;         # Apiaceae: Karotte, Petersilie, Dill
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Doldenblütler"@de .
+
+gv:ff_Zwiebelgewaechse a skos:Concept ;       # Alliaceae: Zwiebel, Knoblauch, Schnittlauch
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Zwiebelgewächse"@de .
+
+gv:ff_Suessgraeser a skos:Concept ;           # Poaceae: Mais, Getreide
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Süßgräser"@de .
+
+gv:ff_Huelsenfruechtler a skos:Concept ;      # Fabaceae: Bohne, Erbse – sammeln Stickstoff!
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Hülsenfrüchtler"@de .
+
+gv:ff_Kuerbisgewaechse a skos:Concept ;       # Cucurbitaceae: Kürbis, Zucchini, Gurke
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Kürbisgewächse"@de .
+
+# Ergänzt aus der Anzuchtdatenbank (input/Pflanzenanzucht_mit_Makro.xlsm)
+gv:ff_Lippenbluetler a skos:Concept ;        # Lamiaceae: Basilikum, Lavendel
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Lippenblütler"@de .
+gv:ff_Malvengewaechse a skos:Concept ;        # Malvaceae: Bechermalve
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Malvengewächse"@de .
+gv:ff_Borretschgewaechse a skos:Concept ;     # Boraginaceae: Borretsch
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Borretschgewächse"@de .
+gv:ff_Hahnenfussgewaechse a skos:Concept ;    # Ranunculaceae: Jungfer im Grünen
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Hahnenfußgewächse"@de .
+gv:ff_Fuchsschwanzgewaechse a skos:Concept ;  # Amaranthaceae: Spinat, Rote Bete
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Fuchsschwanzgewächse"@de .
+gv:ff_Leingewaechse a skos:Concept ;          # Linaceae: Lein
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Leingewächse"@de .
+gv:ff_Kapuzinerkressengewaechse a skos:Concept ; # Tropaeolaceae: Kapuzinerkresse
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Kapuzinerkressengewächse"@de .
+gv:ff_Knoeterichgewaechse a skos:Concept ;    # Polygonaceae: Rhabarber
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Knöterichgewächse"@de .
+gv:ff_Rosengewaechse a skos:Concept ;         # Rosaceae: Himbeere, Brombeere, Erdbeere
+    skos:inScheme gv:Fruchtfamilienliste ; skos:prefLabel "Rosengewächse"@de .
+
+
+### ---------------- Sonnenlage ----------------
+gv:Sonnenlagenliste a skos:ConceptScheme ;
+    rdfs:label "Liste der Sonnenlagen"@de .
+
+gv:sonnig       a skos:Concept ; skos:inScheme gv:Sonnenlagenliste ; skos:prefLabel "sonnig"@de .
+gv:halbschattig a skos:Concept ; skos:inScheme gv:Sonnenlagenliste ; skos:prefLabel "halbschattig"@de .
+gv:schattig     a skos:Concept ; skos:inScheme gv:Sonnenlagenliste ; skos:prefLabel "schattig"@de .
+
+### ---------------- Bodentyp ----------------
+gv:Bodentypenliste a skos:ConceptScheme ;
+    rdfs:label "Liste der Bodentypen"@de .
+
+gv:humos  a skos:Concept ; skos:inScheme gv:Bodentypenliste ; skos:prefLabel "humos"@de .
+gv:lehmig a skos:Concept ; skos:inScheme gv:Bodentypenliste ; skos:prefLabel "lehmig"@de .
+gv:sandig a skos:Concept ; skos:inScheme gv:Bodentypenliste ; skos:prefLabel "sandig"@de .
+gv:tieflock a skos:Concept ; skos:inScheme gv:Bodentypenliste ; skos:prefLabel "tiefgelockert (naturnah, ohne Umgraben)"@de .

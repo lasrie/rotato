@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garten 91 – Pflanzplan 2025</title>
+    <style>
+      :root {
+        --bg: #f6f6f3;
+        --panel: #ffffff;
+        --line: #d8d8d2;
+        --text: #243024;
+        --muted: #66705f;
+        --bed-fill: #efdcc9;
+        --bed-stroke: #587f49;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(720px, 1fr) 360px;
+        min-height: 100vh;
+      }
+      .main {
+        padding: 20px;
+      }
+      .sidebar {
+        border-left: 1px solid var(--line);
+        background: #fbfbf8;
+        padding: 20px;
+        overflow: auto;
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 28px;
+      }
+      .subtitle {
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      .toolbar label {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      select, button {
+        font: inherit;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+      button { cursor: pointer; }
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin-bottom: 16px;
+        font-size: 13px;
+      }
+      .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .legend-swatch {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        border: 1px solid rgba(0,0,0,.15);
+      }
+      .canvas {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+        overflow: auto;
+      }
+      svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .zone {
+        cursor: pointer;
+      }
+      .zone rect.zone-shape {
+        fill: var(--bed-fill);
+        stroke: var(--bed-stroke);
+        stroke-width: 2;
+        rx: 8;
+      }
+      .zone.active rect.zone-shape {
+        stroke-width: 4;
+        filter: drop-shadow(0 0 6px rgba(88, 127, 73, 0.25));
+      }
+      .zone-label {
+        font-size: 16px;
+        font-weight: 600;
+        fill: #33452b;
+      }
+      .zone-subtitle {
+        font-size: 12px;
+        fill: #596852;
+      }
+      .chip {
+        font-size: 11px;
+      }
+      .chip rect {
+        rx: 5;
+        stroke: rgba(0, 0, 0, 0.15);
+        stroke-width: 1;
+      }
+      .chip text {
+        fill: #152012;
+        font-size: 11px;
+      }
+      .details-card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px;
+      }
+      .details-card h2 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 20px;
+      }
+      .details-card p {
+        margin: 6px 0;
+      }
+      .details-card ul {
+        padding-left: 18px;
+      }
+      .details-card li {
+        margin: 8px 0;
+      }
+      .muted { color: var(--muted); }
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: #edf3e8;
+        color: #385227;
+        margin-left: 6px;
+      }
+      @media (max-width: 1100px) {
+        .layout { grid-template-columns: 1fr; }
+        .sidebar { border-left: 0; border-top: 1px solid var(--line); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <main class="main">
+        <h1>Garten 91 – Pflanzplan 2025</h1>
+        <div class="subtitle">SVG-Gartenkarte aus Linked Data. Monatsfilter basiert auf <code>plan:fromMonth</code> / <code>plan:toMonth</code>.</div>
+
+        <div class="toolbar">
+          <label>
+            Monat
+            <select id="monthSelect"></select>
+          </label>
+          <label>
+            Farben
+            <select id="colorModeSelect">
+              <option value="family">Fruchtfamilie</option>
+              <option value="confidence">Sicherheit</option>
+            </select>
+          </label>
+          <button id="showAllBtn" type="button">Ganzes Jahr</button>
+        </div>
+
+        <div class="legend" id="legend"></div>
+
+        <div class="canvas">
+          <svg id="planSvg" viewBox="0 0 1600 900" aria-label="Pflanzplan Garten 91"></svg>
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="details-card" id="details"></div>
+      </aside>
+    </div>
+
+    <script src="garten91-data.js"></script>
+    <script>
+      const data = window.GARTEN91_DATA;
+      const svg = document.getElementById('planSvg');
+      const monthSelect = document.getElementById('monthSelect');
+      const colorModeSelect = document.getElementById('colorModeSelect');
+      const legendEl = document.getElementById('legend');
+      const detailsEl = document.getElementById('details');
+      const showAllBtn = document.getElementById('showAllBtn');
+
+      const months = data.months;
+      let activeMonth = 5;
+      let activeZoneId = data.zones[0]?.id || null;
+      let colorMode = 'family';
+
+      const familyColors = {
+        'Nachtschattengewächse': '#f0b9b9',
+        'Kreuzblütler': '#c9ddb2',
+        'Doldenblütler': '#c9e5dc',
+        'Kürbisgewächse': '#f8d7a7',
+        'Zwiebelgewächse': '#e9def7',
+        'Korbblütler': '#f7efae',
+        'Fuchsschwanzgewächse': '#dfc1d9',
+        'Lippenblütler': '#cce8c5',
+        'Süßgräser': '#d8e1a6',
+        'Kapuzinerkressengewächse': '#f5cab2',
+        'Hahnenfußgewächse': '#d8e9f7',
+        'Mehrjährig / ohne Familie': '#d8d8d8',
+        'Unbekannt': '#e6e6e6'
+      };
+
+      const confidenceColors = {
+        high: '#b9ddb1',
+        medium: '#f5dda5',
+        low: '#f2bcbc',
+        unknown: '#e0e0e0'
+      };
+
+      function monthName(index) {
+        return months[index] || 'Ganzes Jahr';
+      }
+
+      function entryVisible(entry, month) {
+        if (!month) return true;
+        if (entry.fromMonth == null && entry.toMonth == null) return true;
+        const from = entry.fromMonth ?? 1;
+        const to = entry.toMonth ?? 12;
+        return month >= from && month <= to;
+      }
+
+      function normalizeZones() {
+        const withCoords = data.zones.filter(z => Number.isFinite(z.x) && Number.isFinite(z.y));
+        const minX = Math.min(...withCoords.map(z => z.x));
+        const minY = Math.min(...withCoords.map(z => z.y));
+        const maxX = Math.max(...withCoords.map(z => z.x + (z.width || 0)));
+        const maxY = Math.max(...withCoords.map(z => z.y + (z.height || 0)));
+        const scaleX = 1400 / (maxX - minX || 1);
+        const scaleY = 760 / (maxY - minY || 1);
+        const scale = Math.min(scaleX, scaleY);
+
+        return data.zones.map(zone => ({
+          ...zone,
+          sx: zone.x != null ? 80 + (zone.x - minX) * scale : 80,
+          sy: zone.y != null ? 70 + (zone.y - minY) * scale : 70,
+          sw: zone.width != null ? zone.width * scale : 140,
+          sh: zone.height != null ? zone.height * scale : 80,
+        }));
+      }
+
+      const zones = normalizeZones();
+
+      function uniqueVisibleEntries(zone) {
+        return zone.entries.filter(entry => entryVisible(entry, activeMonth));
+      }
+
+      function colorForEntry(entry) {
+        if (colorMode === 'confidence') {
+          return confidenceColors[entry.confidence] || confidenceColors.unknown;
+        }
+        const label = entry.familyLabel || (entry.displayName ? 'Mehrjährig / ohne Familie' : 'Unbekannt');
+        return familyColors[label] || familyColors['Unbekannt'];
+      }
+
+      function renderLegend() {
+        let items;
+        if (colorMode === 'confidence') {
+          items = [
+            ['high', 'hoch'],
+            ['medium', 'mittel'],
+            ['low', 'niedrig'],
+            ['unknown', 'unbekannt']
+          ].map(([key, label]) => ({ color: confidenceColors[key], label }));
+        } else {
+          const labels = new Set();
+          zones.forEach(zone => {
+            uniqueVisibleEntries(zone).forEach(entry => {
+              labels.add(entry.familyLabel || (entry.displayName ? 'Mehrjährig / ohne Familie' : 'Unbekannt'));
+            });
+          });
+          items = Array.from(labels).sort().map(label => ({ color: familyColors[label] || familyColors['Unbekannt'], label }));
+        }
+        legendEl.innerHTML = items.map(item => `
+          <span class="legend-item">
+            <span class="legend-swatch" style="background:${item.color}"></span>
+            <span>${item.label}</span>
+          </span>
+        `).join('');
+      }
+
+      function renderDetails() {
+        const zone = zones.find(z => z.id === activeZoneId) || zones[0];
+        if (!zone) return;
+        const entries = uniqueVisibleEntries(zone);
+        const monthText = activeMonth ? monthName(activeMonth) : 'Ganzes Jahr';
+        detailsEl.innerHTML = `
+          <h2>${zone.title}</h2>
+          <p class="muted">Ansicht: ${monthText}</p>
+          <p><strong>Zone-ID:</strong> <code>${zone.slug}</code></p>
+          <p><strong>Sichtbare Kulturen:</strong> ${entries.length}</p>
+          ${entries.length ? `
+            <ul>
+              ${entries.map(entry => `
+                <li>
+                  <strong>${entry.label}</strong>
+                  <span class="badge">${entry.confidence || 'unbekannt'}</span><br />
+                  ${entry.familyLabel ? `<span>${entry.familyLabel}</span><br />` : ''}
+                  ${entry.fromMonth || entry.toMonth ? `<span class="muted">${entry.fromMonth ?? '?'}–${entry.toMonth ?? '?'}</span><br />` : ''}
+                  <span class="muted">Quelle: ${entry.sourceText || '—'}</span>
+                </li>
+              `).join('')}
+            </ul>
+          ` : '<p class="muted">Für diesen Monat ist in dieser Zone kein eigener Zeitraum-Eintrag sichtbar oder es gibt nur ganzjährige Einträge in anderen Zonen.</p>'}
+        `;
+      }
+
+      function addText(parent, x, y, text, className, anchor = 'start') {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        el.setAttribute('x', x);
+        el.setAttribute('y', y);
+        el.setAttribute('class', className);
+        el.setAttribute('text-anchor', anchor);
+        el.textContent = text;
+        parent.appendChild(el);
+        return el;
+      }
+
+      function render() {
+        svg.innerHTML = '';
+        renderLegend();
+
+        zones.forEach(zone => {
+          const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          g.setAttribute('class', 'zone' + (zone.id === activeZoneId ? ' active' : ''));
+          g.addEventListener('click', () => {
+            activeZoneId = zone.id;
+            render();
+          });
+
+          const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          rect.setAttribute('x', zone.sx);
+          rect.setAttribute('y', zone.sy);
+          rect.setAttribute('width', Math.max(zone.sw, 80));
+          rect.setAttribute('height', Math.max(zone.sh, 50));
+          rect.setAttribute('class', 'zone-shape');
+          g.appendChild(rect);
+
+          addText(g, zone.sx + 10, zone.sy + 22, zone.title, 'zone-label');
+          addText(g, zone.sx + 10, zone.sy + 40, zone.slug, 'zone-subtitle');
+
+          const entries = uniqueVisibleEntries(zone);
+          const maxChips = Math.max(1, Math.floor((Math.max(zone.sh, 50) - 56) / 28));
+          entries.slice(0, maxChips).forEach((entry, index) => {
+            const chip = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            chip.setAttribute('class', 'chip');
+            const chipY = zone.sy + 52 + index * 28;
+            const chipRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            chipRect.setAttribute('x', zone.sx + 10);
+            chipRect.setAttribute('y', chipY);
+            chipRect.setAttribute('width', Math.max(110, Math.min(zone.sw - 20, 220)));
+            chipRect.setAttribute('height', 22);
+            chipRect.setAttribute('fill', colorForEntry(entry));
+            chip.appendChild(chipRect);
+
+            const label = entry.fromMonth || entry.toMonth
+              ? `${entry.label} ${entry.fromMonth ?? '?'}–${entry.toMonth ?? '?'}`
+              : entry.label;
+            addText(chip, zone.sx + 16, chipY + 15, label, 'chip-text');
+            g.appendChild(chip);
+          });
+
+          if (entries.length > maxChips) {
+            addText(g, zone.sx + 12, zone.sy + 54 + maxChips * 28, `+${entries.length - maxChips} weitere`, 'zone-subtitle');
+          }
+
+          svg.appendChild(g);
+        });
+
+        renderDetails();
+      }
+
+      function initControls() {
+        monthSelect.innerHTML = [
+          '<option value="0">Ganzes Jahr</option>',
+          ...months.map((name, index) => index ? `<option value="${index}">${name}</option>` : '').filter(Boolean)
+        ].join('');
+        monthSelect.value = String(activeMonth);
+        monthSelect.addEventListener('change', () => {
+          activeMonth = Number(monthSelect.value) || 0;
+          render();
+        });
+        colorModeSelect.addEventListener('change', () => {
+          colorMode = colorModeSelect.value;
+          render();
+        });
+        showAllBtn.addEventListener('click', () => {
+          activeMonth = 0;
+          monthSelect.value = '0';
+          render();
+        });
+      }
+
+      initControls();
+      render();
+    </script>
+  </body>
+</html>

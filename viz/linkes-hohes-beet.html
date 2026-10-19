@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkes hohes Beet – Reihenlayout 2025</title>
+    <style>
+      :root {
+        --bg: #f6f6f3;
+        --panel: #ffffff;
+        --line: #d8d8d2;
+        --text: #243024;
+        --muted: #66705f;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(760px, 1fr) 380px;
+        min-height: 100vh;
+      }
+      .main { padding: 20px; }
+      .side {
+        border-left: 1px solid var(--line);
+        background: #fbfbf8;
+        padding: 20px;
+      }
+      h1 { margin: 0 0 8px; font-size: 28px; }
+      .subtitle { color: var(--muted); margin-bottom: 16px; }
+      .toolbar {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      select, button {
+        font: inherit;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: white;
+      }
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin-bottom: 14px;
+        font-size: 13px;
+      }
+      .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .swatch {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        border: 1px solid rgba(0,0,0,.15);
+      }
+      .canvas {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+      }
+      svg { width: 100%; height: auto; display: block; }
+      .row-band {
+        fill: #f2dfcc;
+        stroke: #5f8a4c;
+        stroke-width: 2;
+      }
+      .section {
+        stroke: rgba(0, 0, 0, 0.18);
+        stroke-width: 1.2;
+        cursor: pointer;
+      }
+      .section.active {
+        stroke: #1c2b18;
+        stroke-width: 3;
+      }
+      .label { font-size: 14px; fill: #34442d; }
+      .small { font-size: 11px; fill: #5c6855; }
+      .card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px;
+      }
+      .card h2 { margin-top: 0; font-size: 21px; }
+      .card ul { padding-left: 18px; }
+      .card li { margin: 8px 0; }
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: #edf3e8;
+        color: #385227;
+        font-size: 12px;
+        margin-left: 6px;
+      }
+      @media (max-width: 1100px) {
+        .layout { grid-template-columns: 1fr; }
+        .side { border-left: 0; border-top: 1px solid var(--line); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <main class="main">
+        <h1>Linkes hohes Beet – Reihenlayout 2025</h1>
+        <div class="subtitle">Diese Ansicht rendert direkt <strong>Reihen</strong> und <strong>Reihenabschnitte</strong> aus RDF – nicht Bildzonen.</div>
+
+        <div class="toolbar">
+          <label>
+            Monat
+            <select id="monthSelect"></select>
+          </label>
+          <button id="showAllBtn" type="button">Ganzes Jahr</button>
+          <button id="openZoneView" type="button">Zur Zonenansicht</button>
+        </div>
+
+        <div class="legend" id="legend"></div>
+
+        <div class="canvas">
+          <svg id="svg" viewBox="0 0 900 1100" aria-label="Reihenlayout des linken hohen Beets"></svg>
+        </div>
+      </main>
+
+      <aside class="side">
+        <div class="card" id="details"></div>
+      </aside>
+    </div>
+
+    <script src="linkes-hohes-beet-data.js"></script>
+    <script>
+      const data = window.LINKES_HOHES_BEET;
+      const svg = document.getElementById('svg');
+      const monthSelect = document.getElementById('monthSelect');
+      const legendEl = document.getElementById('legend');
+      const detailsEl = document.getElementById('details');
+      const showAllBtn = document.getElementById('showAllBtn');
+      const openZoneView = document.getElementById('openZoneView');
+
+      let activeMonth = 5;
+      let activeSectionId = data.rows[0]?.sections[0]?.id || null;
+
+      const familyColors = {
+        'Nachtschattengewächse': '#efb9b9',
+        'Kreuzblütler': '#d4e3ba',
+        'Doldenblütler': '#c8e3dc',
+        'Kürbisgewächse': '#f7dbab',
+        'Zwiebelgewächse': '#e7def5',
+        'Korbblütler': '#f4efae',
+        'Lippenblütler': '#cce8c5',
+        'Kapuzinerkressengewächse': '#f2c8ae',
+        'Hahnenfußgewächse': '#d5e7f4',
+        'Unbekannt': '#dddddd'
+      };
+
+      function monthName(index) {
+        return data.months[index] || 'Ganzes Jahr';
+      }
+
+      function plantingVisible(planting, month) {
+        if (!month) return true;
+        const from = planting.startMonth ?? 1;
+        const to = planting.endMonth ?? 12;
+        return month >= from && month <= to;
+      }
+
+      function visiblePlantings(section) {
+        return section.plantings.filter(p => plantingVisible(p, activeMonth));
+      }
+
+      function sectionColor(section) {
+        const plantings = visiblePlantings(section);
+        if (!plantings.length) return '#f2dfcc';
+        if (plantings.length > 1) return '#bfe0b5';
+        return familyColors[plantings[0].familyLabel] || familyColors['Unbekannt'];
+      }
+
+      function renderLegend() {
+        const labels = new Set(['Mischkultur']);
+        data.rows.forEach(row => row.sections.forEach(section => {
+          visiblePlantings(section).forEach(planting => {
+            labels.add(planting.familyLabel || 'Unbekannt');
+          });
+        }));
+        const items = Array.from(labels).map(label => ({
+          label,
+          color: label === 'Mischkultur' ? '#bfe0b5' : (familyColors[label] || familyColors['Unbekannt'])
+        }));
+        legendEl.innerHTML = items.map(item => `
+          <span class="legend-item">
+            <span class="swatch" style="background:${item.color}"></span>
+            <span>${item.label}</span>
+          </span>
+        `).join('');
+      }
+
+      function addText(parent, x, y, text, className, rotate = null) {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        el.setAttribute('x', x);
+        el.setAttribute('y', y);
+        el.setAttribute('class', className);
+        if (rotate) el.setAttribute('transform', `rotate(${rotate.angle} ${rotate.cx} ${rotate.cy})`);
+        el.textContent = text;
+        parent.appendChild(el);
+        return el;
+      }
+
+      function renderDetails() {
+        let currentSection = null;
+        for (const row of data.rows) {
+          for (const section of row.sections) {
+            if (section.id === activeSectionId) currentSection = { row, section };
+          }
+        }
+        if (!currentSection) {
+          detailsEl.innerHTML = '<h2>Kein Abschnitt ausgewählt</h2>';
+          return;
+        }
+        const { row, section } = currentSection;
+        const plantings = visiblePlantings(section);
+        detailsEl.innerHTML = `
+          <h2>${section.title}</h2>
+          <p><strong>Reihe:</strong> ${row.title}</p>
+          <p><strong>Abschnitt:</strong> ${section.start} m – ${section.end} m</p>
+          <p><strong>Monat:</strong> ${monthName(activeMonth)}</p>
+          ${section.comment ? `<p>${section.comment}</p>` : ''}
+          ${plantings.length ? `
+            <ul>
+              ${plantings.map(p => `
+                <li>
+                  <strong>${p.label}</strong>
+                  ${plantings.length > 1 ? '<span class="badge">Mischkultur</span>' : ''}<br />
+                  ${p.familyLabel ? `${p.familyLabel}<br />` : ''}
+                  ${p.startMonth || p.endMonth ? `<span>${p.startMonth ?? '?'}–${p.endMonth ?? '?'}</span>` : ''}
+                </li>
+              `).join('')}
+            </ul>
+          ` : '<p>In diesem Monat ist dieser Abschnitt leer oder nicht aktiv.</p>'}
+        `;
+      }
+
+      function render() {
+        svg.innerHTML = '';
+        renderLegend();
+
+        const marginX = 120;
+        const top = 70;
+        const rowGap = 18;
+        const rowWidth = 180;
+        const rowHeight = 900;
+        const maxLength = Math.max(...data.rows.map(r => r.length || 1));
+
+        data.rows.forEach((row, rowIndex) => {
+          const x = marginX + rowIndex * (rowWidth + rowGap);
+          const rowGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+          const rowRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          rowRect.setAttribute('x', x);
+          rowRect.setAttribute('y', top);
+          rowRect.setAttribute('width', rowWidth);
+          rowRect.setAttribute('height', rowHeight);
+          rowRect.setAttribute('class', 'row-band');
+          rowGroup.appendChild(rowRect);
+
+          addText(rowGroup, x + rowWidth / 2, 42, row.title.replace('Linkes hohes Beet 2025 – ', ''), 'label');
+          addText(rowGroup, x + rowWidth / 2, 58, `Reihe ${row.number} · ${row.length} m`, 'small');
+
+          row.sections.forEach(section => {
+            const startRatio = (section.start || 0) / maxLength;
+            const endRatio = (section.end || 0) / maxLength;
+            const sy = top + startRatio * rowHeight;
+            const sh = Math.max(24, (endRatio - startRatio) * rowHeight);
+            const sectionRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            sectionRect.setAttribute('x', x + 10);
+            sectionRect.setAttribute('y', sy);
+            sectionRect.setAttribute('width', rowWidth - 20);
+            sectionRect.setAttribute('height', sh);
+            sectionRect.setAttribute('fill', sectionColor(section));
+            sectionRect.setAttribute('class', 'section' + (section.id === activeSectionId ? ' active' : ''));
+            sectionRect.addEventListener('click', () => {
+              activeSectionId = section.id;
+              render();
+            });
+            rowGroup.appendChild(sectionRect);
+
+            const title = visiblePlantings(section).map(p => p.label).join(' + ') || 'leer';
+            addText(rowGroup, x + 18, sy + 18, title, 'small');
+            addText(rowGroup, x + 18, sy + 32, `${section.start}–${section.end} m`, 'small');
+          });
+
+          svg.appendChild(rowGroup);
+        });
+
+        addText(svg, 40, 26, data.beetTitle, 'label');
+        addText(svg, 40, 44, `${monthName(activeMonth)} · aus Reihen und Abschnitten modelliert`, 'small');
+        renderDetails();
+      }
+
+      monthSelect.innerHTML = ['<option value="0">Ganzes Jahr</option>']
+        .concat(data.months.map((m, i) => i ? `<option value="${i}">${m}</option>` : '').filter(Boolean))
+        .join('');
+      monthSelect.value = String(activeMonth);
+      monthSelect.addEventListener('change', () => {
+        activeMonth = Number(monthSelect.value) || 0;
+        render();
+      });
+      showAllBtn.addEventListener('click', () => {
+        activeMonth = 0;
+        monthSelect.value = '0';
+        render();
+      });
+      openZoneView.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+
+      render();
+    </script>
+  </body>
+</html>

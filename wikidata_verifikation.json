@@ -1,0 +1,420 @@
+{
+ "Q100167": {
+  "label": "Castelli Calepio",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Lein"
+  ]
+ },
+ "Q11573": {
+  "label": "Meter",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Zuckermais"
+  ]
+ },
+ "Q12178": {
+  "label": "Pays de Léon",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Rotkohl"
+  ]
+ },
+ "Q138407": {
+  "label": null,
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Gartenkresse"
+  ]
+ },
+ "Q146127": {
+  "label": "Chilenische Teilnehmer der Olympischen Sommerspiele 1912",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Lavendel"
+  ]
+ },
+ "Q146132": {
+  "label": "Dothideomycetidae",
+  "P225": "Dothideomycetidae",
+  "rank": "Q5867051",
+  "parent": "Q132159",
+  "arten": [
+   "Ringelblumen"
+  ]
+ },
+ "Q157341": {
+  "label": "King’s Lynn",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Stielmus"
+  ]
+ },
+ "Q2025983": {
+  "label": "Zernikeborg",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Endivien"
+  ]
+ },
+ "Q212586": {
+  "label": "205. Infanterie-Division",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Rauke"
+  ]
+ },
+ "Q22697": {
+  "label": "Molsheim",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Schnittlauch"
+  ]
+ },
+ "Q230161": {
+  "label": "Aincreville",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Blumenkohl"
+  ]
+ },
+ "Q230162": {
+  "label": "Zunkel",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Brokkoli"
+  ]
+ },
+ "Q230163": {
+  "label": "Silva",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Grünkohl"
+  ]
+ },
+ "Q23501": {
+  "label": "Tomate",
+  "P225": "Solanum lycopersicum",
+  "rank": "Q7432",
+  "parent": "Q146555",
+  "arten": [
+   "Tomate"
+  ]
+ },
+ "Q243234": {
+  "label": "MKK",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Radieschen"
+  ]
+ },
+ "Q244282": {
+  "label": "Spechtpapageien",
+  "P225": "Micropsitta",
+  "rank": "Q34740",
+  "parent": "Q15127330",
+  "arten": [
+   "Kohlrabi"
+  ]
+ },
+ "Q25303": {
+  "label": null,
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Zwiebeln",
+   "Wintersteckzwiebel"
+  ]
+ },
+ "Q25304": {
+  "label": "Pichilemu",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Knoblauch"
+  ]
+ },
+ "Q2540566": {
+  "label": "Waidhofer",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Bechermalve"
+  ]
+ },
+ "Q254089": {
+  "label": "Tam-e Mokhtar",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Rote Bete"
+  ]
+ },
+ "Q26239": {
+  "label": "Whampoa-Militärakademie",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Porree"
+  ]
+ },
+ "Q26338": {
+  "label": "Aley",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Soja"
+  ]
+ },
+ "Q26478": {
+  "label": "Love Story",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Kürbis"
+  ]
+ },
+ "Q27075": {
+  "label": "mitochondriale DNS",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Borretsch"
+  ]
+ },
+ "Q27404": {
+  "label": "Detinets",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Buschbohne"
+  ]
+ },
+ "Q2740405": {
+  "label": "Europs impressicollis",
+  "P225": "Europs impressicollis",
+  "rank": "Q7432",
+  "parent": "Q5413779",
+  "arten": [
+   "Physalis"
+  ]
+ },
+ "Q278988": {
+  "label": "Hierakonpolis",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Bok Choy"
+  ]
+ },
+ "Q29145": {
+  "label": "Pentanatriumtriphosphat",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Jungfer im Grünen"
+  ]
+ },
+ "Q29196": {
+  "label": "Boni Yayi",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Cosmea"
+  ]
+ },
+ "Q29306": {
+  "label": "Französische Adverben",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Kapuzinerkresse"
+  ]
+ },
+ "Q2944": {
+  "label": "Linie A",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Kamille"
+  ]
+ },
+ "Q310962": {
+  "label": "Hilderich",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Rhabarber"
+  ]
+ },
+ "Q33514": {
+  "label": "Indoiranisch",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Gurke",
+   "Einlegegurke"
+  ]
+ },
+ "Q36398": {
+  "label": "Sheng",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Honigmelone"
+  ]
+ },
+ "Q39040": {
+  "label": "Schlacht von Yamazaki",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Kopfsalat",
+   "Pflücksalat"
+  ]
+ },
+ "Q3967134": {
+  "label": null,
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Zucchini"
+  ]
+ },
+ "Q46661": {
+  "label": "Vedelago",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Dill"
+  ]
+ },
+ "Q46677": {
+  "label": "Melissa Benoist",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Blattkoriander"
+  ]
+ },
+ "Q47107": {
+  "label": "Eimer",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Petersilie"
+  ]
+ },
+ "Q47124": {
+  "label": "Drezzo",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Spinat"
+  ]
+ },
+ "Q47127": {
+  "label": "Dizzasco",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Chilli",
+   "Paprika"
+  ]
+ },
+ "Q478510": {
+  "label": "Laurindo Pitta",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Himbeeren"
+  ]
+ },
+ "Q5113": {
+  "label": "Vögel",
+  "P225": "Aves",
+  "rank": "Q37517",
+  "parent": "Q3239179",
+  "arten": [
+   "Kartoffeln"
+  ]
+ },
+ "Q67668": {
+  "label": "Savosa",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Basilikum"
+  ]
+ },
+ "Q7254": {
+  "label": "Affenpinscher",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Stangensellerie"
+  ]
+ },
+ "Q81": {
+  "label": "Karotte",
+  "P225": null,
+  "rank": null,
+  "parent": null,
+  "arten": [
+   "Möhre"
+  ]
+ }
+}

@@ -1,0 +1,41 @@
+Tool:      sparql_query_files
+Status:    OK
+
+## Sources
+  file:///Users/lasse/dev/garten-planer/garten-vokabular.ttl
+  file:///Users/lasse/dev/garten-planer/garten-layout-vokabular.ttl
+  file:///Users/lasse/dev/garten-planer/pflanzen.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-linking.ttl
+  file:///Users/lasse/dev/garten-planer/garten-layout-ontology.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-beete-real.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-belegungen-real-2025.ttl
+  file:///Users/lasse/dev/garten-planer/anbau-journal.ttl
+
+## Query
+PREFIX garten:  <https://example.org/garten-planer/ontology#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX time:    <http://www.w3.org/2006/time#>
+
+SELECT ?jahr ?beet ?beetTitel ?familie ?familieLabel (COUNT(?pflanzung) AS ?anzahl)
+WHERE {
+  ?pflanzung a garten:Pflanzung ;
+             garten:pflanzt ?pflanze ;
+             time:hasTemporalExtent ?te .
+  ?te time:hasBeginning ?beginn .
+  ?beginn time:inXSDgYear ?jahr .
+
+  OPTIONAL { ?pflanzung garten:aufBeet ?beet . OPTIONAL { ?beet dcterms:title ?beetTitel } }
+  OPTIONAL { ?pflanze garten:fruchtFamilie ?familie . OPTIONAL { ?familie skos:prefLabel ?familieLabel } }
+
+  # nur Gemüse (mehnjährig = false), Beeren/Rhabarber/Rosmarin raus
+  ?pflanze garten:mehrjaehrig false .
+}
+GROUP BY ?jahr ?beet ?beetTitel ?familie ?familieLabel
+ORDER BY ?jahr ?beetTitel ?familieLabel
+LIMIT 500
+
+## Result
+jahr                                               beet                                               beetTitel                                          familie                                            familieLabel                                       anzahl                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

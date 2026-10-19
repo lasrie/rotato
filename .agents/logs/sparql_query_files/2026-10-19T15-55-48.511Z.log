@@ -1,0 +1,42 @@
+Tool:      sparql_query_files
+Status:    OK
+
+## Sources
+  file:///Users/lasse/dev/garten-planer/garten-vokabular.ttl
+  file:///Users/lasse/dev/garten-planer/garten-layout-vokabular.ttl
+  file:///Users/lasse/dev/garten-planer/pflanzen.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-linking.ttl
+  file:///Users/lasse/dev/garten-planer/garten-layout-ontology.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-beete-real.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-belegungen-real-2025.ttl
+  file:///Users/lasse/dev/garten-planer/anbau-journal.ttl
+
+## Query
+PREFIX garten:  <https://example.org/garten-planer/ontology#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX time:    <http://www.w3.org/2006/time#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?jahr ?beetTitel ?familieLabel (COUNT(DISTINCT ?pflanzung) AS ?anzahl)
+WHERE {
+  ?pflanzung a garten:Pflanzung ;
+             garten:pflanzt ?pflanze ;
+             time:hasTemporalExtent ?te ;
+             garten:aufBeet ?beet .
+  ?beet dcterms:title ?beetTitel .
+  ?te time:hasBeginning ?beginn .
+  ?beginn time:inXSDgYearMonth ?ym .
+  BIND(SUBSTR(STR(?ym), 1, 4) AS ?jahr)
+  ?pflanze garten:fruchtFamilie ?familie ;
+           garten:mehrjaehrig false .
+  OPTIONAL { ?familie skos:prefLabel ?familieLabel }
+}
+GROUP BY ?jahr ?beetTitel ?familieLabel
+ORDER BY ?jahr ?beetTitel ?familieLabel
+LIMIT 500
+
+## Result
+jahr                                               beetTitel                                          familieLabel                                       anzahl                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

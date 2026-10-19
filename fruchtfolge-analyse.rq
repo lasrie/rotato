@@ -1,0 +1,23 @@
+# Fruchtfolge-Analyse: Fruchtfamilien pro Beet und Jahr (nur einjährige Kulturen)
+PREFIX garten:  <https://example.org/garten-planer/ontology#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX time:    <http://www.w3.org/2006/time#>
+
+SELECT ?jahr ?beetTitel ?familieLabel (COUNT(DISTINCT ?p) AS ?anzahl) (GROUP_CONCAT(DISTINCT ?pflanzeLabel; separator=", ") AS ?kulturen)
+WHERE {
+  ?p a garten:Pflanzung ;
+     garten:pflanzt ?pf ;
+     garten:aufBeet ?beet ;
+     time:hasTemporalExtent ?te .
+  ?te time:hasBeginning ?b .
+  ?b time:inXSDgYearMonth ?ym .
+  BIND(SUBSTR(STR(?ym),1,4) AS ?jahr)
+  ?beet dcterms:title ?beetTitel .
+  ?pf garten:fruchtFamilie ?familie ;
+      garten:mehrjaehrig false ;
+      skos:prefLabel ?pflanzeLabel .
+  OPTIONAL { ?familie skos:prefLabel ?familieLabel }
+}
+GROUP BY ?jahr ?beetTitel ?familieLabel
+ORDER BY ?jahr ?beetTitel ?familieLabel

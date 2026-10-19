@@ -1,0 +1,208 @@
+# Wikidata-Matching für die Garten-Arten
+# Generiert von match_wikidata.py + verify_familien.py – NICHT manuell editieren.
+
+@prefix garten: <https://example.org/garten-planer/ontology#> .
+@prefix wd:    <http://www.wikidata.org/entity/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@base    <https://example.org/garten-planer/pflanzen/> .
+
+<#Basilikum> garten:wikidataId wd:Q38859 ;
+    garten:wikidataFamilie wd:Q53476 ;
+    garten:wikidataFamilieName "Lippenblütler"@de .
+
+<#Bechermalve> garten:wikidataId wd:Q157920 ;
+    garten:wikidataFamilie wd:Q156551 ;
+    garten:wikidataFamilieName "Malvaceae"@de .
+
+<#Blattkoriander> garten:wikidataId wd:Q41611 ;
+    garten:wikidataFamilie wd:Q145794 ;
+    garten:wikidataFamilieName "Doldenblütler"@de .
+
+<#Blumenkohl> garten:wikidataId wd:Q7537 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#BokChoy> garten:wikidataId wd:Q165178 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Borretsch> garten:wikidataId wd:Q147075 ;
+    garten:wikidataFamilie wd:Q26568 ;
+    garten:wikidataFamilieName "Raublattgewächse"@de .
+
+<#Brokkoli> garten:wikidataId wd:Q47722 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Buschbohne> garten:wikidataId wd:Q42339 ;
+    garten:wikidataFamilie wd:Q44448 ;
+    garten:wikidataFamilieName "Hülsenfrüchtler"@de .
+
+<#Chilli> garten:wikidataId wd:Q1380 ;
+    garten:wikidataFamilie wd:Q134172 ;
+    garten:wikidataFamilieName "Nachtschattengewächse"@de .
+
+<#Cosmea> garten:wikidataId wd:Q575748 ;
+    garten:wikidataFamilie wd:Q25400 ;
+    garten:wikidataFamilieName "Korbblütler"@de .
+
+<#Dill> garten:wikidataId wd:Q26686 ;
+    garten:wikidataFamilie wd:Q145794 ;
+    garten:wikidataFamilieName "Doldenblütler"@de .
+
+<#Einlegegurke> garten:wikidataId wd:Q23425 ;
+    garten:wikidataFamilie wd:Q8314 ;
+    garten:wikidataFamilieName "Kürbisgewächse"@de .
+
+<#Endivien> garten:wikidataId wd:Q178547 ;
+    garten:wikidataFamilie wd:Q25400 ;
+    garten:wikidataFamilieName "Korbblütler"@de .
+
+<#Gartenkresse> garten:wikidataId wd:Q27033 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Grunkohl> garten:wikidataId wd:Q61676627 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Gurke> garten:wikidataId wd:Q23425 ;
+    garten:wikidataFamilie wd:Q8314 ;
+    garten:wikidataFamilieName "Kürbisgewächse"@de .
+
+<#Himbeeren> garten:wikidataId wd:Q12252383 ;
+    garten:wikidataFamilie wd:Q46299 ;
+    garten:wikidataFamilieName "Rosengewächse"@de .
+
+<#Honigmelone> garten:wikidataId wd:Q81602 ;
+    garten:wikidataFamilie wd:Q8314 ;
+    garten:wikidataFamilieName "Kürbisgewächse"@de .
+
+<#JungferImGrunen> garten:wikidataId wd:Q158338 ;
+    garten:wikidataFamilie wd:Q145869 ;
+    garten:wikidataFamilieName "Hahnenfußgewächse"@de .
+
+<#Kamille> garten:wikidataId wd:Q28437 ;
+    garten:wikidataFamilie wd:Q25400 ;
+    garten:wikidataFamilieName "Korbblütler"@de .
+
+<#Kapuzinerkresse> garten:wikidataId wd:Q156288 ;
+    garten:wikidataFamilie wd:Q163937 ;
+    garten:wikidataFamilieName "Tropaeolaceae"@de .
+
+<#Kartoffeln> garten:wikidataId wd:Q10998 ;
+    garten:wikidataFamilie wd:Q134172 ;
+    garten:wikidataFamilieName "Nachtschattengewächse"@de .
+
+<#Knoblauch> garten:wikidataId wd:Q23400 ;
+    garten:wikidataFamilie wd:Q14554991 ;
+    garten:wikidataFamilieName "Alliaceae"@de .
+
+<#Kohlrabi> garten:wikidataId wd:Q147202 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Kopfsalat> garten:wikidataId wd:Q83193 ;
+    garten:wikidataFamilie wd:Q25400 ;
+    garten:wikidataFamilieName "Korbblütler"@de .
+
+<#Kurbis> garten:wikidataId wd:Q7229863 ;
+    garten:wikidataFamilie wd:Q8314 ;
+    garten:wikidataFamilieName "Kürbisgewächse"@de .
+
+<#Lavendel> garten:wikidataId wd:Q42081 ;
+    garten:wikidataFamilie wd:Q53476 ;
+    garten:wikidataFamilieName "Lippenblütler"@de .
+
+<#Lein> garten:wikidataId wd:Q45108 ;
+    garten:wikidataFamilie wd:Q155951 ;
+    garten:wikidataFamilieName "Leingewächse"@de .
+
+<#Mohre> garten:wikidataId wd:Q11678009 ;
+    garten:wikidataFamilie wd:Q145794 ;
+    garten:wikidataFamilieName "Doldenblütler"@de .
+
+<#Paprika> garten:wikidataId wd:Q1380 ;
+    garten:wikidataFamilie wd:Q134172 ;
+    garten:wikidataFamilieName "Nachtschattengewächse"@de .
+
+<#Petersilie> garten:wikidataId wd:Q25284 ;
+    garten:wikidataFamilie wd:Q145794 ;
+    garten:wikidataFamilieName "Doldenblütler"@de .
+
+<#Pflucksalat> garten:wikidataId wd:Q83193 ;
+    garten:wikidataFamilie wd:Q25400 ;
+    garten:wikidataFamilieName "Korbblütler"@de .
+
+<#Physalis> garten:wikidataId wd:Q165227 ;
+    garten:wikidataFamilie wd:Q134172 ;
+    garten:wikidataFamilieName "Nachtschattengewächse"@de .
+
+<#Porree> garten:wikidataId wd:Q148995 ;
+    garten:wikidataFamilie wd:Q14554991 ;
+    garten:wikidataFamilieName "Alliaceae"@de .
+
+<#Radieschen> garten:wikidataId wd:Q7224565 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Rauke> garten:wikidataId wd:Q156884 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Rhabarber> garten:wikidataId wd:Q7535 ;
+    garten:wikidataFamilie wd:Q156117 ;
+    garten:wikidataFamilieName "Knöterichgewächse"@de .
+
+<#Ringelblumen> garten:wikidataId wd:Q145930 ;
+    garten:wikidataFamilie wd:Q25400 ;
+    garten:wikidataFamilieName "Korbblütler"@de .
+
+<#RoteBete> garten:wikidataId wd:Q2240448 ;
+    garten:wikidataFamilie wd:Q157881 ;
+    garten:wikidataFamilieName "Chenopodiaceae"@de .
+
+<#Rotkohl> garten:wikidataId wd:Q35051 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Schnittlauch> garten:wikidataId wd:Q51148 ;
+    garten:wikidataFamilie wd:Q14554991 ;
+    garten:wikidataFamilieName "Alliaceae"@de .
+
+<#Soja> garten:wikidataId wd:Q11006 ;
+    garten:wikidataFamilie wd:Q44448 ;
+    garten:wikidataFamilieName "Hülsenfrüchtler"@de .
+
+<#Spinat> garten:wikidataId wd:Q81464 ;
+    garten:wikidataFamilie wd:Q157881 ;
+    garten:wikidataFamilieName "Chenopodiaceae"@de .
+
+<#Stangensellerie> garten:wikidataId wd:Q1815126 ;
+    garten:wikidataFamilie wd:Q145794 ;
+    garten:wikidataFamilieName "Doldenblütler"@de .
+
+<#Stielmus> garten:wikidataId wd:Q3384 ;
+    garten:wikidataFamilie wd:Q156888 ;
+    garten:wikidataFamilieName "Kreuzblütengewächse"@de .
+
+<#Tomate> garten:wikidataId wd:Q23501 ;
+    garten:wikidataFamilie wd:Q134172 ;
+    garten:wikidataFamilieName "Nachtschattengewächse"@de .
+
+<#Wintersteckzwiebel> garten:wikidataId wd:Q23485 ;
+    garten:wikidataFamilie wd:Q14554991 ;
+    garten:wikidataFamilieName "Alliaceae"@de .
+
+<#Zucchini> garten:wikidataId wd:Q7533 ;
+    garten:wikidataFamilie wd:Q8314 ;
+    garten:wikidataFamilieName "Kürbisgewächse"@de .
+
+<#Zuckermais> garten:wikidataId wd:Q11575 ;
+    garten:wikidataFamilie wd:Q43238 ;
+    garten:wikidataFamilieName "Süßgräser"@de .
+
+<#Zwiebeln> garten:wikidataId wd:Q23485 ;
+    garten:wikidataFamilie wd:Q14554991 ;
+    garten:wikidataFamilieName "Alliaceae"@de .
+

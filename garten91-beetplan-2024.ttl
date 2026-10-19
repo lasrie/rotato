@@ -1,0 +1,1096 @@
+# Beetplan 2024 – aus input/Beetplan 2024.pptm generiert
+# Generator: generate_beetplan2024.py
+# Positionen: EMU-Koordinaten der Folie, konvertiert in Abschnitts-Meter
+
+@prefix garten:  <https://example.org/garten-planer/ontology#> .
+@prefix plan:    <https://example.org/garten-planer/plan#> .
+@prefix gv:      <https://example.org/garten-planer/vokabular#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:    <http://www.w3.org/2006/time#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+@base <https://example.org/garten-planer/data/garten91/plan-2024/> .
+
+<#p001> a garten:Pflanzung ;
+    rdfs:label "Erdbeeren"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Erdbeeren> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet> ;
+    garten:inAbschnitt <#p001-abschnitt> ;
+    garten:mehrjaehrig true ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p002> a garten:Pflanzung ;
+    rdfs:label "Johannisbeere"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Johannisbeere> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet> ;
+    garten:inAbschnitt <#p002-abschnitt> ;
+    garten:mehrjaehrig true ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p003> a garten:Pflanzung ;
+    rdfs:label "Stache-beere"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Stachelbeere> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet> ;
+    garten:inAbschnitt <#p003-abschnitt> ;
+    garten:mehrjaehrig true ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p004> a garten:Pflanzung ;
+    rdfs:label "Chili 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Chilli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#physalis-hochbeet> ;
+    garten:inAbschnitt <#p004-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p005> a garten:Pflanzung ;
+    rdfs:label "Erdbeeren"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Erdbeeren> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#physalis-hochbeet> ;
+    garten:inAbschnitt <#p005-abschnitt> ;
+    garten:mehrjaehrig true ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p006> a garten:Pflanzung ;
+    rdfs:label "Erdbeeren"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Erdbeeren> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#physalis-hochbeet> ;
+    garten:inAbschnitt <#p006-abschnitt> ;
+    garten:mehrjaehrig true ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p007> a garten:Pflanzung ;
+    rdfs:label "Erdbeeren"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Erdbeeren> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#physalis-hochbeet> ;
+    garten:inAbschnitt <#p007-abschnitt> ;
+    garten:mehrjaehrig true ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p008> a garten:Pflanzung ;
+    rdfs:label "Melone"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Honigmelone> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#physalis-hochbeet> ;
+    garten:inAbschnitt <#p008-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p009> a garten:Pflanzung ;
+    rdfs:label "Blumenkohl 5-7"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Blumenkohl> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p009-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-07"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p010> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 3-6"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p010-abschnitt> ;
+    garten:monatPflanzung "2024-03"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-06"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-03"^^xsd:gYearMonth ] ] .
+<#p011> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 5-8"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p011-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-08"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p012> a garten:Pflanzung ;
+    rdfs:label "Buschbohne 5-8"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Buschbohne> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p012-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-08"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p013> a garten:Pflanzung ;
+    rdfs:label "Knoblauch 10-7"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Knoblauch> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p013-abschnitt> ;
+    garten:monatPflanzung "2024-10"^^xsd:gYearMonth ;
+    garten:monatErnte "2025-07"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-10"^^xsd:gYearMonth ] ] .
+<#p014> a garten:Pflanzung ;
+    rdfs:label "Möhren 6-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p014-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p015> a garten:Pflanzung ;
+    rdfs:label "Radieschen 3-5"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p015-abschnitt> ;
+    garten:monatPflanzung "2024-03"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-05"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-03"^^xsd:gYearMonth ] ] .
+<#p016> a garten:Pflanzung ;
+    rdfs:label "Salat 6-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p016-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p017> a garten:Pflanzung ;
+    rdfs:label "Stangensellerie 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Stangensellerie> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p017-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p018> a garten:Pflanzung ;
+    rdfs:label "Stangensellerie 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Stangensellerie> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p018-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p019> a garten:Pflanzung ;
+    rdfs:label "Stangensellerie 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Stangensellerie> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p019-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p020> a garten:Pflanzung ;
+    rdfs:label "Zucchini 5-9"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zucchini> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:inAbschnitt <#p020-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-09"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p021> a garten:Pflanzung ;
+    rdfs:label "Chili 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Chilli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p021-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p022> a garten:Pflanzung ;
+    rdfs:label "Chili 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Chilli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p022-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p023> a garten:Pflanzung ;
+    rdfs:label "Grünkohl 6-11"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Grunkohl> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p023-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-11"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p024> a garten:Pflanzung ;
+    rdfs:label "Grünkohl 6-11"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Grunkohl> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p024-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-11"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p025> a garten:Pflanzung ;
+    rdfs:label "Grünkohl 6-11"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Grunkohl> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p025-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-11"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p026> a garten:Pflanzung ;
+    rdfs:label "Möhren 3-12"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p026-abschnitt> ;
+    garten:monatPflanzung "2024-03"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-03"^^xsd:gYearMonth ] ] .
+<#p027> a garten:Pflanzung ;
+    rdfs:label "Möhren 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Mohre> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p027-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p028> a garten:Pflanzung ;
+    rdfs:label "Radieschen 8-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p028-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] .
+<#p029> a garten:Pflanzung ;
+    rdfs:label "Radieschen 6-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p029-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p030> a garten:Pflanzung ;
+    rdfs:label "Radieschen 4-6"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p030-abschnitt> ;
+    garten:monatPflanzung "2024-04"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-06"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-04"^^xsd:gYearMonth ] ] .
+<#p031> a garten:Pflanzung ;
+    rdfs:label "Rote Beete 4-8"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#RoteBete> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p031-abschnitt> ;
+    garten:monatPflanzung "2024-04"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-08"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-04"^^xsd:gYearMonth ] ] .
+<#p032> a garten:Pflanzung ;
+    rdfs:label "Rote Beete 5-9"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#RoteBete> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p032-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-09"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p033> a garten:Pflanzung ;
+    rdfs:label "Salat 3-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:inAbschnitt <#p033-abschnitt> ;
+    garten:monatPflanzung "2024-03"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-03"^^xsd:gYearMonth ] ] .
+<#p034> a garten:Pflanzung ;
+    rdfs:label "Basilikum"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Basilikum> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p034-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p035> a garten:Pflanzung ;
+    rdfs:label "Grünkohl 6-11"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Grunkohl> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p035-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-11"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p036> a garten:Pflanzung ;
+    rdfs:label "Grünkohl 6-11"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Grunkohl> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p036-abschnitt> ;
+    garten:monatPflanzung "2024-06"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-11"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-06"^^xsd:gYearMonth ] ] .
+<#p037> a garten:Pflanzung ;
+    rdfs:label "Kamille"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kamille> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p037-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p038> a garten:Pflanzung ;
+    rdfs:label "Paprika 5-8"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Paprika> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p038-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-08"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p039> a garten:Pflanzung ;
+    rdfs:label "Paprika 5-8"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Paprika> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p039-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-08"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p040> a garten:Pflanzung ;
+    rdfs:label "Petersilie"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Petersilie> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p040-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p041> a garten:Pflanzung ;
+    rdfs:label "Petersilie"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Petersilie> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p041-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p042> a garten:Pflanzung ;
+    rdfs:label "Ringelblume"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Ringelblumen> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p042-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p043> a garten:Pflanzung ;
+    rdfs:label "Tomate 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Tomate> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p043-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p044> a garten:Pflanzung ;
+    rdfs:label "Tomate 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Tomate> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:inAbschnitt <#p044-abschnitt> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-05"^^xsd:gYearMonth ] ] .
+<#p045> a garten:Pflanzung ;
+    rdfs:label "Radieschen 9-11"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#kartoffelbeet> ;
+    garten:inAbschnitt <#p045-abschnitt> ;
+    garten:monatPflanzung "2024-09"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-11"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-09"^^xsd:gYearMonth ] ] .
+<#p046> a garten:Pflanzung ;
+    rdfs:label "Gemischter Salat"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p046-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p047> a garten:Pflanzung ;
+    rdfs:label "Lauch 4-7"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Porree> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p047-abschnitt> ;
+    garten:monatPflanzung "2024-04"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-07"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-04"^^xsd:gYearMonth ] ] .
+<#p048> a garten:Pflanzung ;
+    rdfs:label "Radieschen 7-9"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Radieschen> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p048-abschnitt> ;
+    garten:monatPflanzung "2024-07"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-09"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-07"^^xsd:gYearMonth ] ] .
+<#p049> a garten:Pflanzung ;
+    rdfs:label "Salat 2-5"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Kopfsalat> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p049-abschnitt> ;
+    garten:monatPflanzung "2024-02"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-05"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-02"^^xsd:gYearMonth ] ] .
+<#p050> a garten:Pflanzung ;
+    rdfs:label "Schnitt-lauch"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Schnittlauch> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p050-abschnitt> ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYear "2024"^^xsd:gYear ] ] .
+<#p051> a garten:Pflanzung ;
+    rdfs:label "Blumen-kohl 8-12"@de ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p051-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    plan:displayName "Blumen-kohl"@de .
+<#p052> a garten:Pflanzung ;
+    rdfs:label "Blumen-kohl 8-12"@de ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p052-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    plan:displayName "Blumen-kohl"@de .
+<#p053> a garten:Pflanzung ;
+    rdfs:label "Blumen-kohl 8-12"@de ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p053-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    plan:displayName "Blumen-kohl"@de .
+<#p054> a garten:Pflanzung ;
+    rdfs:label "Blumen-kohl 8-12"@de ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p054-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    plan:displayName "Blumen-kohl"@de .
+<#p055> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 8-12"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p055-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] .
+<#p056> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 8-12"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p056-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] .
+<#p057> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 8-12"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p057-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] .
+<#p058> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 8-12"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p058-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] .
+<#p059> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 8-12"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p059-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] .
+<#p060> a garten:Pflanzung ;
+    rdfs:label "Brokkoli 8-12"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Brokkoli> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p060-abschnitt> ;
+    garten:monatPflanzung "2024-08"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-12"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-08"^^xsd:gYearMonth ] ] .
+<#p061> a garten:Pflanzung ;
+    rdfs:label "Zwiebeln 10-7"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Zwiebeln> ;
+    garten:aufBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:inAbschnitt <#p061-abschnitt> ;
+    garten:monatPflanzung "2024-10"^^xsd:gYearMonth ;
+    garten:monatErnte "2025-07"^^xsd:gYearMonth ;
+    time:hasTemporalExtent [ a time:TemporalEntity ;
+        time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> ;
+        time:hasBeginning [ time:inXSDgYearMonth "2024-10"^^xsd:gYearMonth ] ] .
+<#p062> a garten:Pflanzung ;
+    rdfs:label "Dill 5-10"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Dill> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-10"^^xsd:gYearMonth ;
+    rdfs:comment "PPT-Zone top-center-small 2024 (Gurke/Dill): reale Beet-Zuordnung offen."@de .
+<#p063> a garten:Pflanzung ;
+    rdfs:label "Gurke 5-9"@de ;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Gurke> ;
+    garten:monatPflanzung "2024-05"^^xsd:gYearMonth ;
+    garten:monatErnte "2024-09"^^xsd:gYearMonth ;
+    rdfs:comment "PPT-Zone top-center-small 2024 (Gurke/Dill): reale Beet-Zuordnung offen."@de .
+
+# ---------------- Abschnitte (Position entlang Beet-Längsachse) ----------------
+
+<#p001-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "erdbeer-knoblauch-beet – Erdbeeren" ;
+    garten:abschnittInReihe <#reihe-auto-erdbeer-knoblauch-beet> ;
+    garten:abschnittStart "0.02"^^xsd:decimal ;
+    garten:abschnittEnde "1.95"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p001> .
+
+<#p003-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "erdbeer-knoblauch-beet – Stache-beere" ;
+    garten:abschnittInReihe <#reihe-auto-erdbeer-knoblauch-beet> ;
+    garten:abschnittStart "1.33"^^xsd:decimal ;
+    garten:abschnittEnde "1.87"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p003> .
+
+<#p002-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "erdbeer-knoblauch-beet – Johannisbeere" ;
+    garten:abschnittInReihe <#reihe-auto-erdbeer-knoblauch-beet> ;
+    garten:abschnittStart "0.35"^^xsd:decimal ;
+    garten:abschnittEnde "0.89"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p002> .
+
+<#p005-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "physalis-hochbeet – Erdbeeren" ;
+    garten:abschnittInReihe <#reihe-auto-physalis-hochbeet> ;
+    garten:abschnittStart "0.13"^^xsd:decimal ;
+    garten:abschnittEnde "1.96"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p005> .
+
+<#p008-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "physalis-hochbeet – Melone" ;
+    garten:abschnittInReihe <#reihe-auto-physalis-hochbeet> ;
+    garten:abschnittStart "0.13"^^xsd:decimal ;
+    garten:abschnittEnde "1.96"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p008> .
+
+<#p006-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "physalis-hochbeet – Erdbeeren" ;
+    garten:abschnittInReihe <#reihe-auto-physalis-hochbeet> ;
+    garten:abschnittStart "0.13"^^xsd:decimal ;
+    garten:abschnittEnde "1.96"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p006> .
+
+<#p007-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "physalis-hochbeet – Erdbeeren" ;
+    garten:abschnittInReihe <#reihe-auto-physalis-hochbeet> ;
+    garten:abschnittStart "0.13"^^xsd:decimal ;
+    garten:abschnittEnde "1.03"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p007> .
+
+<#p004-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "physalis-hochbeet – Chili" ;
+    garten:abschnittInReihe <#reihe-auto-physalis-hochbeet> ;
+    garten:abschnittStart "1.1"^^xsd:decimal ;
+    garten:abschnittEnde "1.93"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p004> .
+
+<#p012-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Buschbohne" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "0.02"^^xsd:decimal ;
+    garten:abschnittEnde "7.96"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p012> .
+
+<#p015-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Radieschen" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "0.03"^^xsd:decimal ;
+    garten:abschnittEnde "7.93"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p015> .
+
+<#p016-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Salat" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "0.26"^^xsd:decimal ;
+    garten:abschnittEnde "2.06"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p016> .
+
+<#p010-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "0.56"^^xsd:decimal ;
+    garten:abschnittEnde "2.56"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p010> .
+
+<#p014-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Möhren" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "0.72"^^xsd:decimal ;
+    garten:abschnittEnde "2.62"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p014> .
+
+<#p009-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Blumenkohl" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "1.58"^^xsd:decimal ;
+    garten:abschnittEnde "3.58"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p009> .
+
+<#p011-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "2.62"^^xsd:decimal ;
+    garten:abschnittEnde "4.62"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p011> .
+
+<#p017-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Stangensellerie" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "3.53"^^xsd:decimal ;
+    garten:abschnittEnde "5.33"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p017> .
+
+<#p018-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Stangensellerie" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "4.15"^^xsd:decimal ;
+    garten:abschnittEnde "5.95"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p018> .
+
+<#p019-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Stangensellerie" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "4.76"^^xsd:decimal ;
+    garten:abschnittEnde "6.56"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p019> .
+
+<#p013-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Knoblauch" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "5.79"^^xsd:decimal ;
+    garten:abschnittEnde "7.94"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p013> .
+
+<#p020-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-sued – Zucchini" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-sued> ;
+    garten:abschnittStart "5.98"^^xsd:decimal ;
+    garten:abschnittEnde "7.98"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p020> .
+
+<#p033-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Salat" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "0.17"^^xsd:decimal ;
+    garten:abschnittEnde "2.47"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p033> .
+
+<#p026-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Möhren" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "0.67"^^xsd:decimal ;
+    garten:abschnittEnde "2.97"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p026> .
+
+<#p031-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Rote Beete" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "1.1"^^xsd:decimal ;
+    garten:abschnittEnde "3.4"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p031> .
+
+<#p028-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Radieschen" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "1.11"^^xsd:decimal ;
+    garten:abschnittEnde "3.41"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p028> .
+
+<#p027-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Möhren" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "1.52"^^xsd:decimal ;
+    garten:abschnittEnde "3.82"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p027> .
+
+<#p032-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Rote Beete" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "1.95"^^xsd:decimal ;
+    garten:abschnittEnde "4.25"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p032> .
+
+<#p029-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Radieschen" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "2.33"^^xsd:decimal ;
+    garten:abschnittEnde "4.63"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p029> .
+
+<#p023-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Grünkohl" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "3.04"^^xsd:decimal ;
+    garten:abschnittEnde "5.34"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p023> .
+
+<#p024-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Grünkohl" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "4.1"^^xsd:decimal ;
+    garten:abschnittEnde "6.4"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p024> .
+
+<#p021-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Chili" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "4.96"^^xsd:decimal ;
+    garten:abschnittEnde "7.26"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p021> .
+
+<#p022-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Chili" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "5.16"^^xsd:decimal ;
+    garten:abschnittEnde "7.46"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p022> .
+
+<#p025-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Grünkohl" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "6.25"^^xsd:decimal ;
+    garten:abschnittEnde "8.0"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p025> .
+
+<#p030-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "beetkoerper-nord – Radieschen" ;
+    garten:abschnittInReihe <#reihe-auto-beetkoerper-nord> ;
+    garten:abschnittStart "6.36"^^xsd:decimal ;
+    garten:abschnittEnde "8.0"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p030> .
+
+<#p040-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Petersilie" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "8.32"^^xsd:decimal ;
+    garten:abschnittEnde "8.63"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p040> .
+
+<#p043-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Tomate" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "2.56"^^xsd:decimal ;
+    garten:abschnittEnde "9.93"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p043> .
+
+<#p041-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Petersilie" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "5.1"^^xsd:decimal ;
+    garten:abschnittEnde "5.41"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p041> .
+
+<#p042-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Ringelblume" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "7.49"^^xsd:decimal ;
+    garten:abschnittEnde "7.8"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p042> .
+
+<#p037-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Kamille" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "3.48"^^xsd:decimal ;
+    garten:abschnittEnde "3.79"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p037> .
+
+<#p044-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Tomate" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "2.58"^^xsd:decimal ;
+    garten:abschnittEnde "9.93"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p044> .
+
+<#p038-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Paprika" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "0.02"^^xsd:decimal ;
+    garten:abschnittEnde "0.65"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p038> .
+
+<#p039-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Paprika" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "0.66"^^xsd:decimal ;
+    garten:abschnittEnde "1.29"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p039> .
+
+<#p034-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Basilikum" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "9.15"^^xsd:decimal ;
+    garten:abschnittEnde "9.46"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p034> .
+
+<#p035-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Grünkohl" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "1.3"^^xsd:decimal ;
+    garten:abschnittEnde "1.93"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p035> .
+
+<#p036-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "tomatenbeet – Grünkohl" ;
+    garten:abschnittInReihe <#reihe-auto-tomatenbeet> ;
+    garten:abschnittStart "1.93"^^xsd:decimal ;
+    garten:abschnittEnde "2.56"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p036> .
+
+<#p045-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "kartoffelbeet – Radieschen" ;
+    garten:abschnittInReihe <#reihe-auto-kartoffelbeet> ;
+    garten:abschnittStart "0.04"^^xsd:decimal ;
+    garten:abschnittEnde "5.84"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p045> .
+
+<#p048-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Radieschen" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "0.09"^^xsd:decimal ;
+    garten:abschnittEnde "0.61"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p048> .
+
+<#p050-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Schnitt-lauch" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "0.63"^^xsd:decimal ;
+    garten:abschnittEnde "0.96"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p050> .
+
+<#p049-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Salat" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "1.39"^^xsd:decimal ;
+    garten:abschnittEnde "3.0"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p049> .
+
+<#p047-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Lauch" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "0.92"^^xsd:decimal ;
+    garten:abschnittEnde "1.37"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p047> .
+
+<#p046-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Gemischter Salat" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "2.06"^^xsd:decimal ;
+    garten:abschnittEnde "2.98"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p046> .
+
+<#p055-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "2.65"^^xsd:decimal ;
+    garten:abschnittEnde "2.99"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p055> .
+
+<#p051-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Blumen-kohl" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "2.08"^^xsd:decimal ;
+    garten:abschnittEnde "2.43"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p051> .
+
+<#p056-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "1.45"^^xsd:decimal ;
+    garten:abschnittEnde "1.8"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p056> .
+
+<#p052-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Blumen-kohl" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "0.89"^^xsd:decimal ;
+    garten:abschnittEnde "1.23"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p052> .
+
+<#p057-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "0.3"^^xsd:decimal ;
+    garten:abschnittEnde "0.64"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p057> .
+
+<#p061-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Zwiebeln" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "1.28"^^xsd:decimal ;
+    garten:abschnittEnde "2.98"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p061> .
+
+<#p058-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "2.37"^^xsd:decimal ;
+    garten:abschnittEnde "2.71"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p058> .
+
+<#p059-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "1.17"^^xsd:decimal ;
+    garten:abschnittEnde "1.52"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p059> .
+
+<#p060-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Brokkoli" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "0.02"^^xsd:decimal ;
+    garten:abschnittEnde "0.36"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p060> .
+
+<#p053-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Blumen-kohl" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "1.78"^^xsd:decimal ;
+    garten:abschnittEnde "2.12"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p053> .
+
+<#p054-abschnitt> a garten:ReihenAbschnitt ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – Blumen-kohl" ;
+    garten:abschnittInReihe <#reihe-auto-zwiebel-kohlrabi-hochbeet> ;
+    garten:abschnittStart "0.58"^^xsd:decimal ;
+    garten:abschnittEnde "0.92"^^xsd:decimal ;
+    garten:belegtMitPflanzung <#p054> .
+
+# ---------------- Auto-Reihen (eine virtuelle Reihe pro Beet) ----------------
+
+<#reihe-auto-beetkoerper-nord> a garten:Reihe ;
+    dcterms:title "beetkoerper-nord – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-nord> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "8.0"^^xsd:decimal .
+
+<#reihe-auto-beetkoerper-sued> a garten:Reihe ;
+    dcterms:title "beetkoerper-sued – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#beetkoerper-sued> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "8.0"^^xsd:decimal .
+
+<#reihe-auto-erdbeer-knoblauch-beet> a garten:Reihe ;
+    dcterms:title "erdbeer-knoblauch-beet – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#erdbeer-knoblauch-beet> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "2.0"^^xsd:decimal .
+
+<#reihe-auto-kartoffelbeet> a garten:Reihe ;
+    dcterms:title "kartoffelbeet – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#kartoffelbeet> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "6.0"^^xsd:decimal .
+
+<#reihe-auto-kartoffelbeet> a garten:Reihe ;
+    dcterms:title "kartoffelbeet – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#kartoffelbeet> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "6.0"^^xsd:decimal .
+
+<#reihe-auto-physalis-hochbeet> a garten:Reihe ;
+    dcterms:title "physalis-hochbeet – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#physalis-hochbeet> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "2.0"^^xsd:decimal .
+
+<#reihe-auto-tomatenbeet> a garten:Reihe ;
+    dcterms:title "tomatenbeet – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#tomatenbeet> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "10.0"^^xsd:decimal .
+
+<#reihe-auto-zwiebel-kohlrabi-hochbeet> a garten:Reihe ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "3.0"^^xsd:decimal .
+
+<#reihe-auto-zwiebel-kohlrabi-hochbeet> a garten:Reihe ;
+    dcterms:title "zwiebel-kohlrabi-hochbeet – PPT-Reihe 2024" ;
+    garten:reiheInBeet <https://example.org/garten-planer/data/garten91/real/#zwiebel-kohlrabi-hochbeet> ;
+    garten:reihenNummer 1 ;
+    garten:reihenAusrichtung gv:ostWest ;
+    garten:nutzlaenge "3.0"^^xsd:decimal .

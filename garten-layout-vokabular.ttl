@@ -1,0 +1,24 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix gv: <https://example.org/garten-planer/vokabular#>.
+
+<https://example.org/garten-planer/vokabular/layout> a skos:ConceptScheme;
+    rdfs:label "Ausrichtungen für Beet- und Reihenplanung"@de;
+    dcterms:description "Kontrollierte Liste absoluter Himmelsrichtungen für Beete und Reihen."@de.
+gv:nordSued a skos:Concept;
+    skos:inScheme <https://example.org/garten-planer/vokabular/layout>;
+    skos:prefLabel "Nord-Süd"@de;
+    skos:definition "Längsachse verläuft von Norden nach Süden."@de.
+gv:ostWest a skos:Concept;
+    skos:inScheme <https://example.org/garten-planer/vokabular/layout>;
+    skos:prefLabel "Ost-West"@de;
+    skos:definition "Längsachse verläuft von Osten nach Westen."@de.
+gv:nordostSuedwest a skos:Concept;
+    skos:inScheme <https://example.org/garten-planer/vokabular/layout>;
+    skos:prefLabel "Nordost-Südwest"@de;
+    skos:definition "Diagonale Ausrichtung von Nordost nach Südwest."@de.
+gv:nordwestSuedost a skos:Concept;
+    skos:inScheme <https://example.org/garten-planer/vokabular/layout>;
+    skos:prefLabel "Nordwest-Südost"@de;
+    skos:definition "Diagonale Ausrichtung von Nordwest nach Südost."@de.

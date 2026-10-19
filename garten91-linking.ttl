@@ -1,0 +1,67 @@
+@prefix garten: <https://example.org/garten-planer/ontology#>.
+@prefix plan: <https://example.org/garten-planer/plan#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+<https://example.org/garten-planer/data/garten91/#garten91> a garten:Kleingarten;
+    dcterms:title "Kleingarten Garten 91";
+    dcterms:relation <https://example.org/garten-planer/extract/beetplan-2025/#dataset>;
+    rdfs:comment "Strukturelle Verknüpfung des aus der PowerPoint extrahierten Beetplans 2025 mit dem Garten-Modell. Einige Beet-Metadaten (Fläche, Sonnenlage, Bodentyp) sind noch nicht erfasst."@de;
+    garten:hatFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>;
+    garten:hatBeet <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-top-center-small>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-lower>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-center-small>, <https://example.org/garten-planer/extract/beetplan-2025/#zone-potato-bags>.
+<https://example.org/garten-planer/data/garten91/#fruchtfolge91> a garten:Fruchtfolge;
+    dcterms:title "Fruchtfolge Garten 91 (vorläufig)";
+    rdfs:comment "Vorläufige Fruchtfolge-Ressource zur Verknüpfung des Gartenplans. Start-Beet und Rotationsdauer sind noch nicht modelliert."@de.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-top-center-small> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-lower> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-center-small> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-potato-bags> a garten:Beet;
+    garten:inFruchtfolge <https://example.org/garten-planer/data/garten91/#fruchtfolge91>.
+<https://example.org/garten-planer/data/garten91/#fruchtfolge91> garten:beginntAufBeet <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    garten:rotateNachJahren 4;
+    rdfs:comment "Start-Beet und Rotationsdauer sind vorläufig gesetzt, bis die reale Gartenlogik für Garten 91 genauer modelliert ist."@de.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical> garten:flaeche 2.5;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-top-center-small> garten:flaeche "1"^^<http://www.w3.org/2001/XMLSchema#decimal>;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-center-upper> garten:flaeche "4"^^<http://www.w3.org/2001/XMLSchema#decimal>;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-center-lower> garten:flaeche "4"^^<http://www.w3.org/2001/XMLSchema#decimal>;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-berry-bed> garten:flaeche 1.2;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-upper> garten:flaeche 2.2;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-right-vertical-lower> garten:flaeche "1"^^<http://www.w3.org/2001/XMLSchema#decimal>;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-right-small> garten:flaeche 0.8;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-bottom-center-small> garten:flaeche "1"^^<http://www.w3.org/2001/XMLSchema#decimal>;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.
+<https://example.org/garten-planer/extract/beetplan-2025/#zone-potato-bags> garten:flaeche 0.6;
+    garten:sonnenlage <https://example.org/garten-planer/vokabular#sonnig>;
+    garten:bodentyp <https://example.org/garten-planer/vokabular#humos>.

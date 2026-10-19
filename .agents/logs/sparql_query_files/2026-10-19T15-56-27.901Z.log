@@ -1,0 +1,44 @@
+Tool:      sparql_query_files
+Status:    OK
+
+## Sources
+  file:///Users/lasse/dev/garten-planer/garten-vokabular.ttl
+  file:///Users/lasse/dev/garten-planer/garten-layout-vokabular.ttl
+  file:///Users/lasse/dev/garten-planer/pflanzen.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-linking.ttl
+  file:///Users/lasse/dev/garten-planer/garten-layout-ontology.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-beete-real.ttl
+  file:///Users/lasse/dev/garten-planer/garten91-belegungen-real-2025.ttl
+  file:///Users/lasse/dev/garten-planer/anbau-journal.ttl
+
+## Query
+PREFIX garten:  <https://example.org/garten-planer/ontology#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX time:    <http://www.w3.org/2006/time#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?jahr ?beetTitel ?familieLabel (COUNT(DISTINCT ?p) AS ?anzahl) (GROUP_CONCAT(DISTINCT ?pflanzeLabel; separator=", ") AS ?kulturen)
+WHERE {
+  ?p a garten:Pflanzung ;
+     garten:pflanzt ?pf ;
+     garten:aufBeet ?beet ;
+     time:hasTemporalExtent ?te .
+  ?te time:hasBeginning ?b .
+  ?b time:inXSDgYearMonth ?ym .
+  BIND(SUBSTR(STR(?ym),1,4) AS ?jahr)
+  ?beet dcterms:title ?beetTitel .
+  ?pf garten:fruchtFamilie ?familie ;
+      garten:mehrjaehrig false ;
+      skos:prefLabel ?pflanzeLabel .
+  OPTIONAL { ?familie skos:prefLabel ?familieLabel }
+}
+GROUP BY ?jahr ?beetTitel ?familieLabel
+ORDER BY ?jahr ?beetTitel ?familieLabel
+LIMIT 500
+
+## Result
+jahr                                               beetTitel                                          familieLabel                                       anzahl                                             kulturen                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

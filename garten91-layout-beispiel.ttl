@@ -1,0 +1,73 @@
+@prefix garten: <https://example.org/garten-planer/ontology#>.
+@prefix gv: <https://example.org/garten-planer/vokabular#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://example.org/garten-planer/data/garten91/layout/#row1> a garten:Reihe;
+    dcterms:title "Linkes hohes Beet – Reihe 1";
+    garten:reiheInBeet <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    garten:reihenNummer 1;
+    garten:reihenAusrichtung gv:nordSued;
+    garten:nutzlaenge 5.2;
+    garten:hatAbschnitt <https://example.org/garten-planer/data/garten91/layout/#row1-seg1>, <https://example.org/garten-planer/data/garten91/layout/#row1-seg2>.
+<https://example.org/garten-planer/data/garten91/layout/#row1-seg1> a garten:ReihenAbschnitt;
+    dcterms:title "Linkes hohes Beet – Reihe 1 – Hauptabschnitt";
+    garten:abschnittInReihe <https://example.org/garten-planer/data/garten91/layout/#row1>;
+    garten:abschnittStart 0.0;
+    garten:abschnittEnde 4.0;
+    garten:belegtMitPflanzung <https://example.org/garten-planer/data/garten91/layout/#pfl-tomate>, <https://example.org/garten-planer/data/garten91/layout/#pfl-basilikum>, <https://example.org/garten-planer/data/garten91/layout/#pfl-jungfer>.
+<https://example.org/garten-planer/data/garten91/layout/#row1-seg2> a garten:ReihenAbschnitt;
+    dcterms:title "Linkes hohes Beet – Reihe 1 – Unterer Abschnitt";
+    garten:abschnittInReihe <https://example.org/garten-planer/data/garten91/layout/#row1>;
+    garten:abschnittStart 4.0;
+    garten:abschnittEnde 5.2;
+    garten:belegtMitPflanzung <https://example.org/garten-planer/data/garten91/layout/#pfl-schnittlauch>.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-tomate> a garten:Pflanzung;
+    dcterms:title "Tomate in Reihe 1";
+    garten:aufBeet <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/layout/#row1-seg1>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Tomate>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-116 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-117 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-116 time:hasBeginning _:n3-117.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-tomate> time:hasTemporalExtent _:n3-116.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-basilikum> a garten:Pflanzung;
+    dcterms:title "Basilikum als Mischkultur in Reihe 1";
+    garten:aufBeet <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/layout/#row1-seg1>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Basilikum>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-118 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-119 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-118 time:hasBeginning _:n3-119.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-basilikum> time:hasTemporalExtent _:n3-118.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-jungfer> a garten:Pflanzung;
+    dcterms:title "Jungfer im Grünen als Mischkultur in Reihe 1";
+    garten:aufBeet <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/layout/#row1-seg1>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#JungferImGrunen>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-120 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-121 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-120 time:hasBeginning _:n3-121.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-jungfer> time:hasTemporalExtent _:n3-120.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-schnittlauch> a garten:Pflanzung;
+    dcterms:title "Schnittlauch im unteren Reihenabschnitt";
+    garten:aufBeet <https://example.org/garten-planer/extract/beetplan-2025/#zone-left-vertical>;
+    garten:inAbschnitt <https://example.org/garten-planer/data/garten91/layout/#row1-seg2>;
+    garten:pflanzt <https://example.org/garten-planer/pflanzen/#Schnittlauch>;
+    garten:monatPflanzung "2025-05"^^xsd:gYearMonth;
+    garten:monatErnte "2025-10"^^xsd:gYearMonth.
+_:n3-122 a time:TemporalEntity;
+    time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>.
+_:n3-123 time:inXSDgYearMonth "2025-05"^^xsd:gYearMonth.
+_:n3-122 time:hasBeginning _:n3-123.
+<https://example.org/garten-planer/data/garten91/layout/#pfl-schnittlauch> time:hasTemporalExtent _:n3-122.
