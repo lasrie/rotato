@@ -2,65 +2,17 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from rdflib import Namespace, URIRef
 from rdflib.namespace import DCTERMS, RDF, RDFS, SKOS
 
+from datamodel import (FAMILIE_COLOR, FAMILIE_COLOR_FALLBACK, FF_BEDS as BEDS,
+                       GARTEN, TIME, YEARS, first, label_de, real as REAL)
 from rdf_source import get_graph
 
 ROOT = Path(__file__).parent
 OUT = ROOT / "viz" / "fruchtfolge-data.js"
 
-GARTEN = Namespace("https://example.org/garten-planer/ontology#")
-TIME = Namespace("http://www.w3.org/2006/time#")
-
-REAL = lambda slug: URIRef("https://example.org/garten-planer/data/garten91/real/#" + slug)
-
-BEDS = [
-    ("tomatenbeet", "Tomatenbeet"),
-    ("beetkoerper-nord", "Beetkörper West"),
-    ("beetkoerper-sued", "Beetkörper Ost"),
-    ("kartoffelbeet", "Kartoffelbeet"),
-    ("erdbeer-knoblauch-beet", "Erdbeer-Beet"),
-    ("zwiebel-kohlrabi-hochbeet", "Zwiebel-Kohlrabi-Hochbeet"),
-    ("physalis-hochbeet", "Physalis-Hochbeet"),
-    ("beerenbeet", "Beerenbeet"),
-    ("jungpflanzen-anzuchtkasten", "Jungpflanzen-Anzuchtkasten"),
-    ("beet-rechts-unten", "Beet rechts unten (tbd)"),
-]
-YEARS = ["2024", "2025", "2026"]
-
-FAMILIE_COLOR = {
-    "Nachtschattengewächse": "#e9a8a0",
-    "Kreuzblütler": "#a8c686",
-    "Doldenblütler": "#8fd0c4",
-    "Kürbisgewächse": "#f0c060",
-    "Zwiebelgewächse": "#c8a8e0",
-    "Korbblütler": "#f0e080",
-    "Fuchsschwanzgewächse": "#d0a0c8",
-    "Lippenblütler": "#90d090",
-    "Süßgräser": "#d8e0a0",
-    "Kapuzinerkressengewächse": "#f0a888",
-    "Hülsenfrüchtler": "#a0d0e0",
-    "Hahnenfußgewächse": "#b0d0e8",
-    "Rosengewächse": "#f09090",
-    "Knöterichgewächse": "#c8d888",
-}
 
 
-def first(g, s, p):
-    for o in g.objects(s, p):
-        return o
-    return None
-
-
-def label_de(g, res, fallback=None):
-    if res is None:
-        return fallback
-    labels = list(g.objects(res, SKOS.prefLabel)) or list(g.objects(res, RDFS.label)) or list(g.objects(res, DCTERMS.title))
-    for lbl in labels:
-        if getattr(lbl, "language", None) == "de":
-            return str(lbl)
-    return str(labels[0]) if labels else (fallback or str(res).split("#")[-1].split("/")[-1])
 
 
 def main():
@@ -105,7 +57,7 @@ def main():
         key = (jahr, str(beet), familie_label)
         cell = rows.setdefault(key, {
             "familie": familie_label,
-            "color": FAMILIE_COLOR.get(familie_label, "#c8cfc0"),
+            "color": FAMILIE_COLOR.get(familie_label, FAMILIE_COLOR_FALLBACK),
             "kulturen": set(),
             "count": 0,
         })

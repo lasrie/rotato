@@ -17,9 +17,10 @@ der Wahrheit für Pflanzungen.
 from __future__ import annotations
 
 import json as _json
+import json as _json
+import os
 import subprocess
 import sys
-import tempfile
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -30,10 +31,30 @@ from pod_auth import PodAuth
 from rdf_source import get_graph, invalidate_cache
 
 ROOT = Path(__file__).parent
-import os
 PORT = int(os.environ.get("GARTEN_PORT", "8765"))
 
-# Reihenfolge wie im pyshacl-Aufruf — Pod-Ressourcen (ADR-0003)
+# pyshacl als Library (nicht Subprocess): Shapes einmalig beim Start laden,
+# Validierung im selben Prozess — spart ~1-2 s Prozessstart + doppeltes RDF-Parsing pro POST.
+from pyshacl import validate as pyshacl_validate
+from rdflib import Graph as RDFGraph
+
+
+def load_merged_shapes() -> RDFGraph:
+    """Beide Shape-Dateien als EINEN Graph laden.
+
+    ACHTUNG: Die pyshacl-CLI akzeptiert nur EINE -s-Datei (letzter gewinnt) —
+    ein Subprocess-Aufruf mit zwei -s-Flags validierte stillschweigend nur
+    gegen die letzte Datei. Die Library-Version nimmt einen gemergten Graph.
+    """
+    g = RDFGraph()
+    for f in ("garten-shapes.ttl", "garten-layout.shacl.ttl"):
+        g.parse(ROOT / f, format="turtle")
+    return g
+
+
+SHAPES_GRAPH = load_merged_shapes()
+
+# Pod-Ressourcen in Merge-Reihenfolge (ADR-0003)
 POD_FILES = [
     "vokabular.ttl",
     "ontologie.ttl",
@@ -212,30 +233,28 @@ class GartenHandler(BaseHTTPRequestHandler):
             return False, _json.dumps({"ok": False, "error": str(e)})
 
     def _validate(self, merged_ttl: str) -> tuple[bool, str]:
-        """pyshacl über beide Shape-Dateien (gemerged)."""
-        # ACHTUNG: pyshacl-CLI akzeptiert nur EINE -s-Datei (letzter gewinnt).
-        # Deshalb mergen wir die Shape-Dateien in ein temporäres Shapes-Dokument.
-        shapes_ttl = "\n".join(
-            (ROOT / f).read_text(encoding="utf-8")
-            for f in ("garten-shapes.ttl", "garten-layout.shacl.ttl")
+        """pyshacl als Library über den gemergten Shapes-Graph (beim Start geladen)."""
+        data = RDFGraph()
+        data.parse(data=merged_ttl, format="turtle")
+        # Kein inference/advanced: Diese Flags aktivieren RDFS-Inference, die
+        # über rdfs:domain (garten:aufBeet → garten:Pflanzung) die plan:Belegungen
+        # ungewollt zu Pflanzungen macht und Folge-Verletzungen erzeugt.
+        conforms, results_graph, _ = pyshacl_validate(
+            data_graph=data, shacl_graph=SHAPES_GRAPH,
         )
-        with tempfile.NamedTemporaryFile("w", suffix=".ttl", delete=False) as sf:
-            sf.write(shapes_ttl)
-            shapes_tmp = sf.name
-        with tempfile.NamedTemporaryFile("w", suffix=".ttl", delete=False) as tf:
-            tf.write(merged_ttl)
-            tmp_name = tf.name
-
-        result = subprocess.run(
-            [sys.executable, "-m", "pyshacl", "-s", shapes_tmp, tmp_name],
-            capture_output=True, text=True, timeout=120,
-        )
-        conforms = "Conforms: True" in result.stdout
         if not conforms:
-            violation_lines = [l for l in result.stdout.splitlines()
-                               if "Focus Node" in l or "Message" in l]
-            return False, '{"ok": false, "error": "SHACL-Validierung fehlgeschlagen", "details": ' + \
-                   _json.dumps(violation_lines[:6]) + '}'
+            q = """
+            PREFIX sh: <http://www.w3.org/ns/shacl#>
+            SELECT ?focus ?msg WHERE {
+              ?res sh:focusNode ?focus ; sh:resultMessage ?msg .
+            } LIMIT 6
+            """
+            details = [f"{focus}: {msg}" for focus, msg in results_graph.query(q)]
+            return False, _json.dumps({
+                "ok": False,
+                "error": "SHACL-Validierung fehlgeschlagen",
+                "details": details,
+            })
         return True, '{"ok": true}'
 
     def _regenerate_exports_async(self) -> None:

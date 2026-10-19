@@ -2,80 +2,16 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from rdflib import Namespace, URIRef
-from rdflib.namespace import DCTERMS, RDF, RDFS, SKOS
+from rdflib import RDF, Graph
+from rdflib.namespace import DCTERMS, RDFS, SKOS
 
+from datamodel import (FAMILIE_COLOR, FAMILIE_COLOR_FALLBACK, GARTEN, MONTHS,
+                       PLAN, REIHENFOLGE, TIME, YEARS, GARTEN91, first,
+                       label_de, real)
 from rdf_source import get_graph
 
 ROOT = Path(__file__).parent
 OUT = ROOT / "viz" / "garten91-plan.js"
-
-GARTEN = Namespace("https://example.org/garten-planer/ontology#")
-PLAN = Namespace("https://example.org/garten-planer/plan#")
-REAL = Namespace("https://example.org/garten-planer/data/garten91/real/")
-DATA91 = Namespace("https://example.org/garten-planer/data/garten91/")
-
-
-def real(slug):
-    return URIRef("https://example.org/garten-planer/data/garten91/real/#" + slug)
-TIME = Namespace("http://www.w3.org/2006/time#")
-
-GARTEN91 = DATA91.garten91
-
-MONTHS = [
-    None, "Januar", "Februar", "März", "April", "Mai", "Juni",
-    "Juli", "August", "September", "Oktober", "November", "Dezember",
-]
-
-REIHENFOLGE = [
-    real("tomatenbeet"),
-    real("erdbeer-knoblauch-beet"),
-    real("beetkoerper-nord"),
-    real("beetkoerper-sued"),
-    real("hackschnitzelweg-beetkoerper"),
-    real("kartoffelbeet"),
-    real("jungpflanzen-anzuchtkasten"),
-    real("physalis-hochbeet"),
-    real("beerenbeet"),
-    real("zwiebel-kohlrabi-hochbeet"),
-]
-
-FAMILIE_COLOR = {
-    "Nachtschattengewächse": "#e9a8a0",
-    "Kreuzblütler": "#a8c686",
-    "Doldenblütler": "#8fd0c4",
-    "Kürbisgewächse": "#f0c060",
-    "Zwiebelgewächse": "#c8a8e0",
-    "Korbblütler": "#f0e080",
-    "Fuchsschwanzgewächse": "#d0a0c8",
-    "Lippenblütler": "#90d090",
-    "Süßgräser": "#d8e0a0",
-    "Kapuzinerkressengewächse": "#f0a888",
-    "Hülsenfrüchtler": "#a0d0e0",
-    "Hahnenfußgewächse": "#b0d0e8",
-    "Rosengewächse": "#f09090",
-    "Knöterichgewächse": "#c8d888",
-}
-
-
-def first(g: Graph, s, p):
-    for o in g.objects(s, p):
-        return o
-    return None
-
-
-def label_de(g: Graph, res, fallback=None):
-    if res is None:
-        return fallback
-    labels = list(g.objects(res, SKOS.prefLabel))
-    if not labels:
-        labels = list(g.objects(res, RDFS.label))
-    if not labels:
-        labels = list(g.objects(res, DCTERMS.title))
-    for lbl in labels:
-        if getattr(lbl, "language", None) == "de":
-            return str(lbl)
-    return str(labels[0]) if labels else (fallback or str(res).split("#")[-1].split("/")[-1])
 
 
 def month_of_ym(g: Graph, planting, pred):
@@ -117,16 +53,17 @@ def main():
     # ---- Beete ----
     beds = []
     for beet in REIHENFOLGE:
-        is_path = beet == real("hackschnitzelweg-beetkoerper")
+        is_path = beet == "hackschnitzelweg-beetkoerper"
+        beet_uri = real(beet)
         beds.append({
-            "id": str(beet),
-            "slug": str(beet).split("#")[-1],
-            "title": label_de(g, beet),
-            "comment": str(first(g, beet, RDFS.comment) or ""),
-            "x": float(first(g, beet, PLAN.x) or 0),
-            "y": float(first(g, beet, PLAN.y) or 0),
-            "width": float(first(g, beet, PLAN.width) or 0),
-            "height": float(first(g, beet, PLAN.height) or 0),
+            "id": str(beet_uri),
+            "slug": beet,
+            "title": label_de(g, beet_uri),
+            "comment": str(first(g, beet_uri, RDFS.comment) or ""),
+            "x": float(first(g, beet_uri, PLAN.x) or 0),
+            "y": float(first(g, beet_uri, PLAN.y) or 0),
+            "width": float(first(g, beet_uri, PLAN.width) or 0),
+            "height": float(first(g, beet_uri, PLAN.height) or 0),
             "family": None,
             "isPath": is_path,
             "plantings": [],
@@ -170,7 +107,7 @@ def main():
             "plant": str(pflanze),
             "family": str(familie) if familie else None,
             "familyLabel": familie_label,
-            "familyColor": FAMILIE_COLOR.get(familie_label, "#9ccc8a"),
+            "familyColor": FAMILIE_COLOR.get(familie_label, FAMILIE_COLOR_FALLBACK),
             "mehrjaehrig": mehrjaehrig,
             "jahr": jahr,
             "fromMonth": from_m,
@@ -203,7 +140,7 @@ def main():
         "garden": str(GARTEN91),
         "sourceFiles": ["pod"],
         "months": MONTHS,
-        "years": ["2024", "2025", "2026"],
+        "years": YEARS,
         "beds": beds,
         "plants": plants,
     }

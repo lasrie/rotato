@@ -58,6 +58,33 @@ window.FRUCHTFOLGE = {
       }
      ]
     },
+    {
+     "family": "Lippenblütler",
+     "color": "#90d090",
+     "items": [
+      {
+       "kultur": "Basilikum",
+       "count": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "erdbeer-knoblauch-beet",
+   "title": "Erdbeer-Beet",
+   "cells": [
+    {
+     "family": "Zwiebelgewächse",
+     "color": "#c8a8e0",
+     "items": [
+      {
+       "kultur": "Knoblauch",
+       "count": 3
+      }
+     ]
+    },
+    null,
     null
    ]
   },
@@ -215,55 +242,11 @@ window.FRUCHTFOLGE = {
    ]
   },
   {
-   "slug": "erdbeer-knoblauch-beet",
-   "title": "Erdbeer-Beet",
+   "slug": "jungpflanzen-anzuchtkasten",
+   "title": "Jungpflanzen-Anzuchtkasten",
    "cells": [
-    {
-     "family": "Zwiebelgewächse",
-     "color": "#c8a8e0",
-     "items": [
-      {
-       "kultur": "Knoblauch",
-       "count": 3
-      }
-     ]
-    },
     null,
-    null
-   ]
-  },
-  {
-   "slug": "zwiebel-kohlrabi-hochbeet",
-   "title": "Zwiebel-Kohlrabi-Hochbeet",
-   "cells": [
-    {
-     "family": "Korbblütler",
-     "color": "#f0e080",
-     "items": [
-      {
-       "kultur": "Kopfsalat",
-       "count": 2
-      },
-      {
-       "kultur": "Porree, Schnittlauch, Zwiebeln",
-       "count": 4
-      },
-      {
-       "kultur": "Brokkoli, Radieschen",
-       "count": 7
-      }
-     ]
-    },
-    {
-     "family": "Kreuzblütler",
-     "color": "#a8c686",
-     "items": [
-      {
-       "kultur": "Kohlrabi",
-       "count": 2
-      }
-     ]
-    },
+    null,
     null
    ]
   },
@@ -308,20 +291,37 @@ window.FRUCHTFOLGE = {
    ]
   },
   {
-   "slug": "jungpflanzen-anzuchtkasten",
-   "title": "Jungpflanzen-Anzuchtkasten",
+   "slug": "zwiebel-kohlrabi-hochbeet",
+   "title": "Zwiebel-Kohlrabi-Hochbeet",
    "cells": [
-    null,
-    null,
-    null
-   ]
-  },
-  {
-   "slug": "beet-rechts-unten",
-   "title": "Beet rechts unten (tbd)",
-   "cells": [
-    null,
-    null,
+    {
+     "family": "Zwiebelgewächse",
+     "color": "#c8a8e0",
+     "items": [
+      {
+       "kultur": "Porree, Schnittlauch, Zwiebeln",
+       "count": 4
+      },
+      {
+       "kultur": "Kopfsalat",
+       "count": 2
+      },
+      {
+       "kultur": "Brokkoli, Radieschen",
+       "count": 7
+      }
+     ]
+    },
+    {
+     "family": "Kreuzblütler",
+     "color": "#a8c686",
+     "items": [
+      {
+       "kultur": "Kohlrabi",
+       "count": 2
+      }
+     ]
+    },
     null
    ]
   }
@@ -334,6 +334,14 @@ window.FRUCHTFOLGE = {
    "familien": [
     "Lippenblütler",
     "Nachtschattengewächse"
+   ]
+  },
+  {
+   "beet": "Tomatenbeet",
+   "beetSlug": "tomatenbeet",
+   "jahre": "2025→2026",
+   "familien": [
+    "Lippenblütler"
    ]
   },
   {
