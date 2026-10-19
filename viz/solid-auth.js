@@ -9,6 +9,7 @@
  */
 import {
   login, logout, fetch, handleIncomingRedirect, getDefaultSession,
+  SHACLValidator, rdfEnv, N3Parser,
 } from "./lib/solid-bundle.js";
 
 const POD_BASE = "https://lasse.solidcommunity.net/garten/";
@@ -17,23 +18,54 @@ const GATEWAY = window.location.origin; // server.py im lokalen Modus
 
 export const session = getDefaultSession();
 
-let shaclValidatorPromise = null;
+const TRS_GREGORIAN = "http://www.opengis.net/def/uom/ISO-8601/0/Gregorian";
 
-async function getShaclValidator() {
-  // Shapes einmalig laden (beide Shape-Dateien aus dem Pod, identisch zu server.py)
-  if (!shaclValidatorPromise) {
-    shaclValidatorPromise = (async () => {
-      const { SHACLValidator, Parser } = await import("./lib/solid-bundle.js");
-      const parser = new Parser();
-      const shapes = parser.parse(await (await fetch(POD_BASE + "shapes.ttl", { headers: { Accept: "text/turtle" } })).text());
-      const layoutShapes = parser.parse(await (await fetch(POD_BASE + "layout-shapes.ttl", { headers: { Accept: "text/turtle" } })).text());
-      // Beide Graphen zusammenführen (gleicher Fix wie der pyshacl-CLI-Bug)
-      const merged = shapes.merge?.(layoutShapes) ?? shapes;
-      return new SHACLValidator(merged, { factory: { dataFactory: parser._factory } });
-    })();
-    shaclValidatorPromise.catch(() => { shaclValidatorPromise = null; });
+let shapesDataset = null;
+
+async function getShapesDataset() {
+  // Beide Shape-Dateien einmalig aus dem Pod laden und zu einem Dataset mergen
+  // (gleiche Semantik wie der gemergte pyshacl-Shape-Graph im Server).
+  if (!shapesDataset) {
+    const shapesDs = rdfEnv.dataset();
+    // NUR garten-shapes.ttl: rdf-validate-shacl unterstützt keine SPARQL-Constraints
+    // (sh:sparql in garten-layout.shacl.ttl → Crash im Browser). Die SPARQL-Regeln
+    // bleiben serverseitig (pyshacl, Stufe 1 / Gateway-Fallback). Dokumentiert in ADR-0004.
+    const res = await fetch(POD_BASE + "shapes.ttl", { headers: { Accept: "text/turtle" } });
+    if (!res.ok) throw new Error(`Shapes laden fehlgeschlagen: HTTP ${res.status}`);
+    await addTurtleToDataset(await res.text(), shapesDs);
+    shapesDataset = shapesDs;
   }
-  return shaclValidatorPromise;
+  return shapesDataset;
+}
+
+async function addTurtleToDataset(turtle, dataset) {
+  // n3.Parser ist string-basiert (browser-safe); @rdfjs/parser-n3 bräuchte Node-Streams
+  const quads = new N3Parser().parse(turtle);
+  for (const quad of quads) dataset.add(quad);
+}
+
+let podDatasetCache = null;
+let podDatasetAt = 0;
+
+async function loadPodDatasetForValidation({ refresh = false } = {}) {
+  // Das KOMPLETTE Dataset aus dem Pod (Beete, Pflanzen, ...) — nötig, damit
+  // sh:class-Constraints (aufBeet → Beet) die referenzierten Objekte kennen.
+  // Kurzer Cache (60s), damit nicht jeder POST alles neu lädt.
+  if (podDatasetCache && !refresh && Date.now() - podDatasetAt < 60000) {
+    return podDatasetCache;
+  }
+  const ds = rdfEnv.dataset();
+  const files = ["vokabular.ttl", "ontologie.ttl", "pflanzen.ttl", "beete.ttl",
+    "beetplan-2025-extrahiert.ttl", "beetplan-2024.ttl", "belegungen-2025.ttl",
+    "planungen/planungen.ttl", "journal/anbau-journal.ttl", "linking.ttl"];
+  for (const name of files) {
+    const res = await fetch(POD_BASE + name, { headers: { Accept: "text/turtle" } });
+    if (res.ok) await addTurtleToDataset(await res.text(), ds);
+    // 404 (z. B. leere Planungen) ist ok
+  }
+  podDatasetCache = ds;
+  podDatasetAt = Date.now();
+  return ds;
 }
 
 /**
@@ -41,15 +73,16 @@ async function getShaclValidator() {
  * Liefert { conforms, details[] }.
  */
 export async function validateShacl(turtle) {
-  const { SHACLValidator, Parser } = await import("./lib/solid-bundle.js");
-  const parser = new Parser();
-  const validator = await getShaclValidator();
-  const data = parser.parse(turtle);
-  // Validator validiert gegen das Dataset; Merged-Graph wird beim ersten Aufruf geladen.
-  const report = validator.validate({ dataset: data });
+  const shapes = await getShapesDataset();
+  const validator = new SHACLValidator(shapes, { factory: rdfEnv });
+  // Das KOMPLETTE Pod-Dataset (60s-Cache) + neuer Turtle-Block (wie server.py es validiert)
+  const data = await loadPodDatasetForValidation();
+  await addTurtleToDataset(turtle, data);
+  const report = await validator.validate(data);
   return {
     conforms: report.conforms,
-    details: report.results?.slice(0, 6).map((r) => `${r.focusNode?.value}: ${r.message?.[0]?.value}`) ?? [],
+    details: (report.results ?? []).slice(0, 6).map((r) =>
+      `${r.focusNode?.value ?? "?"}: ${r.message?.map((m) => m.value).join("; ") ?? "?"}`),
   };
 }
 

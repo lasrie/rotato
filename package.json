@@ -23,6 +23,7 @@
     "@inrupt/solid-client-authn-browser": "^5.0.1",
     "@inrupt/solid-client-authn-core": "^5.0.1",
     "@rdfjs/parser-n3": "^2.2.0",
+    "@zazuko/env": "^3.0.1",
     "rdf-validate-shacl": "^0.6.5"
   },
   "devDependencies": {
