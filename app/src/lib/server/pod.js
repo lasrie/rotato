@@ -15,15 +15,8 @@
  *   er definiert nichts um.
  */
 import { readFileSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-// Im Build landet dieses Modul verschachtelt (build/server/entries/.../api/garden),
-// daher überschreibbar via ROTATO_ROOT; Fallback: 4 Ebenen nach oben.
-const ROOT = process.env.ROTATO_ROOT
-  ? process.env.ROTATO_ROOT
-  : join(__dirname, "..", "..", "..", "..");
+import { join } from "node:path";
+import { ROOT } from "./paths.js";
 
 // ---------------------------------------------------------------------
 // Pod-Auth (Client-Credentials + DPoP) — gleiche Logik wie sync_to_pod.mjs
@@ -51,7 +44,7 @@ export function podBase() {
   return (loadEnv().POD_BASE || "").replace(/\/$/, "");
 }
 
-async function getAuthFetch() {
+export async function getAuthFetch() {
   const env = loadEnv();
   if (!env.SOLID_CLIENT_ID || !env.SOLID_CLIENT_SECRET) return null;
   if (authFetchPromise) return authFetchPromise;
@@ -248,6 +241,60 @@ function labelOf(store, res) {
 }
 
 // ---------------------------------------------------------------------
+// Konflikt-Engine — identische Regel wie viz/fruchtfolge-logic.js + export_fruchtfolge.py:
+// gleiche Fruchtfamilie in aufeinanderfolgenden Jahren auf demselben Beet.
+// ---------------------------------------------------------------------
+export function computeConflicts(plantings, years) {
+  const fruchtfolgeBeds = new Set(
+    (gardenBedsFruchtfolge ?? []).map((b) => b.slug),
+  );
+  const byBedYear = new Map();   // "slug|year" → Set<Familie>
+  for (const p of plantings) {
+    if (!p.bed || !p.plant?.family) continue;
+    const k = `${p.bed}|${p.year}`;
+    if (!byBedYear.has(k)) byBedYear.set(k, new Set());
+    byBedYear.get(k).add(p.plant.family);
+  }
+  const conflicts = [];
+  for (const meta of BED_META) {
+    if (!meta.fruchtfolge) continue;
+    for (let i = 0; i < years.length - 1; i++) {
+      const y1 = years[i], y2 = years[i + 1];
+      const fams1 = byBedYear.get(`${meta.slug}|${y1}`) ?? new Set();
+      const fams2 = byBedYear.get(`${meta.slug}|${y2}`) ?? new Set();
+      const overlap = [...fams1].filter((f) => fams2.has(f));
+      if (overlap.length) {
+        conflicts.push({
+          type: "rotation",
+          bed: meta.title,
+          bedSlug: meta.slug,
+          years: `${y1}→${y2}`,
+          families: overlap.sort(),
+          // P3: Begründung, nicht Schelte
+          reason:
+            `Nachbau ${overlap.sort().join(", ")} auf ${meta.title} in ${y1} und ${y2} — gleiche Fruchtfamilie in Folgejahren schwächelt (Schädlinge/Erde müde). Empfehlung: Familie ein Jahr aussetzen oder mischkultur.ttl-Generator einbinden.`,
+        });
+      }
+    }
+  }
+  return conflicts;
+}
+
+let gardenBedsFruchtfolge = null; // set by buildGardenModel
+
+export async function buildConflicts(years = ["2024", "2025", "2026"]) {
+  const ttl = await getMergedTtl();
+  const store = await parseTtl(ttl);
+  gardenBedsFruchtfolge = BED_META;
+  const plantings = buildPlantings(store);
+  return {
+    conflicts: computeConflicts(plantings, years),
+    years,
+    fetchedAt: new Date().toISOString(),
+  };
+}
+
+// ---------------------------------------------------------------------
 // Read-Modell: garden (Beete + Reihen + Geometrie)
 // ---------------------------------------------------------------------
 const BED_META = [
@@ -312,8 +359,14 @@ export async function buildGardenModel() {
   }
 
   const plantings = buildPlantings(store);
+  gardenBedsFruchtfolge = BED_META;
 
-  return { beds, plantings, fetchedAt: new Date().toISOString() };
+  return {
+    beds,
+    plantings,
+    conflicts: computeConflicts(plantings, ["2024", "2025", "2026"]),
+    fetchedAt: new Date().toISOString(),
+  };
 }
 
 function listRows(store, bedUri) {

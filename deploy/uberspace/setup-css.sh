@@ -19,6 +19,13 @@ cd ~/css
 [ -f package.json ] || npm init -y
 npm install @solid/community-server
 
+# KEINE eigene config.json nötig: CSS v7 bringt config/file.json mit —
+# File-Storage + WAC-Authorization in einer Datei. Die CLI-Flags
+# (--port/--baseUrl/--rootFilePath) überschreiben die Variablen.
+# WARUM wichtig: Die DEFAULT-Konfiguration speichert nur im MEMORY —
+# nach einem Neustart wären Pods, Daten und Client-Credentials weg
+# (passierte am 20.10.2026).
+
 echo "== 3/6 Start-Skript =="
 cat > ~/css/start.sh <<'EOF'
 #!/bin/bash
@@ -27,6 +34,7 @@ exec node ~/css/node_modules/.bin/community-solid-server \
   --port 3457 \
   --baseUrl https://solid.lasrie.dev \
   --rootFilePath /home/rotato/css-data \
+  --config ~/css/node_modules/@solid/community-server/config/file.json \
   --loggingLevel info
 EOF
 chmod +x ~/css/start.sh
