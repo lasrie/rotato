@@ -47,6 +47,7 @@ function jitterPath(g, x, y, w, h, amp = 3, seed = 1) {
 export function createGardenMap(canvas, garden, opts = {}) {
   const onBedSelect = opts.onBedSelect || (() => {});
   const onMonthChange = opts.onMonthChange || (() => {});
+  const onBedDrop = opts.onBedDrop || (() => {});
 
   const app = new PIXI.Application();
   let ready = false;
@@ -149,6 +150,9 @@ export function createGardenMap(canvas, garden, opts = {}) {
 
   // ------------------------------------------------------------------
   function buildWorld() {
+    // Bei refresh(): Layer leeren (sonst doppeln sich Beete/Zaun)
+    bedLayer.removeChildren();
+    plantLayer.removeChildren();
     const xs = state.beds.map(b => [b.x, b.x + b.w]);
     const ys = state.beds.map(b => [b.y, b.y + b.h]);
     const gx = Math.min(...xs.flat()) - PAD;
@@ -338,6 +342,78 @@ export function createGardenMap(canvas, garden, opts = {}) {
     world.y = margin + (sh - gh * SCALE * s) / 2;
   }
 
+  // ------------------------------------------------------------------
+  // Pflanz-Modus (Transplant-Flow, §3 v2): Ghost folgt dem Zeiger,
+  // Ziel-Beete bekommen Highlight-Ringe, Drop → Plop-Animation.
+  // ------------------------------------------------------------------
+  let plantMode = null;   // { card, ghosts: Map<slug, Container>, ghostSprite }
+  let dropHighlight = null;
+
+  function bedAtGlobal(x, y) {
+    for (const bv of bedViews.values()) {
+      if (bv.bed.isPath) continue;
+      const p = bv.container.toLocal({ x, y });
+      if (p.x >= 0 && p.x <= bv.w && p.y >= 0 && p.y <= bv.h) return bv;
+    }
+    return null;
+  }
+
+  function setBedHighlight(bv, on) {
+    if (bv && bv.highlight) {
+      bv.container.removeChild(bv.highlight);
+      bv.highlight.destroy();
+      bv.highlight = null;
+    }
+    if (!bv || !on) return;
+    const ring = new PIXI.Graphics();
+    ring.lineStyle({ width: 4, color: "#6faa4f", alpha: 0.9 });
+    jitterPath(ring, 0, 0, bv.w, bv.h, 4, bv.bed.slug.length * 7 + 3);
+    bv.container.addChild(ring);
+    bv.highlight = ring;
+  }
+
+  function enterPlantMode(card) {
+    plantMode = { card, hoverBed: null };
+    const ghost = card.plant?.familyColor
+      ? placeholderSprite(card.plant.familyColor, 0.6)
+      : null;
+    if (ghost) {
+      ghost.alpha = 0.85;
+      ghost.visible = false;
+      app.stage.addChild(ghost);
+    }
+    plantMode.ghost = ghost;
+  }
+
+  function exitPlantMode() {
+    if (plantMode?.ghost) plantMode.ghost.destroy();
+    if (plantMode?.hoverBed) setBedHighlight(plantMode.hoverBed, false);
+    plantMode = null;
+  }
+
+  function plopAnimation(bv, color) {
+    const c = new PIXI.Container();
+    const g = new PIXI.Graphics();
+    g.beginFill(color || "#6faa4f", 0.6);
+    g.drawCircle(0, 0, 14);
+    g.endFill();
+    c.addChild(g);
+    c.x = bv.w / 2;
+    c.y = bv.h / 2;
+    bv.container.addChild(c);
+    let t = 0;
+    const tick = (dt) => {
+      t += dt * 0.06;
+      c.scale.set(1 + Math.sin(t) * 0.4);
+      c.alpha = Math.max(0, 1 - t / 2.2);
+      if (t > 2.2) {
+        app.ticker.remove(tick);
+        c.destroy();
+      }
+    };
+    app.ticker.add(tick);
+  }
+
   function wireInput() {
     app.stage.eventMode = "static";
     app.stage.hitArea = app.screen;
@@ -346,12 +422,38 @@ export function createGardenMap(canvas, garden, opts = {}) {
       lastX = e.global.x; lastY = e.global.y;
     });
     app.stage.on("pointermove", (e) => {
+      if (plantMode) {
+        // Pflanz-Modus: Ghost folgt, Ziel-Beet heben sich hervor
+        if (plantMode.ghost) {
+          plantMode.ghost.visible = true;
+          plantMode.ghost.x = e.global.x;
+          plantMode.ghost.y = e.global.y;
+        }
+        const bv = bedAtGlobal(e.global.x, e.global.y);
+        if (bv !== plantMode.hoverBed) {
+          setBedHighlight(plantMode.hoverBed, false);
+          setBedHighlight(bv, true);
+          plantMode.hoverBed = bv;
+        }
+        return;
+      }
       if (!dragging) return;
       world.x += e.global.x - lastX;
       world.y += e.global.y - lastY;
       lastX = e.global.x; lastY = e.global.y;
     });
-    const end = () => dragging = false;
+    const end = (e) => {
+      if (plantMode && e) {
+        const bv = bedAtGlobal(e.global.x, e.global.y);
+        if (bv) {
+          plopAnimation(bv, plantMode.card.plant?.familyColor);
+          onBedDrop(plantMode.card, bv.bed);
+        }
+        exitPlantMode();
+        return;
+      }
+      dragging = false;
+    };
     app.stage.on("pointerup", end);
     app.stage.on("pointerupoutside", end);
 
@@ -383,6 +485,15 @@ export function createGardenMap(canvas, garden, opts = {}) {
       state.month = m;
       applySeason();
     },
+    // Pflanz-Modus (Transplant-Flow): card = Anzucht-Karte aus dem Dock
+    startPlantMode(card) {
+      exitPlantMode();
+      enterPlantMode(card);
+    },
+    cancelPlantMode() {
+      exitPlantMode();
+    },
+    isPlantMode: () => !!plantMode,
     resize() {
       app.resize();
       if (grain) { grain.width = app.screen.width + 200; grain.height = app.screen.height + 200; }
@@ -391,6 +502,15 @@ export function createGardenMap(canvas, garden, opts = {}) {
     },
     destroy() {
       app.destroy(true);
+    },
+    // Neue Daten übernehmen (z. B. nach Transplant): Beete/Pflanzungen
+    // austauschen und neu zeichnen.
+    refresh(garden) {
+      if (!garden) return;
+      state.beds = garden.beds ?? [];
+      state.plantings = garden.plantings ?? [];
+      buildWorld();
+      applySeason();
     },
     isReady: () => ready,
   };

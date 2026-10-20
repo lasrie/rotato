@@ -109,8 +109,8 @@ let cachedTtl = null;
 let cachedAt = 0;
 const CACHE_TTL_MS = 30_000;
 
-export async function getMergedTtl({ forcePod = false } = {}) {
-  if (cachedTtl && Date.now() < cachedAt + CACHE_TTL_MS) return cachedTtl;
+export async function getMergedTtl({ forcePod = false, exclude = [] } = {}) {
+  if (cachedTtl && Date.now() < cachedAt + CACHE_TTL_MS && !exclude.length) return cachedTtl;
 
   let ttl = null;
   const env = loadEnv();
@@ -122,6 +122,7 @@ export async function getMergedTtl({ forcePod = false } = {}) {
       const fetchFn = authFetch || globalThis.fetch;
       const parts = [];
       for (const name of POD_FILES) {
+        if (exclude.includes(name)) continue;   // Doc wird separat modifiziert validiert (kein Doppel)
         const res = await fetchFn(`${base}/${name}`, { headers: { Accept: "text/turtle" } });
         if (res.status === 200) {
           parts.push(`# ---- ${name} ----\n${await res.text()}`);
@@ -137,15 +138,16 @@ export async function getMergedTtl({ forcePod = false } = {}) {
     }
   }
 
-  if (!ttl) ttl = loadLocalMerged();
+  if (!ttl) ttl = loadLocalMerged(exclude);
   cachedTtl = ttl;
   cachedAt = Date.now();
   return ttl;
 }
 
-function loadLocalMerged() {
+function loadLocalMerged(exclude = []) {
   const parts = [];
   for (const name of LOCAL_FILES) {
+    if (exclude.includes(name)) continue;
     const f = join(ROOT, name);
     if (existsSync(f)) {
       parts.push(`# ---- ${name} ----\n` + readFileSync(f, "utf8"));
@@ -404,7 +406,7 @@ function buildPlantings(store) {
     const pflanze = one(store, s, G.pflanzt);
     const sorte = one(store, s, G.sorte);
     const plantUri = pflanze || (sorte ? one(store, sorte, namedNode(GARTEN + "sorteVon")) : null);
-    if (!beet || !plantUri) continue;
+    if (!plantUri) continue;
 
     const familie = one(store, plantUri, G.fruchtFamilie);
     const familieLabel = familie ? labelOf(store, familie) : null;
@@ -437,7 +439,9 @@ function buildPlantings(store) {
 
     out.push({
       uri: s.value,
-      bed: beet.value.startsWith(REAL_BASE) ? beet.value.slice(REAL_BASE.length) : beet.value,
+      // Pflanzungen ohne aufBeet (Anzucht-Töpfe) bekommen bed: null —
+      // der Anzucht-Dock-Flow erkennt sie daran.
+      bed: beet ? (beet.value.startsWith(REAL_BASE) ? beet.value.slice(REAL_BASE.length) : beet.value) : null,
       plant: {
         uri: plantUri.value,
         label: labelOf(store, plantUri),
@@ -451,6 +455,9 @@ function buildPlantings(store) {
       year,
       monthFrom,
       monthTo,
+      monthAnzucht: one(store, s, G.monatAnzucht)?.value ?? null,
+      monatPflanzung: one(store, s, G.monatPflanzung)?.value ?? null,
+      monatErnte: one(store, s, G.monatErnte)?.value ?? null,
       status: one(store, s, namedNode(GARTEN + "status"))?.value ?? null,
     });
   }
