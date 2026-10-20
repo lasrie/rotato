@@ -1,0 +1,22 @@
+:root {
+  --paper: #f4f1e6;
+  --paper-dark: #eae5d3;
+  --ink: #2f2a24;
+  --ink-soft: #6b6353;
+  --grass: #b9d48a;
+  --soil: #a97c50;
+  --accent: #d95f43;
+  --ok: #6faa4f;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  overflow: hidden;
+}

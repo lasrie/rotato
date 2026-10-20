@@ -35,3 +35,11 @@ viz/garten91-data.js
 viz/garten91-plan.js
 viz/fruchtfolge-data.js
 viz/linkes-hohes-beet-data.js
+
+# rotato Svelte-App (app/): Build-Artefakte + generated
+app/.svelte-kit/
+app/build/
+app/node_modules/
+
+# Session-Backup mit Credentials (nur lokal — ADR-0005)
+.env.bak-*

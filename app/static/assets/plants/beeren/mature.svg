@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hinteres gezacktes Laubdach (Dunkles Waldgrün #38592b) -->
+    <path d="M 46 72 L 24 64 L 28 56 L 17 50 L 26 43 L 22 34 L 34 37 L 39 29 L 47 42 Z" fill="#38592b" stroke-width="2.2" />
+    <path d="M 54 72 L 76 64 L 72 56 L 83 50 L 74 43 L 78 34 L 66 37 L 61 29 L 53 42 Z" fill="#38592b" stroke-width="2.2" />
+    <path d="M 50 62 L 39 40 L 43 32 L 37 23 L 45 20 L 44 12 L 50 17 L 56 12 L 55 20 L 63 23 L 57 32 L 61 40 Z" fill="#38592b" stroke-width="2.2" />
+
+    <!-- 2. Mittlere & Vordere gezähnte Erdbeerblätter (#588744 & #73a65b) -->
+    <!-- Links ausladend -->
+    <path d="M 44 74 L 18 74 L 22 66 L 11 61 L 20 55 L 17 47 L 28 50 L 33 43 L 41 56 Z" fill="#588744" stroke-width="2.3" />
+    <path d="M 42 71 L 20 58" fill="none" stroke-width="1.3" />
+
+    <!-- Rechts ausladend -->
+    <path d="M 56 74 L 82 74 L 78 66 L 89 61 L 80 55 L 83 47 L 72 50 L 67 43 L 59 56 Z" fill="#588744" stroke-width="2.3" />
+    <path d="M 58 71 L 80 58" fill="none" stroke-width="1.3" />
+
+    <!-- Vorderes zentrales Dreier-Prachtblatt -->
+    <path d="M 48 64 L 30 62 L 34 55 L 25 49 L 34 44 L 32 37 L 41 40 L 45 34 L 49 46 Z" fill="#73a65b" stroke-width="2.3" />
+    <path d="M 52 64 L 70 62 L 66 55 L 75 49 L 66 44 L 68 37 L 59 40 L 55 34 L 51 46 Z" fill="#73a65b" stroke-width="2.3" />
+    <path d="M 50 64 L 40 49 L 43 42 L 38 34 L 45 31 L 44 23 L 50 28 L 56 23 L 55 31 L 62 34 L 57 42 L 60 49 Z" fill="#82b368" stroke-width="2.3" />
+    <path d="M 50 63 L 50 29 M 49 62 L 35 48 M 51 62 L 65 48 M 50 48 L 45 41 M 50 44 L 55 37" fill="none" stroke-width="1.3" />
+
+    <!-- 3. Weiße Erdbeerblüte oben links (als schöner Hell-Kontrast #f7f5f0) -->
+    <circle cx="34" cy="24" r="3.8" fill="#f7f5f0" stroke-width="1.8" />
+    <circle cx="38.5" cy="27" r="3.8" fill="#f7f5f0" stroke-width="1.8" />
+    <circle cx="37" cy="32" r="3.8" fill="#f7f5f0" stroke-width="1.8" />
+    <circle cx="31" cy="32" r="3.8" fill="#f7f5f0" stroke-width="1.8" />
+    <circle cx="29.5" cy="27" r="3.8" fill="#f7f5f0" stroke-width="1.8" />
+    <circle cx="34" cy="28.5" r="3.2" fill="#e8c44f" stroke-width="1.8" />
+
+    <!-- 4. Bogige Fruchtstiele, an denen die Beeren hängen -->
+    <path d="M 47 84 C 41 72, 31 64, 26 70 M 50 84 C 48 72, 47 65, 47 68 M 53 84 C 60 70, 71 62, 74 69" fill="none" stroke="#588744" stroke-width="2.4" />
+    <path d="M 47 84 C 41 72, 31 64, 26 70 M 53 84 C 60 70, 71 62, 74 69" fill="none" stroke="#2f2a24" stroke-width="1.8" />
+
+    <!-- 5. LEUCHTEND ROTE ERDBEEREN (Sattes Erdbeerrot #c93b3b & #de544e + gelbe Nüsschen #edd174) -->
+
+    <!-- Beere 1: LINKS UNTEN (schwer überhängend) -->
+    <path d="M 26 69 C 19 69, 16 76, 19 83 C 21 88, 25 91, 27 91 C 29 91, 33 87, 34 81 C 36 75, 32 69, 26 69 Z" fill="#c93b3b" stroke-width="2.4" />
+    <!-- Grünes Kelch-Krönchen -->
+    <path d="M 20 70 L 26 73 L 23 67 L 27 71 L 31 67 L 29 73 L 34 71 Z" fill="#4a7538" stroke-width="1.7" />
+    <!-- Gelbe Samen-Tupfen (Nüsschen) -->
+    <circle cx="23" cy="76" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="28" cy="77" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="22" cy="82" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="27" cy="83" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="31" cy="80" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="26" cy="87" r="0.9" fill="#edd174" stroke="none" />
+
+    <!-- Beere 2: RECHTS MITTE (reifend, etwas höher) -->
+    <path d="M 74 67 C 68 67, 65 73, 68 80 C 70 85, 73 88, 75 88 C 77 88, 81 84, 82 78 C 84 72, 80 67, 74 67 Z" fill="#c93b3b" stroke-width="2.4" />
+    <path d="M 68 68 L 74 71 L 71 65 L 75 69 L 79 65 L 77 71 L 82 69 Z" fill="#4a7538" stroke-width="1.7" />
+    <circle cx="71" cy="74" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="76" cy="75" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="71" cy="80" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="75" cy="81" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="79" cy="78" r="0.9" fill="#edd174" stroke="none" />
+    <circle cx="74" cy="85" r="0.9" fill="#edd174" stroke="none" />
+
+    <!-- Beere 3: GROSSE PRACHT-ERDBEERE IM ZENTRUM VORNE -->
+    <path d="M 50 65 C 41 65, 38 73, 42 82 C 45 88, 48 92, 50 92 C 52 92, 55 88, 58 82 C 62 73, 59 65, 50 65 Z" fill="#de544e" stroke-width="2.5" />
+    <!-- Glanzstreifen links -->
+    <path d="M 43 72 C 42 76, 44 81, 46 85" fill="none" stroke="#f2857e" stroke-width="1.8" />
+    <!-- Kelch-Krönchen -->
+    <path d="M 42 66 L 48 70 L 46 63 L 50 68 L 54 63 L 52 70 L 58 66 L 53 72 L 50 69 L 47 72 Z" fill="#588744" stroke-width="1.8" />
+    <!-- Gelbe Samen-Tupfen -->
+    <circle cx="46" cy="74" r="1" fill="#edd174" stroke="none" />
+    <circle cx="51" cy="75" r="1" fill="#edd174" stroke="none" />
+    <circle cx="55" cy="73" r="1" fill="#edd174" stroke="none" />
+    <circle cx="45" cy="80" r="1" fill="#edd174" stroke="none" />
+    <circle cx="50" cy="81" r="1" fill="#edd174" stroke="none" />
+    <circle cx="54" cy="79" r="1" fill="#edd174" stroke="none" />
+    <circle cx="48" cy="86" r="1" fill="#edd174" stroke="none" />
+    <circle cx="52" cy="85" r="1" fill="#edd174" stroke="none" />
+    <circle cx="50" cy="89" r="1" fill="#edd174" stroke="none" />
+
+    <!-- 6. Wurzelstock & Erde/Stroh-Basis bei (50, 96) -->
+    <path d="M 25 96 C 33 93, 41 92, 46 95 C 48 93, 52 93, 54 95 C 59 92, 67 93, 75 96 C 63 96.5, 55 95.5, 50 96 C 45 95.5, 37 96.5, 25 96 Z" fill="#8c6243" stroke-width="2.4" />
+  </g>
+</svg>

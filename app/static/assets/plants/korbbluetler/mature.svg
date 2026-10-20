@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hinterer Kranz aus großen Umblättern (Dunkles Salatgrün #4c7032 mit rötlichem Landhaus-Rand) -->
+    <path d="M 45 84 C 26 76, 10 64, 9 48 C 8 39, 16 35, 23 39 C 25 31, 34 29, 41 35 C 46 40, 47 64, 45 84 Z" fill="#4c7032" stroke-width="2.3" />
+    <path d="M 55 84 C 74 76, 90 64, 91 48 C 92 39, 84 35, 77 39 C 75 31, 66 29, 59 35 C 54 40, 53 64, 55 84 Z" fill="#4c7032" stroke-width="2.3" />
+    <path d="M 50 74 C 36 54, 32 34, 40 24 C 45 19, 50 22, 51 26 C 55 20, 62 21, 65 28 C 69 38, 62 56, 50 74 Z" fill="#4c7032" stroke-width="2.3" />
+
+    <!-- Zarter rotbrauner „Sprenkel-/Bronzerand“ an den oberen Außenblättern (typisch alte Salatsorten) -->
+    <path d="M 12 45 C 14 39, 19 38, 23 41 M 77 41 C 81 38, 86 39, 88 45 M 42 26 C 46 22, 49 24, 51 27" fill="none" stroke="#8f5343" stroke-width="2.5" />
+
+    <!-- 2. Untere ausladende Kragenblätter (Warmes Maigrün #729e4c) -->
+    <!-- Links unten -->
+    <path d="M 46 90 C 30 92, 12 88, 7 76 C 4 68, 11 61, 19 64 C 20 56, 29 54, 37 60 C 43 65, 45 78, 46 90 Z" fill="#729e4c" stroke-width="2.4" />
+    <path d="M 44 88 C 32 83, 21 78, 12 73" fill="none" stroke="#cde6ab" stroke-width="2.3" />
+    <path d="M 44 88 C 32 83, 21 78, 12 73 M 28 81 L 21 85 M 32 79 L 27 72" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Rechts unten -->
+    <path d="M 54 90 C 70 92, 88 88, 93 76 C 96 68, 89 61, 81 64 C 80 56, 71 54, 63 60 C 57 65, 55 78, 54 90 Z" fill="#729e4c" stroke-width="2.4" />
+    <path d="M 56 88 C 68 83, 79 78, 88 73" fill="none" stroke="#cde6ab" stroke-width="2.3" />
+    <path d="M 56 88 C 68 83, 79 78, 88 73 M 72 81 L 79 85 M 68 79 L 73 72" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- 3. Mittlere Hüllblätter, die den Kopf umschließen (Frisches Salatgrün #92bf63) -->
+    <!-- Links -->
+    <path d="M 48 88 C 33 82, 20 70, 20 54 C 20 44, 28 40, 35 45 C 37 37, 46 37, 50 45 C 51 58, 50 74, 48 88 Z" fill="#92bf63" stroke-width="2.4" />
+    <path d="M 46 84 C 39 73, 33 61, 29 49 M 38 70 L 30 70 M 40 62 L 39 53" fill="none" stroke="#daf0be" stroke-width="2" />
+    <path d="M 46 84 C 39 73, 33 61, 29 49 M 38 70 L 30 70 M 40 62 L 39 53" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Rechts -->
+    <path d="M 52 88 C 67 82, 80 70, 80 54 C 80 44, 72 40, 65 45 C 63 37, 54 37, 50 45 C 49 58, 50 74, 52 88 Z" fill="#92bf63" stroke-width="2.4" />
+    <path d="M 54 84 C 61 73, 67 61, 71 49 M 62 70 L 70 70 M 60 62 L 61 53" fill="none" stroke="#daf0be" stroke-width="2" />
+    <path d="M 54 84 C 61 73, 67 61, 71 49 M 62 70 L 70 70 M 60 62 L 61 53" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- 4. PRALLES, GESCHLOSSENES SALATHERZ im Zentrum (Buttergelb-Grün #b5db82 & #cee89e) -->
+    <!-- Äußere Herzkugel -->
+    <path d="M 50 86 C 36 82, 31 66, 35 52 C 38 42, 46 39, 51 43 C 56 39, 63 42, 65 52 C 69 66, 64 82, 50 86 Z" fill="#b5db82" stroke-width="2.4" />
+    <!-- Überlappende innere Herzblätter (Kopf-Wicklung) -->
+    <path d="M 36 55 C 42 48, 51 49, 57 57 C 61 63, 59 75, 50 85" fill="#cee89e" stroke-width="2.1" />
+    <path d="M 64 54 C 58 46, 48 47, 43 55 C 39 62, 42 74, 50 85" fill="none" stroke-width="2.1" />
+    <!-- Knackige helle Blattrippen auf dem Salatherz -->
+    <path d="M 50 85 C 49 74, 46 64, 41 56 M 50 85 C 52 75, 55 66, 59 58 M 50 74 L 45 69 M 51 71 L 56 66" fill="none" stroke="#f0f7dc" stroke-width="2.2" />
+    <path d="M 50 85 C 49 74, 46 64, 41 56 M 50 85 C 52 75, 55 66, 59 58" fill="none" stroke="#2f2a24" stroke-width="1.1" />
+
+    <!-- Vorderes kurzes Deckblatt über dem Strunk -->
+    <path d="M 50 91 C 41 90, 35 84, 37 77 C 39 72, 45 73, 50 77 C 55 73, 61 72, 63 77 C 65 84, 59 90, 50 91 Z" fill="#92bf63" stroke-width="2.3" />
+    <path d="M 50 90 L 50 79 M 50 86 L 44 82 M 50 86 L 56 82" fill="none" stroke="#daf0be" stroke-width="1.8" />
+    <path d="M 50 90 L 50 79" fill="none" stroke="#2f2a24" stroke-width="1.1" />
+
+    <!-- 5. Kräftiger Strunk & Gartenerde bei (50, 96) -->
+    <path d="M 25 96 C 33 93, 41 92, 46 95 C 48 93, 52 93, 54 95 C 59 92, 67 93, 75 96 C 63 96.5, 55 95.5, 50 96 C 45 95.5, 37 96.5, 25 96 Z" fill="#8c7252" stroke-width="2.4" />
+  </g>
+</svg>

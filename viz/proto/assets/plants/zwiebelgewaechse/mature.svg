@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hintere Schlotten-Kulisse (Dunkles Blaugrün #46695b) -->
+    <path d="M 45 78 C 36 62, 24 48, 11 40 C 22 44, 34 56, 47 76 Z" fill="#46695b" stroke-width="2.2" />
+    <path d="M 55 78 C 64 62, 76 48, 89 40 C 78 44, 66 56, 53 76 Z" fill="#46695b" stroke-width="2.2" />
+    <path d="M 46 76 C 39 54, 33 34, 27 18 C 35 32, 42 52, 49 75 Z" fill="#46695b" stroke-width="2.2" />
+
+    <!-- 2. Mittlere Schlotten (Sattes Blaugrün #659180) -->
+    <!-- Links weit geschwungen mit Knick -->
+    <path d="M 44 79 C 37 64, 27 54, 15 54 C 24 48, 35 54, 46 77 Z" fill="#659180" stroke-width="2.3" />
+    <!-- Rechts weit geschwungen -->
+    <path d="M 56 79 C 64 61, 74 49, 86 48 C 76 44, 64 52, 53 77 Z" fill="#659180" stroke-width="2.3" />
+    <!-- Rechts hoch -->
+    <path d="M 54 76 C 59 55, 65 36, 72 22 C 63 34, 56 54, 51 76 Z" fill="#659180" stroke-width="2.3" />
+
+    <!-- 3. BLÜTENSCHÄFTE & KUGELDOLDEN (Typisch Zwiebelgewächse!) -->
+    <!-- Hoher Haupt-Blütenschaft (Mitte, leicht bauchig geschwollen) -->
+    <path d="M 48 76 C 47 56, 47.5 34, 49 18 L 51 18 C 52.5 34, 53 56, 52 76 Z" fill="#7faba0" stroke-width="2.3" />
+    <!-- Zweiter Blütenschaft (Links-Mitte, etwas niedriger) -->
+    <path d="M 45 76 C 42 58, 39 42, 37 29 L 39 28 C 42 41, 45 57, 48 76 Z" fill="#659180" stroke-width="2.2" />
+
+    <!-- Kleine Blütenkugel links (mit trockenem Hüllblatt darunter) -->
+    <path d="M 37 29 C 34 31, 32 33, 31 35 C 34 33, 36 31, 38 30 Z" fill="#d7be96" stroke-width="1.6" />
+    <circle cx="37" cy="24" r="6.5" fill="#e6e0eb" stroke-width="2.2" />
+    <!-- Tupfen-Textur für die Einzelblütchen -->
+    <circle cx="35" cy="22" r="1.5" fill="#f7f4fa" stroke-width="1.2" />
+    <circle cx="39" cy="22" r="1.5" fill="#f7f4fa" stroke-width="1.2" />
+    <circle cx="37" cy="25" r="1.5" fill="#f7f4fa" stroke-width="1.2" />
+    <circle cx="34" cy="26" r="1.2" fill="#d0c4db" stroke-width="1.1" />
+    <circle cx="40" cy="26" r="1.2" fill="#d0c4db" stroke-width="1.1" />
+
+    <!-- Große Haupt-Blütenkugel oben im Zentrum -->
+    <path d="M 49 19 C 45 21, 43 24, 42 26 C 45 23, 48 21, 50 20 M 51 19 C 54 21, 56 23, 57 25" fill="none" stroke="#d7be96" stroke-width="1.8" />
+    <circle cx="50" cy="12.5" r="8" fill="#e6e0eb" stroke-width="2.4" />
+    <!-- Einzelblütchen-Struktur im Ball -->
+    <circle cx="47" cy="10" r="1.8" fill="#f7f4fa" stroke-width="1.2" />
+    <circle cx="52" cy="9.5" r="1.8" fill="#f7f4fa" stroke-width="1.2" />
+    <circle cx="50" cy="13" r="1.8" fill="#f7f4fa" stroke-width="1.2" />
+    <circle cx="45.5" cy="14" r="1.6" fill="#d0c4db" stroke-width="1.2" />
+    <circle cx="54.5" cy="13.5" r="1.6" fill="#d0c4db" stroke-width="1.2" />
+    <circle cx="48" cy="16.5" r="1.5" fill="#d0c4db" stroke-width="1.2" />
+    <circle cx="52" cy="16.5" r="1.5" fill="#f7f4fa" stroke-width="1.2" />
+
+    <!-- 4. Vordere Schlotten (Helles Blaugrün #7faba0) -->
+    <path d="M 47 77 C 42 62, 34 46, 23 36 C 32 43, 41 58, 50 76 Z" fill="#7faba0" stroke-width="2.3" />
+    <path d="M 53 77 C 58 62, 64 46, 68 31 C 61 44, 55 60, 50 76 Z" fill="#7faba0" stroke-width="2.3" />
+
+    <!-- 5. DICKE ZWIEBELKNOLLEN an der Basis (Sattes Kupfer-Goldbraun #c47d3b, #d9934c, #ebB375) -->
+    <!-- Kleinere Seiten-Zwiebel rechts dahinter -->
+    <path d="M 55 94 C 55 85, 60 79, 67 79 C 74 79, 78 85, 76 94 Z" fill="#b06b2c" stroke-width="2.3" />
+    <path d="M 67 79 C 65 84, 65 89, 66 94 M 71 80 C 73 85, 73 90, 72 94" fill="none" stroke-width="1.2" />
+
+    <!-- Zwiebelhals der Hauptknolle -->
+    <path d="M 43 79 C 43 73, 46 70, 50 70 C 54 70, 57 73, 57 79 Z" fill="#b8ccb0" stroke-width="2.2" />
+
+    <!-- Große, pralle Haupt-Zwiebelknolle im Vordergrund -->
+    <path d="M 31 95 C 28 84, 36 74, 50 74 C 64 74, 72 84, 69 95 Z" fill="#c47d3b" stroke-width="2.5" />
+    <!-- Mittleres Segment & heller Glanzbogen -->
+    <path d="M 39 95 C 37 85, 42 75, 50 74 C 58 75, 63 85, 61 95 Z" fill="#d9934c" stroke="none" />
+    <path d="M 43 93 C 42 85, 45 78, 49 76 C 47 81, 46 87, 47 93 Z" fill="#ebb375" stroke="none" />
+    <!-- Charakteristische Längsrippen der trockenen Zwiebelschale -->
+    <path d="M 42 75 C 36 81, 35 88, 38 95 M 47 74 C 44 81, 44 88, 45 95 M 53 74 C 56 81, 56 88, 55 95 M 58 75 C 64 81, 65 88, 62 95" fill="none" stroke-width="1.4" />
+    <!-- Abstehendes Stückchen trockene Papierhaut links -->
+    <path d="M 33 83 C 29 82, 27 84, 29 87 C 30 89, 32 90, 33 91" fill="#e0a669" stroke-width="1.8" />
+
+    <!-- 6. Aufgelockerte Erde am Wurzelpunkt (50, 96) -->
+    <path d="M 22 96 C 29 92, 36 92, 42 95 C 46 92, 54 92, 58 95 C 64 92, 72 92, 79 96 C 66 96.5, 57 95.5, 50 96 C 43 95.5, 34 96.5, 22 96 Z" fill="#8c7252" stroke-width="2.4" />
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Hinteres gezacktes Erstblatt (dunkleres Salbeigrün für Tiefe) -->
+    <path d="M 49 62 C 42 56, 36 56, 30 58 C 32 54, 30 51, 24 52 C 28 47, 35 45, 41 48 C 40 43, 44 41, 46 47 C 48 51, 49 56, 49 62 Z" fill="#688450" stroke-width="2.2" />
+    <path d="M 49 60 C 42 54, 35 52, 28 52" fill="none" stroke-width="1.2" />
+
+    <!-- Vorderes gezacktes Erstblatt (warmes Lehrbuch-Olivgrün) -->
+    <path d="M 50 61 C 55 53, 62 49, 69 44 C 67 49, 71 50, 74 48 C 71 54, 65 55, 61 54 C 65 58, 62 61, 56 58 C 53 57, 51 59, 50 61 Z" fill="#829b5c" stroke-width="2.2" />
+    <path d="M 50 60 C 57 54, 63 50, 70 46" fill="none" stroke-width="1.2" />
+
+    <!-- Kleiner Mitteltrieb / Knospe -->
+    <path d="M 49.5 61 C 47 54, 48 48, 50 45 C 52 48, 52 54, 49.5 61 Z" fill="#95ad6b" stroke-width="2" />
+
+    <!-- Linkes Keimblatt (glatt & geschwungen) -->
+    <path d="M 49 74 C 41 69, 31 67, 22 61 C 20 60, 21 64, 25 67 C 32 73, 41 74, 49 77 Z" fill="#95ad6b" stroke-width="2.3" />
+    <path d="M 48 75 C 39 71, 31 68, 24 63" fill="none" stroke-width="1.1" />
+
+    <!-- Rechtes Keimblatt (glatt & geschwungen) -->
+    <path d="M 51 75 C 59 71, 69 69, 77 65 C 79 64, 78 68, 73 71 C 65 75, 57 75, 51 78 Z" fill="#829b5c" stroke-width="2.3" />
+    <path d="M 52 76 C 60 72, 68 70, 75 67" fill="none" stroke-width="1.1" />
+
+    <!-- Stängel mit verbreitertem Wurzelhals bei (50, 96) -->
+    <path d="M 38 96 C 44 95, 47 92, 48 85 C 48.5 76, 48.5 68, 49.5 60 C 50.5 68, 51 76, 51.5 85 C 52.5 92, 56 95, 62 96 C 56 96.5, 53 95.5, 50 96 C 47 95.5, 44 96.5, 38 96 Z" fill="#9c8259" stroke-width="2.3" />
+
+    <!-- Feine Härchen am Stängel & Erd-Andeutung -->
+    <path d="M 48 70 L 46 69 M 51 67 L 53 66 M 48 81 L 46 81 M 52 83 L 54 82" fill="none" stroke-width="1.2" />
+    <path d="M 33 96 L 41 96 M 59 96 L 66 96" fill="none" stroke-width="1.8" />
+  </g>
+</svg>

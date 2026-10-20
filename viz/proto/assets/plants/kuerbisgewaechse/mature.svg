@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hinteres Laubdach (Dunkles Tannen-/Kürbisgrün #335227) -->
+    <path d="M 44 68 L 16 56 L 21 46 L 9 37 L 22 32 L 19 20 L 32 25 L 38 14 L 47 30 Z" fill="#335227" stroke-width="2.2" />
+    <path d="M 56 68 L 84 56 L 79 46 L 91 37 L 78 32 L 81 20 L 68 25 L 62 14 L 53 30 Z" fill="#335227" stroke-width="2.2" />
+
+    <!-- 2. Kräftige hohle Blattstiele & Ranken -->
+    <path d="M 46 80 C 37 64, 28 48, 22 36 M 54 80 C 63 64, 72 48, 78 36 M 50 78 L 50 32" fill="none" stroke="#7da656" stroke-width="4" />
+    <path d="M 46 80 C 37 64, 28 48, 22 36 M 54 80 C 63 64, 72 48, 78 36" fill="none" stroke="#2f2a24" stroke-width="2" />
+
+    <!-- Geringelte Kürbisranke rechts außen -->
+    <path d="M 76 54 C 84 52, 91 54, 93 58 C 95 62, 90 65, 88 61 C 86 58, 91 55, 95 58" fill="none" stroke="#2f2a24" stroke-width="1.7" />
+
+    <!-- 3. Große, handförmig gezackte Zucchini-/Gurkenblätter (#54803e & #6d9c52 mit Silberzeichnung) -->
+    <!-- Großes Blatt Links -->
+    <path d="M 42 56 L 14 58 L 19 48 L 7 40 L 20 35 L 18 23 L 30 29 L 36 18 L 43 32 L 45 45 Z" fill="#54803e" stroke-width="2.4" />
+    <path d="M 41 50 L 21 31 M 33 43 L 18 47 M 34 38 L 33 25" fill="none" stroke="#c2e0ad" stroke-width="2.2" />
+    <path d="M 41 50 L 21 31" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Großes Blatt Rechts -->
+    <path d="M 58 56 L 86 58 L 81 48 L 93 40 L 80 35 L 82 23 L 70 29 L 64 18 L 57 32 L 55 45 Z" fill="#54803e" stroke-width="2.4" />
+    <path d="M 59 50 L 79 31 M 67 43 L 82 47 M 66 38 L 67 25" fill="none" stroke="#c2e0ad" stroke-width="2.2" />
+    <path d="M 59 50 L 79 31" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Zentrales Schildblatt oben in der Krone -->
+    <path d="M 50 48 L 34 38 L 38 29 L 31 20 L 42 18 L 43 8 L 50 15 L 57 8 L 58 18 L 69 20 L 62 29 L 66 38 Z" fill="#6d9c52" stroke-width="2.4" />
+    <path d="M 50 45 L 50 16 M 50 36 L 38 24 M 50 36 L 62 24" fill="none" stroke="#d0ebbd" stroke-width="2.2" />
+    <path d="M 50 45 L 50 16" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- 4. GROSSE GELBE TRICHTERBLÜTE (Oben Links-Mitte als leuchtender Blickfang #f2b738 & #ffd166) -->
+    <path d="M 44 62 C 37 56, 33 47, 29 39 L 38 41 L 40 31 L 46 39 L 53 32 L 53 41 L 61 40 C 56 48, 51 56, 44 62 Z" fill="#f2b738" stroke-width="2.3" />
+    <path d="M 36 43 C 41 50, 48 50, 53 43 L 49 39 L 41 39 Z" fill="#ffd166" stroke="none" />
+    <circle cx="45" cy="47" r="2.8" fill="#d97224" stroke-width="1.7" />
+    <path d="M 44 61 L 45 50 M 38 42 L 43 50 M 52 42 L 47 50" fill="none" stroke-width="1.3" />
+
+    <!-- 5. PRALLE ZUCCHINI & GURKEN AN DER BASIS (Dunkles Flaschengrün #294d26 & #3a6934 mit hellgrünen Streifen #82b059) -->
+
+    <!-- FRUCHT 1: Zweite Zucchini/Gurke RECHTS (schräg nach rechts ausliegend, mit gelber Fruchtblüte an der Spitze!) -->
+    <path d="M 52 75 C 62 71, 74 71, 82 76 C 86 79, 85 85, 79 86 C 70 87, 58 84, 51 79 Z" fill="#3a6934" stroke-width="2.4" />
+    <!-- Hellgrüne Längsstreifen -->
+    <path d="M 55 77 C 64 75, 73 76, 81 79 M 54 80 C 63 81, 72 82, 79 83" fill="none" stroke="#82b059" stroke-width="1.6" />
+    <!-- Typische goldgelbe Blüte vorne an der Zucchini-Spitze! -->
+    <path d="M 82 77 L 91 73 L 89 79 L 95 82 L 88 84 L 89 89 L 81 84 Z" fill="#f2b738" stroke-width="2" />
+
+    <!-- FRUCHT 2: Große Haupt-Zucchini LINKS VORNE (schwer und glänzend auf dem Boden liegend) -->
+    <!-- Eckiger Zucchini-Fruchtstiel am Strunk -->
+    <path d="M 49 74 C 45 72, 41 72, 38 74 L 40 78 L 48 78 Z" fill="#6d9c52" stroke-width="2" />
+    <!-- Praller, leicht geschwungener Fruchtkörper -->
+    <path d="M 42 74 C 31 71, 17 73, 11 80 C 7 85, 11 92, 20 92 C 32 92, 43 87, 46 80 C 47 77, 45 75, 42 74 Z" fill="#294d26" stroke-width="2.5" />
+    <!-- Charakteristische hellgrüne Zucchini-Tigerstreifen & Glanzlicht -->
+    <path d="M 41 77 C 31 75, 20 77, 13 82 M 42 81 C 32 81, 22 83, 14 87 M 40 85 C 32 86, 24 88, 18 90" fill="none" stroke="#78a856" stroke-width="1.8" />
+    <path d="M 36 75 C 28 74, 19 76, 14 80" fill="none" stroke="#b4db93" stroke-width="1.4" />
+    <!-- Blütennarbe am dicken Ende links -->
+    <circle cx="11" cy="86" r="2" fill="#b59b67" stroke-width="1.6" />
+
+    <!-- 6. Kräftiger Zentral-Strunk & Erdkrume am Wurzelpunkt (50, 96) -->
+    <path d="M 44 95 L 46 74 L 54 74 L 56 95 Z" fill="#54803e" stroke-width="2.3" />
+    <path d="M 22 96 C 31 92, 40 92, 46 95 C 48 93, 52 93, 54 95 C 60 92, 69 92, 78 96 C 65 96.5, 56 95.5, 50 96 C 44 95.5, 35 96.5, 22 96 Z" fill="#8c7252" stroke-width="2.4" />
+  </g>
+</svg>

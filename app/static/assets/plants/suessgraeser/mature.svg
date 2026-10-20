@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hintere Schwertblätter (Dunkles Wald-/Maisgrün #436932) -->
+    <path d="M 48 54 C 33 40, 17 34, 5 39 C 16 26, 34 29, 49 46 Z" fill="#436932" stroke-width="2.2" />
+    <path d="M 52 50 C 67 36, 83 30, 95 35 C 84 22, 66 25, 51 42 Z" fill="#436932" stroke-width="2.2" />
+    <path d="M 48 76 C 34 68, 19 68, 9 76 C 17 62, 33 60, 48 70 Z" fill="#436932" stroke-width="2.2" />
+    <path d="M 52 76 C 66 68, 81 68, 91 76 C 83 62, 67 60, 52 70 Z" fill="#436932" stroke-width="2.2" />
+
+    <!-- 2. MÄNNLICHE FAHNENRISPE AN DER SPITZE (Gold-Ocker #d9bd73 & #ebd494) -->
+    <path d="M 50 24 L 50 5 M 50 18 C 44 13, 38 11, 33 12 M 50 18 C 56 13, 62 11, 67 12 M 50 14 C 45 9, 41 7, 37 7 M 50 14 C 55 9, 59 7, 63 7" fill="none" stroke-width="1.8" />
+    <!-- Ähren-Rispenzweige -->
+    <path d="M 48 18 C 47 11, 48 5, 50 3 C 52 5, 53 11, 52 18 Z" fill="#ebd494" stroke-width="1.8" />
+    <path d="M 49 17 C 43 13, 37 11, 32 13 C 36 8, 43 9, 49 14 Z" fill="#d9bd73" stroke-width="1.7" />
+    <path d="M 51 17 C 57 13, 63 11, 68 13 C 64 8, 57 9, 51 14 Z" fill="#d9bd73" stroke-width="1.7" />
+    <path d="M 49 13 C 45 9, 40 7, 36 8 C 40 4, 45 5, 49 10 Z" fill="#ebd494" stroke-width="1.6" />
+    <path d="M 51 13 C 55 9, 60 7, 64 8 C 60 4, 55 5, 51 10 Z" fill="#ebd494" stroke-width="1.6" />
+
+    <!-- 3. Kräftiger, hochgewachsener Mais-Stängel (mit Bambus-artigen Knoten) -->
+    <path d="M 45 92 C 46 68, 47 44, 48 20 L 52 20 C 53 44, 54 68, 55 92 Z" fill="#78a652" stroke-width="2.4" />
+    <path d="M 45.5 81 L 54.5 81 M 46 67 L 54 67 M 47 52 L 53 52 M 47.5 37 L 52.5 37" fill="none" stroke-width="2.1" />
+
+    <!-- 4. Mittlere & Obere Schwertblätter (Warmes Maisgrün #68964b & #82b059) -->
+    <!-- Oben links & rechts -->
+    <path d="M 48 36 C 37 24, 24 20, 14 25 C 23 14, 37 16, 49 30 Z" fill="#82b059" stroke-width="2.2" />
+    <path d="M 52 34 C 63 22, 76 18, 86 23 C 77 12, 63 14, 51 28 Z" fill="#82b059" stroke-width="2.2" />
+    <!-- Mitte links & rechts (lang überhängend) -->
+    <path d="M 46 65 C 32 55, 16 55, 6 65 C 14 49, 31 46, 47 58 Z" fill="#68964b" stroke-width="2.3" />
+    <path d="M 46 61 C 33 53, 20 53, 10 61" fill="none" stroke="#c8e3a6" stroke-width="1.3" />
+
+    <path d="M 54 63 C 68 53, 84 53, 94 63 C 86 47, 69 44, 53 56 Z" fill="#68964b" stroke-width="2.3" />
+    <path d="M 54 59 C 67 51, 80 51, 90 59" fill="none" stroke="#c8e3a6" stroke-width="1.3" />
+
+    <!-- 5. GOLDGELBE MAISKOLBEN (Das Herzstück der Illustration!) -->
+
+    <!-- KOLBEN 1: Großer Prachtkolben LINKS (bei 34, 48 – schräg abstehend, halb geschält) -->
+    <!-- Rotbrauner Maisbart (Seidenfäden) oben an der Kolbenspitze -->
+    <path d="M 31 35 C 27 30, 22 29, 19 32 C 21 35, 25 36, 29 38 Z" fill="#a84e3b" stroke-width="1.8" />
+    <path d="M 28 34 C 24 31, 21 32, 19 35" fill="none" stroke="#c96b55" stroke-width="1.2" />
+
+    <!-- Goldener Maiskolben-Körper (#f0c243 & #ffd966) -->
+    <path d="M 45 56 C 38 52, 31 44, 29 36 C 28 32, 33 29, 37 33 C 42 39, 46 47, 47 54 Z" fill="#f0c243" stroke-width="2.3" />
+    <!-- Maiskörner-Raster (Längs- und Querlinien auf dem Kolben) -->
+    <path d="M 32 34 L 43 50 M 35 33 L 45 48 M 30 39 L 37 34 M 33 43 L 40 38 M 36 47 L 43 42" fill="none" stroke="#b57c1e" stroke-width="1.3" />
+    <!-- Aufgeklappte Lieschblätter (Hüllblätter #8eb865 & #a6cf7c), die den Kolben unten umarmen -->
+    <path d="M 46 58 C 37 56, 28 50, 23 42 C 29 43, 36 47, 43 53 Z" fill="#a6cf7c" stroke-width="2.2" />
+    <path d="M 47 57 C 44 48, 41 39, 37 32 C 42 37, 46 45, 48 54 Z" fill="#8eb865" stroke-width="2.1" />
+
+    <!-- KOLBEN 2: Zweiter Maiskolben RECHTS (etwas tiefer bei 64, 56) -->
+    <!-- Maisbart rechts -->
+    <path d="M 69 42 C 73 37, 78 36, 81 39 C 79 42, 75 43, 71 45 Z" fill="#a84e3b" stroke-width="1.8" />
+    <!-- Goldener Kolben rechts -->
+    <path d="M 55 63 C 62 59, 69 51, 71 43 C 72 39, 67 36, 63 40 C 58 46, 54 54, 53 61 Z" fill="#f0c243" stroke-width="2.3" />
+    <!-- Maiskörner-Raster rechts -->
+    <path d="M 68 41 L 57 57 M 65 40 L 55 55 M 70 46 L 63 41 M 67 50 L 60 45 M 64 54 L 57 49" fill="none" stroke="#b57c1e" stroke-width="1.3" />
+    <!-- Lieschblätter rechts -->
+    <path d="M 54 65 C 63 63, 72 57, 77 49 C 71 50, 64 54, 57 60 Z" fill="#a6cf7c" stroke-width="2.2" />
+    <path d="M 53 64 C 56 55, 59 46, 63 39 C 58 44, 54 52, 52 61 Z" fill="#8eb865" stroke-width="2.1" />
+
+    <!-- 6. Kräftige rötliche Anker-/Stützwurzeln & Erdkrume bei (50, 96) -->
+    <path d="M 45 83 C 40 87, 36 91, 35 95 M 46 86 C 42 89, 40 92, 39 95 M 48 88 L 46 95 M 55 83 C 60 87, 64 91, 65 95 M 54 86 C 58 89, 60 92, 61 95 M 52 88 L 54 95" fill="none" stroke="#9e5340" stroke-width="2.3" />
+    <path d="M 45 83 C 40 87, 36 91, 35 95 M 55 83 C 60 87, 64 91, 65 95" fill="none" stroke="#2f2a24" stroke-width="1.4" />
+
+    <path d="M 24 96 C 32 92, 40 92, 46 95 C 48 93, 52 93, 54 95 C 60 92, 68 92, 76 96 C 64 96.5, 56 95.5, 50 96 C 44 95.5, 36 96.5, 24 96 Z" fill="#8c7252" stroke-width="2.4" />
+  </g>
+</svg>

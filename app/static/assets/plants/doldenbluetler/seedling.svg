@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Erstes echtes Möhren-Fiederblättchen (Mitte, fein gezackt) -->
+    <path d="M 50 76 C 49 66, 47 58, 43 52 C 42 50, 38 51, 40 54 C 36 53, 35 56, 39 58 C 43 60, 46 65, 49 74 Z" fill="#688c52" stroke-width="2" />
+    <path d="M 50 75 C 50 64, 52 54, 56 47 C 54 44, 51 45, 50 49 C 48 45, 45 46, 47 50 C 49 55, 50 64, 50 75 Z" fill="#82a865" stroke-width="2.1" />
+    <path d="M 50 76 C 52 67, 56 60, 61 55 C 64 53, 66 56, 62 59 C 65 60, 63 63, 59 62 C 55 63, 52 68, 51 75 Z" fill="#75995b" stroke-width="2" />
+
+    <!-- Typische sehr schmale, geschwungene Keimblätter der Möhre -->
+    <path d="M 49 78 C 40 72, 28 69, 17 72 C 25 66, 38 67, 49 75 Z" fill="#82a865" stroke-width="2.1" />
+    <path d="M 51 78 C 60 72, 72 69, 83 72 C 75 66, 62 67, 51 75 Z" fill="#688c52" stroke-width="2.1" />
+
+    <!-- Zarter, schon leicht rötlich-orangener Wurzelhals bei (50, 96) -->
+    <path d="M 41 96 C 46 95, 48 91, 48.5 84 C 49 80, 49 77, 50 74 C 51 77, 51 80, 51.5 84 C 52 91, 54 95, 59 96 C 54 96.5, 52 95.5, 50 96 C 48 95.5, 46 96.5, 41 96 Z" fill="#d97b43" stroke-width="2.2" />
+
+    <!-- Erdkrume am Boden -->
+    <path d="M 35 96 C 40 95, 45 96, 50 96 C 55 96, 60 95, 65 96" fill="none" stroke-width="2.2" />
+  </g>
+</svg>

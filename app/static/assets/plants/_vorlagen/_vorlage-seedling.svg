@@ -1,0 +1,14 @@
+<!-- Vorlage: Sämling (Stadium "seedling")
+     ViewBox 0 0 100 100 · Ankerpunkt unten Mitte (50, 96)
+     Farben: Blatt #7fa86f · Kontur #2f2a24 (Strichstärke 3–4, runde Enden) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Stiel -->
+  <path d="M 50 96 C 49 88 50 80 50 72"
+        fill="none" stroke="#2f2a24" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Keimblatt links (leicht gewackelte Kontur, handgezeichnet-Wirkung) -->
+  <path d="M 50 74 C 40 70 33 62 35 54 C 44 54 51 62 50 74 Z"
+        fill="#7fa86f" stroke="#2f2a24" stroke-width="3" stroke-linecap="round"/>
+  <!-- Keimblatt rechts -->
+  <path d="M 50 74 C 60 70 67 62 65 54 C 56 54 49 62 50 74 Z"
+        fill="#8fb87f" stroke="#2f2a24" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hintere Blattkrone (Dunkles Kohl-Blaugrün #3d5e49) -->
+    <path d="M 43 64 C 31 50, 17 42, 9 30 C 7 22, 15 17, 23 22 C 26 15, 35 17, 39 25 C 43 36, 44 50, 43 64 Z" fill="#3d5e49" stroke-width="2.2" />
+    <path d="M 55 64 C 67 50, 81 42, 89 30 C 91 22, 83 17, 75 22 C 72 15, 63 17, 59 25 C 55 36, 54 50, 55 64 Z" fill="#3d5e49" stroke-width="2.2" />
+    <path d="M 49 58 C 44 40, 44 22, 50 11 C 56 22, 56 40, 49 58 Z" fill="#3d5e49" stroke-width="2.2" />
+
+    <!-- 2. Seitlich abstehende Kohlrabi-Blätter (wie klassische Kohlrabi-Ausleger) -->
+    <!-- Links außen -->
+    <path d="M 34 73 C 23 68, 12 67, 5 71 C 3 63, 10 55, 18 57 C 20 50, 29 51, 33 58 C 35 63, 35 68, 34 73 Z" fill="#588267" stroke-width="2.3" />
+    <path d="M 35 72 C 26 66, 17 63, 9 65" fill="none" stroke="#c8e3cf" stroke-width="2.2" />
+    <path d="M 35 72 C 26 66, 17 63, 9 65" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Rechts außen (Laub des Radieschens) -->
+    <path d="M 68 78 C 77 72, 86 70, 94 73 C 95 65, 89 58, 82 60 C 80 54, 72 55, 69 62 C 67 67, 67 73, 68 78 Z" fill="#6b9659" stroke-width="2.2" />
+    <path d="M 68 77 C 76 71, 83 67, 90 68" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- 3. Große, buchtig gelappte Hauptblätter oben (Bereiftes Blaugrün #739e82) -->
+    <!-- Links oben -->
+    <path d="M 45 64 C 39 48, 30 34, 26 19 C 24 11, 33 6, 40 12 C 44 6, 52 11, 49 20 C 53 26, 49 35, 45 40 C 46 49, 45 57, 45 64 Z" fill="#739e82" stroke-width="2.4" />
+    <path d="M 45 64 C 42 48, 38 32, 35 14 M 39 34 L 31 28 M 41 26 L 45 19" fill="none" stroke="#d7ede0" stroke-width="2.3" />
+    <path d="M 45 64 C 42 48, 38 32, 35 14 M 39 34 L 31 28 M 41 26 L 45 19" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Rechts oben -->
+    <path d="M 51 64 C 57 48, 66 34, 70 19 C 72 11, 63 6, 56 12 C 52 6, 44 11, 47 20 C 43 26, 47 35, 51 40 C 50 49, 51 57, 51 64 Z" fill="#739e82" stroke-width="2.4" />
+    <path d="M 51 64 C 54 48, 58 32, 61 14 M 57 34 L 65 28 M 55 26 L 51 19" fill="none" stroke="#d7ede0" stroke-width="2.3" />
+    <path d="M 51 64 C 54 48, 58 32, 61 14 M 57 34 L 65 28 M 55 26 L 51 19" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Junges Herzblatt in der Kronenmitte -->
+    <path d="M 48 63 C 45 52, 45 41, 49 35 C 53 41, 53 52, 48 63 Z" fill="#93bd9f" stroke-width="2.1" />
+
+    <!-- 4. PRALLE KOHLRABI-KNOLLE (Links-Mitte, Apfelgrün #a5cc84 & #bfe0a2) -->
+    <!-- Knollenkörper -->
+    <ellipse cx="46" cy="77" rx="16" ry="13.5" fill="#a5cc84" stroke-width="2.5" />
+    <!-- Lichtwölbung oben links -->
+    <ellipse cx="42" cy="73" rx="9" ry="6.5" fill="#bfe0a2" stroke="none" />
+    <!-- Typische Stiel-Ansätze direkt auf der Knollenwand & Wachstumsringe -->
+    <path d="M 33 71 C 36 73, 38 76, 36 78 M 58 72 C 55 74, 54 77, 56 79" fill="none" stroke-width="1.8" />
+    <path d="M 36 81 C 41 83, 47 83, 52 81 M 39 86 C 44 87, 49 87, 53 85 M 41 69 C 45 70, 49 70, 52 69" fill="none" stroke-width="1.3" />
+
+    <!-- 5. LEUCHTEND ROTES RADIESCHEN (Rechts vorne als knalliger Familien-Partner #d13b4f & #e65c6f) -->
+    <circle cx="66" cy="84" r="9.5" fill="#d13b4f" stroke-width="2.4" />
+    <!-- Glanzpunkt auf dem Radieschen -->
+    <path d="M 61 79 C 60 82, 61 85, 63 87" fill="none" stroke="#f08694" stroke-width="1.8" />
+    <!-- Weiße Wurzelspitze unten am Radieschen -->
+    <path d="M 62 92 C 64 94, 68 94, 70 92 L 66 95 Z" fill="#f5efe6" stroke="none" />
+    <circle cx="66" cy="84" r="9.5" fill="none" stroke-width="2.4" />
+
+    <!-- 6. Aufgelockerte Erde am Wurzelpunkt (50, 96) -->
+    <path d="M 22 96 C 30 92, 38 92, 44 95 C 48 92, 55 92, 60 95 C 66 92, 74 92, 81 96 C 68 96.5, 58 95.5, 50 96 C 42 95.5, 32 96.5, 22 96 Z" fill="#8c7252" stroke-width="2.4" />
+  </g>
+</svg>

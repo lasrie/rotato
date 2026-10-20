@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hintere Laubkulisse (Dunkles Waldgrün #416333) -->
+    <path d="M 44 68 C 28 66, 14 58, 9 46 C 18 39, 32 43, 42 54 Z" fill="#416333" stroke-width="2.2" />
+    <path d="M 56 68 C 72 66, 86 58, 91 46 C 82 39, 68 43, 58 54 Z" fill="#416333" stroke-width="2.2" />
+    <path d="M 45 42 C 31 38, 19 30, 16 19 C 25 15, 37 20, 44 30 Z" fill="#416333" stroke-width="2.2" />
+    <path d="M 55 42 C 69 38, 81 30, 84 19 C 75 15, 63 20, 56 30 Z" fill="#416333" stroke-width="2.2" />
+
+    <!-- 2. Rustikales Rankgerüst (Zwei gekreuzte Holzstangen wie ein Bohnen-Tipi) -->
+    <path d="M 38 95 L 53 7 L 57 8 L 43 95 Z" fill="#8c6747" stroke-width="2.2" />
+    <path d="M 62 95 L 47 7 L 43 8 L 57 95 Z" fill="#785639" stroke-width="2.2" />
+    <!-- Obere Paketschnur-Kreuzbindung bei (50, 16) -->
+    <path d="M 44 15 C 48 14, 52 14, 56 15 C 52 18, 48 18, 44 15 Z" fill="#d7be96" stroke-width="1.9" />
+    <path d="M 44 17.5 C 48 16.5, 52 16.5, 56 17.5 C 52 20, 48 20, 44 17.5 Z" fill="#d7be96" stroke-width="1.9" />
+
+    <!-- 3. Kräftige Kletterreben & Wurzelbasis bei (50, 96) -->
+    <path d="M 27 96 C 37 95, 43 91, 46 83 L 54 83 C 57 91, 63 95, 73 96 C 62 96.5, 55 95, 50 96 C 45 95, 38 96.5, 27 96 Z" fill="#8c7252" stroke-width="2.4" />
+    <!-- Gewundene Hauptreben -->
+    <path d="M 42 93 C 38 80, 42 66, 50 56 C 58 46, 58 34, 50 22" fill="none" stroke="#588244" stroke-width="3.6" />
+    <path d="M 58 93 C 62 80, 58 66, 50 56 C 42 46, 42 34, 50 22" fill="none" stroke="#2f2a24" stroke-width="2" />
+
+    <!-- 4. Mittlere Blattschicht (Sattes Bohnengrün #5e8a49) -->
+    <!-- Links & Rechts Mitte -->
+    <path d="M 44 54 C 31 55, 18 49, 13 38 C 22 33, 35 36, 43 46 Z" fill="#5e8a49" stroke-width="2.2" />
+    <path d="M 42 51 C 32 48, 24 44, 17 39" fill="none" stroke-width="1.2" />
+
+    <path d="M 56 54 C 69 55, 82 49, 87 38 C 78 33, 65 36, 57 46 Z" fill="#5e8a49" stroke-width="2.2" />
+    <path d="M 58 51 C 68 48, 76 44, 83 39" fill="none" stroke-width="1.2" />
+
+    <!-- Links & Rechts Unten -->
+    <path d="M 42 76 C 30 78, 18 73, 14 64 C 22 58, 33 61, 41 69 Z" fill="#5e8a49" stroke-width="2.2" />
+    <path d="M 58 76 C 70 78, 82 73, 86 64 C 78 58, 67 61, 59 69 Z" fill="#5e8a49" stroke-width="2.2" />
+
+    <!-- 5. Geringelte Kletterranken an den Flanken -->
+    <path d="M 35 24 C 27 20, 20 21, 17 25 C 15 28, 19 31, 21 28 C 23 25, 18 22, 14 25" fill="none" stroke="#2f2a24" stroke-width="1.6" />
+    <path d="M 65 24 C 73 20, 80 21, 83 25 C 85 28, 81 31, 79 28 C 77 25, 82 22, 86 25" fill="none" stroke="#2f2a24" stroke-width="1.6" />
+
+    <!-- 6. PRALLE BOHNEN- / ERBSENHÜLSEN (Leuchtendes Hülsengrün #8ab863 & #9ecc74, leicht abgesetzt vom dunklen Laub) -->
+
+    <!-- Hülse 1: Großes Paar LINKS MITTE (schwer herabhängend, mit sichtbaren Samen-Wölbungen) -->
+    <!-- Hintere Hülse links -->
+    <path d="M 29 46 C 24 54, 23 66, 27 75 C 31 68, 32 56, 29 46 Z" fill="#739e50" stroke-width="2.2" />
+    <!-- Vordere Pracht-Hülse links -->
+    <path d="M 34 45 C 31 53, 30 66, 35 78 C 36 80, 38 79, 38 76 C 40 65, 39 53, 34 45 Z" fill="#9ecc74" stroke-width="2.4" />
+    <!-- Angedeutete Erbsen/Bohnen-Beulen in der Hülse -->
+    <circle cx="35" cy="54" r="2.2" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+    <circle cx="35" cy="61" r="2.4" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+    <circle cx="35.5" cy="68" r="2.2" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+    <!-- Kleiner Kelch oben an der Hülse -->
+    <path d="M 32 45 L 34 47 L 36 45" fill="none" stroke-width="1.6" />
+
+    <!-- Hülse 2: Großes Paar RECHTS MITTE -->
+    <!-- Hintere Hülse rechts -->
+    <path d="M 71 48 C 76 56, 77 68, 73 77 C 69 70, 68 58, 71 48 Z" fill="#739e50" stroke-width="2.2" />
+    <!-- Vordere Pracht-Hülse rechts -->
+    <path d="M 65 46 C 68 54, 69 67, 64 79 C 63 81, 61 80, 61 77 C 59 66, 60 54, 65 46 Z" fill="#9ecc74" stroke-width="2.4" />
+    <!-- Samen-Beulen -->
+    <circle cx="64" cy="55" r="2.2" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+    <circle cx="64" cy="62" r="2.4" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+    <circle cx="63.5" cy="69" r="2.2" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+    <path d="M 63 46 L 65 48 L 67 46" fill="none" stroke-width="1.6" />
+
+    <!-- Hülse 3: Obere Hülse im Zentrum -->
+    <path d="M 48 27 C 45 35, 45 46, 49 55 C 53 47, 53 36, 48 27 Z" fill="#9ecc74" stroke-width="2.3" />
+    <circle cx="48.5" cy="36" r="2" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+    <circle cx="48.5" cy="43" r="2.1" fill="#b4de8a" stroke="#4b703c" stroke-width="1.2" />
+
+    <!-- 7. Vordere Deckblätter & Schmetterlingsblüten -->
+    <path d="M 46 32 C 37 32, 29 27, 26 19 C 34 16, 42 20, 46 28 Z" fill="#7aa663" stroke-width="2.2" />
+    <path d="M 54 32 C 63 32, 71 27, 74 19 C 66 16, 58 20, 54 28 Z" fill="#7aa663" stroke-width="2.2" />
+    <path d="M 48 66 C 41 68, 35 73, 35 80 C 42 79, 47 74, 48 66 Z" fill="#7aa663" stroke-width="2.1" />
+    <path d="M 52 66 C 59 68, 65 73, 65 80 C 58 79, 53 74, 52 66 Z" fill="#7aa663" stroke-width="2.1" />
+
+    <!-- Schmetterlingsblüten oben (Zartes Cremeweiß & Altrosa #f7f0eb / #deb0a6) -->
+    <ellipse cx="37" cy="33" rx="4" ry="2.8" fill="#f7f0eb" stroke-width="1.8" />
+    <ellipse cx="39" cy="36" rx="3" ry="2" fill="#deb0a6" stroke-width="1.7" />
+
+    <ellipse cx="63" cy="31" rx="4" ry="2.8" fill="#f7f0eb" stroke-width="1.8" />
+    <ellipse cx="61" cy="34" rx="3" ry="2" fill="#deb0a6" stroke-width="1.7" />
+  </g>
+</svg>

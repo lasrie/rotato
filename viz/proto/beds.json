@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "beet-rechts-unten",
+    "title": "Beet rechts unten (tbd)",
+    "x": 13.2,
+    "y": 7.0,
+    "w": 2.2,
+    "h": 5.5,
+    "flaeche": 12.1,
+    "comment": "Separates rechteckiges Beet unter dem Jungpflanzen-Anzuchtkasten. Bezeichnung und Nutzung noch offen (Kandidat: Kartoffel-Pflanzsäcke / neues Beet)."
+  },
+  {
+    "slug": "tomatenbeet",
+    "title": "Tomatenbeet",
+    "x": 1.0,
+    "y": 0.5,
+    "w": 12.0,
+    "h": 1.6,
+    "flaeche": 19.2,
+    "comment": "Langes Beet entlang der oberen Gartenseite. Eine durchgehende Tomatenreihe; die Zwischenbepflanzung (Jungfer im Grünen, Basilikum) steht versetzt dazwischen und bildet eine 'halbe Reihe'. Maße geschätzt."
+  },
+  {
+    "slug": "erdbeer-knoblauch-beet",
+    "title": "Erdbeer-Beet",
+    "x": 0.8,
+    "y": 3.2,
+    "w": 1.5,
+    "h": 8.0,
+    "flaeche": 12.0,
+    "comment": "Vorher: kleines quadratisches Beet oberhalb des Hauptbeets. Jetzt: vertikales Beet links. Mischnutzung Erdbeeren/Knoblauch – Knoblauch-Zuordnung prüfen."
+  },
+  {
+    "slug": "beetkoerper-nord",
+    "title": "Beetkörper West",
+    "x": 4.8,
+    "y": 3.2,
+    "w": 3.2,
+    "h": 10.0,
+    "flaeche": 32.0,
+    "comment": "Westliches der beiden parallelen Längsbeete des zentralen Hauptbeets (Nord-Süd-Ausrichtung). Entspricht dem 'oberen Mittelbeet' des PPT-Plans 2025. Maße geschätzt."
+  },
+  {
+    "slug": "beetkoerper-sued",
+    "title": "Beetkörper Ost",
+    "x": 8.8,
+    "y": 3.2,
+    "w": 3.2,
+    "h": 10.0,
+    "flaeche": 32.0,
+    "comment": "Östliches der beiden parallelen Längsbeete des zentralen Hauptbeets (Nord-Süd-Ausrichtung). Entspricht dem 'unteren Mittelbeet' des PPT-Plans 2025. Maße geschätzt."
+  },
+  {
+    "slug": "hackschnitzelweg-beetkoerper",
+    "title": "Hackschnitzelweg im Beetkörper",
+    "x": 8.0,
+    "y": 3.2,
+    "w": 0.8,
+    "h": 10.0,
+    "flaeche": 8.0,
+    "comment": "Kein Anbauflächen-Beet: verläuft Nord-Süd zwischen den beiden Beetkörpern (West/Ost) des zentralen Hauptbeets."
+  },
+  {
+    "slug": "jungpflanzen-anzuchtkasten",
+    "title": "Jungpflanzen-Anzuchtkasten",
+    "x": 13.2,
+    "y": 3.2,
+    "w": 1.6,
+    "h": 3.0,
+    "flaeche": 4.8,
+    "comment": "Eigenständiger Anzuchtkasten neben dem Kartoffelbeet. Im Pflanzplan 2025 bisher noch nicht erfasst. Maße geschätzt."
+  },
+  {
+    "slug": "zwiebel-kohlrabi-hochbeet",
+    "title": "Zwiebel-Kohlrabi-Hochbeet",
+    "x": 14.0,
+    "y": 20.5,
+    "w": 1.8,
+    "h": 2.0,
+    "flaeche": 3.6,
+    "comment": "Hochbeet neben dem unteren Teil des Beerenbeets. Entspricht den Zwiebeln/Kohlrabi aus dem Pflanzplan. Maße geschätzt."
+  },
+  {
+    "slug": "beerenbeet",
+    "title": "Beerenbeet",
+    "x": 2.0,
+    "y": 20.5,
+    "w": 11.0,
+    "h": 2.0,
+    "flaeche": 22.0,
+    "comment": "Langes Beet unten im Garten, in mehrere Abschnitte entlang der Länge unterteilt. Bepflanzung laut Pflanzplan: Erdbeeren, Himbeeren, Jostabeere, Johannisbeere, Stachelbeere, Rosmarin. Abschnitte werden in einem Folgeschritt modelliert. Maße geschätzt."
+  }
+]

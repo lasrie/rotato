@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g stroke="#2f2a24" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 1. Hintere große Schildblätter (Dunkles Kürbisgrün #3f6331) -->
+    <path d="M 45 72 L 25 60 L 29 52 L 19 44 L 30 40 L 28 30 L 39 34 L 44 25 L 50 38 Z" fill="#3f6331" stroke-width="2.2" />
+    <path d="M 55 72 L 75 60 L 71 52 L 81 44 L 70 40 L 72 30 L 61 34 L 56 25 L 50 38 Z" fill="#3f6331" stroke-width="2.2" />
+
+    <!-- 2. Dicke, fleischige Blattstiele aus dem Staudenherz -->
+    <path d="M 47 86 C 40 76, 30 68, 22 65 M 53 86 C 60 76, 70 68, 78 65 M 49 85 C 45 68, 40 52, 36 42 M 51 85 C 55 68, 60 52, 64 42" fill="none" stroke="#8ab362" stroke-width="3.8" />
+    <path d="M 47 86 C 40 76, 30 68, 22 65 M 53 86 C 60 76, 70 68, 78 65" fill="none" stroke="#2f2a24" stroke-width="2" />
+
+    <!-- 3. Mittlere & Vordere gezackte Riesenblätter (Sattes Grün #588542 & #709e54 mit silbrig-hellgrüner Blattzeichnung) -->
+    <!-- Blatt Links-Unten -->
+    <path d="M 28 69 L 11 76 L 14 67 L 6 61 L 16 56 L 14 47 L 24 52 L 30 45 L 34 58 Z" fill="#588542" stroke-width="2.3" />
+    <path d="M 31 64 L 14 57 M 24 61 L 17 67 M 25 59 L 23 51" fill="none" stroke="#b8d9a3" stroke-width="1.8" />
+    <path d="M 31 64 L 14 57" fill="none" stroke="#2f2a24" stroke-width="1.1" />
+
+    <!-- Blatt Rechts-Unten -->
+    <path d="M 72 69 L 89 76 L 86 67 L 94 61 L 84 56 L 86 47 L 76 52 L 70 45 L 66 58 Z" fill="#588542" stroke-width="2.3" />
+    <path d="M 69 64 L 86 57 M 76 61 L 83 67 M 75 59 L 77 51" fill="none" stroke="#b8d9a3" stroke-width="1.8" />
+    <path d="M 69 64 L 86 57" fill="none" stroke="#2f2a24" stroke-width="1.1" />
+
+    <!-- Großes Vorderblatt Links-Oben -->
+    <path d="M 44 54 L 24 52 L 29 43 L 20 35 L 32 32 L 31 21 L 41 27 L 47 18 L 51 31 L 49 44 Z" fill="#709e54" stroke-width="2.4" />
+    <!-- Charakteristische silbrig-hellgrüne Ader-Sterne der Zucchini -->
+    <path d="M 44 48 L 32 29 M 39 41 L 27 42 M 40 37 L 43 25" fill="none" stroke="#c8e6b5" stroke-width="2.2" />
+    <path d="M 44 48 L 32 29" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- Großes Vorderblatt Rechts-Oben -->
+    <path d="M 56 54 L 76 52 L 71 43 L 80 35 L 68 32 L 69 21 L 59 27 L 53 18 L 49 31 L 51 44 Z" fill="#709e54" stroke-width="2.4" />
+    <path d="M 56 48 L 68 29 M 61 41 L 73 42 M 60 37 L 57 25" fill="none" stroke="#c8e6b5" stroke-width="2.2" />
+    <path d="M 56 48 L 68 29" fill="none" stroke="#2f2a24" stroke-width="1.2" />
+
+    <!-- 4. GROSSE GOLDGELBE ZUCCHINI-TRICHTERBLÜTE im Zentrum (#f2b738 & #ffd166) -->
+    <!-- Sternförmige Blütenkrone -->
+    <path d="M 50 76 C 44 70, 41 62, 37 55 L 45 56 L 46 47 L 51 54 L 57 47 L 57 56 L 64 55 C 60 62, 56 70, 50 76 Z" fill="#f2b738" stroke-width="2.3" />
+    <!-- Innerer Blütentrichter & orangener Stempel -->
+    <path d="M 43 58 C 47 64, 53 64, 57 58 L 53 54 L 47 54 Z" fill="#ffd166" stroke="none" />
+    <circle cx="50" cy="61" r="2.5" fill="#d97224" stroke-width="1.6" />
+    <path d="M 50 75 L 50 64 M 44 57 L 48 64 M 56 57 L 52 64" fill="none" stroke-width="1.2" />
+
+    <!-- 5. Dicker Strunk & Erdkrume bei (50, 96) -->
+    <path d="M 43 95 C 44 88, 45 81, 46 76 L 54 76 C 55 81, 56 88, 57 95 Z" fill="#6b9449" stroke-width="2.3" />
+    <path d="M 28 96 C 35 93, 43 93, 47 95 C 49 94, 51 94, 53 95 C 57 93, 65 93, 72 96 Z" fill="#8c7252" stroke-width="2.4" />
+  </g>
+</svg>
